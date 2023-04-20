@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JOLIE</title>
+  <!--LINK PARA CARGAR CSS-->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href="/css/detallepriv.css">
+</head>
+
+<body>
+  <!--PANTALLA PRINCIPAL-->
+  <main>
+    <div class="nav1">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">JOLIE</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/html/index.html">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/html/novedades.html">Novedades</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+                  aria-expanded="false">
+                  Categorias
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" href="/html/productos.html">Camisas</a></li>
+                  <li><a class="dropdown-item" href="#">Pantalones</a></li>
+                  <li><a class="dropdown-item" href="#">Faldas</a></li>
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/html/ofertas.html">Promociones</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/html/login.html">Iniciar sesion</a>
+              </li>
+            </ul>
+            <form class="d-flex">
+              <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
+              <button class="btn btn-outline-success" type="submit">Buscar</button>
+            </form>
+          </div>
+        </div>
+      </nav>
+    </div>
+
+
+    <div class="nav2">
+      <nav class="navbar2 navbar-light bg-light">
+        <form class="container-fluid justify-content-start">
+          <button class="btn btn-sm btn-outline-secondary" type="button">Camisas</button>
+          <button class="btn btn-sm btn-outline-secondary" type="button">Vestidos</button>
+          <button class="btn btn-sm btn-outline-secondary" type="button">Shorts</button>
+          <button class="btn btn-sm btn-outline-secondary" type="button">Hoodies y conjuntos</button>
+          <button class="btn btn-sm btn-outline-secondary" type="button">Pantalones</button>
+          <button class="btn btn-sm btn-outline-secondary" type="button">Faldas</button>
+          <button class="btn btn-sm btn-outline-secondary" type="button">Shorts</button>
+        </form>
+      </nav>
+    </div>
+
+    <div class="container">
+
+
+      <div class="product" style="margin-left: 10em;">
+        <div class="img-container">
+          <img id="imageBox" src="/recursos/p1.png" alt="">
+        </div>
+        <div class="product-small-img">
+          <img src="/recursos/p2.png" onclick="myFunction(this)">
+          <img src="/recursos/p3.png" onclick="myFunction(this)">
+          <img src="/recursos/p4.png" onclick="myFunction(this)">
+          <img src="/recursos/p5.png" onclick="myFunction(this)">
+
+        </div>
+
+      </div>
+      <div class="imgedit">
+        <img src="/recursos/lapiz.png" alt="">
+    </div>
+
+      <script type="text/javascript">
+        function myFunction(smallImg) {
+          var fullImg = document.getElementById("imageBox");
+          fullImg.src = smallImg.src;
+        }
+      </script>
+
+
+      <div class="detalle" style="margin-left: 2em; margin-right: 10em;">
+        <div class="img-detalle">
+          <h6 class="categoria">Hodies y conjuntos</h6>
+          <h3>Conjunto estampado</h3>
+          <br>
+          <p>Essentials. No. 5: The Sweatshirt. Top in sweatshirt fabric made from a cotton blend. Relaxed fit with
+            dropped shoulders and ribbing around the neckline, cuffs and hem. Soft brushed inside.</p>
+          <h2>$70.00</h2>
+          <br>
+          <div class="size">
+            <h4>Seleccionar talla</h4>
+            <ul>
+              <li>XS</li>
+              <li>S</li>
+              <li>M</li>
+              <li>L</li>
+              <li>XL</li>
+            </ul>
+          </div>
+          <h6>Color</h6>
+          <div class="color">
+            <div class="circulo1"></div>
+            <div class="circulo2"></div>
+            <div class="circulo3"></div>
+          </div>
+          <br>
+          <div class="disponible">
+            <p>
+              <img src="/recursos/Vector.png" align="margin-left">Revisar disponibilidad en la tienda
+            </p>
+          </div>
+          <br>
+          <input type="cantidad" value="1">
+          <button class="buy">Añadir al carrito</button>
+          <img src="/recursos/like.png" align="margin-left">
+          <br>
+          <br>
+          <h6>Talla | The model is 189cm/6'2" and wears a size L/L</h6>
+          <h6>Fit | Relaxed fit
+          </h6>
+          <h6>Composición | Algodón 60%, Poliéster 40%
+          </h6>
+          <h6>Art. No. | 0970818009</h6>
+          <br>
+          <h6>* Envío estándar de 2-7 días</h6>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!--FOOTER-->
+  <footer>
+    <iframe src="/html/footer.html" frameborder="0"></iframe>
+  </footer>
+
+  <!--SCRIPT BOOTSTRAP JS-->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+    </script>
+</body>
+
+</html>

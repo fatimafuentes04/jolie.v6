@@ -1,0 +1,132 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.navbar {
+    background-color: #4C7383 !important;
+    margin-bottom: 15px;
+}
+
+.navbar-brand {
+    color: white !important;
+}
+
+.nav-link {
+    color: white !important;
+}
+
+.btn {
+    color: #4c7383;
+    border-color: white;
+    background-color: white;
+}
+
+.btn:hover {
+    background-color: #4c7383;
+    border-color: white;
+}
+
+iframe {
+    height: 56.3vh;
+    position: relative;
+    width: 100%;
+}
+
+nav {
+    width: auto;
+    height: 9.5vh;
+}
+
+.nav2 form {
+    background-image: url(/recursos/submenu.png);
+    height: 90%;
+}
+
+.btn {
+    border-radius: 3px;
+    margin-right: 3.5%;
+    margin-left: 3.8%;
+    margin-top: 1%;
+    color: black;
+}
+
+.btn:hover {
+    background-color: #4c7383;
+    border-color: #4c7383;
+}
+
+body h1 {
+    margin-left: 20px;
+}
+
+body p {
+    margin-left: 20px;
+}
+
+.container {
+    display: flex;
+    margin-bottom: 10px;
+    justify-content: space-evenly;
+}
+
+.container .card{
+    margin-left: 0.5%;
+    margin-right: 0.5%;
+}
+
+.card-img-top {
+    background-color: #DEE1E7;
+}
+
+.card-body {
+    background-color: #DEE1E7;
+    height: 430px;
+}
+
+.imagenes {
+    display: flex;
+}
+
+.ctn0 {
+    position: absolute;
+    margin-top: 15px;
+    background-color: #07161D;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.ctn1 {
+    position: absolute;
+    margin-top: 15px;
+    background-color: #07161D;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.ctn2 {
+    position: absolute;
+    margin-top: 15px;
+    background-color: #07161D;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.price a {
+    color: white;
+}
+
+.cora img {
+    position: absolute;
+    margin-left: 150px;
+    top: 380px;
+    width: 30px;
+}
+
+.carrito5 img {
+    position: absolute;
+    margin-left: 150px;
+    top: 340px;
+    width: 30px;
+}

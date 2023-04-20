@@ -1,0 +1,18 @@
+.navbar {
+    background-color: #4C7383 !important;
+    
+}
+
+.navbar-brand {color: white !important;}
+.nav-link {color: white !important;}
+
+
+.btn{
+    color: #4c7383;
+    border-color: white;
+    background-color: white;
+}
+.btn:hover{
+    background-color: #4c7383;
+    border-color: white;
+}
