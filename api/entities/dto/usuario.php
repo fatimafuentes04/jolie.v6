@@ -58,7 +58,6 @@ class Usuario extends UsuarioQueries
         }
     }
 
-    
     public function setClave_usuario($value)
     {
         if (Validator::validatePassword($value)) {

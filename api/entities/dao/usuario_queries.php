@@ -10,11 +10,11 @@ class UsuarioQueries
     */
     public function checkUser($nombre)
     {
-        $sql = 'SELECT id_usuario FROM usuarios WHERE correo_electronico = ?';
+        $sql = 'SELECT id_usuario FROM usuario WHERE usuario = ?';
         $params = array($nombre);
         if ($data = Database::getRow($sql, $params)) {
             $this->id_usuario = $data['id_usuario'];
-            $this->correo_electronico = $nombre;
+            $this->usuario = $nombre;
             return true;
         } else {
             return false;
@@ -23,10 +23,10 @@ class UsuarioQueries
 
     public function checkPassword($password)
     {
-        $sql = 'SELECT clave FROM usuarios WHERE id_usuario = ?';
+        $sql = 'SELECT clave_usuario FROM usuario WHERE id_usuario = ?';
         $params = array($this->id_usuario);
         $data= Database::getRow($sql,$params);
-        if ($password==$data['clave']) {
+        if ($password==$data['clave_usuario']) {
         return true;
         }else{
         return false;
@@ -35,15 +35,15 @@ class UsuarioQueries
 
     public function changePassword()
     {
-        $sql = 'UPDATE usuarios SET clave = ? WHERE id_usuario = ?';
+        $sql = 'UPDATE usuario SET clave_usuario = ? WHERE id_usuario = ?';
         $params = array($this->clave, $_SESSION['id_usuario']);
         return Database::executeRow($sql, $params);
     }
 
     public function readProfile()
     {
-        $sql = 'SELECT id_usuario, nombre, telefono, correo_electronico, direccion, clave
-                FROM usuarios
+        $sql = 'SELECT id_usuario, nombre_usuario, apellido_usuario, usuario, clave_usuario, estado_usuario, idtipo_usuario
+                FROM usuario
                 WHERE id_usuario = ?';
         $params = array($_SESSION['id_usuario']);
         return Database::getRow($sql, $params);
@@ -51,10 +51,10 @@ class UsuarioQueries
 
     public function editProfile()
     {
-        $sql = 'UPDATE usuarios
-                SET nombre = ?, telefono = ?, correo_electronico = ?, direccion = ?
+        $sql = 'UPDATE usuario
+                SET nombre_usuario = ?, apellido_usuario = ?, usuario = ?, clave_usuario = ?estado_usuario, idtipo_usuario = ?
                 WHERE id_usuario = ?';
-        $params = array($this->nombre, $this->telefono, $this->correo_electronico, $this->direccion, $_SESSION['id_usuario']);
+        $params = array($this->nombre_usuario, $this->apellido_usuario, $this->usuario, $this->clave_usuario,, $this->estado_usuario, $this->idtipo_usuario, $_SESSION['id_usuario']);
         return Database::executeRow($sql, $params);
     }
 
@@ -82,13 +82,13 @@ class UsuarioQueries
     }
 */
 public function readAll(){
-    $sql = 'SELECT * FROM usuarios ORDER BY id_usuario';
+    $sql = 'SELECT * FROM usuario ORDER BY id_usuario';
     return Database::getRows($sql);
 }
 
 public function readOne()
 {
-    $sql = 'SELECT * FROM usuarios
+    $sql = 'SELECT * FROM usuario
             WHERE id_usuario = ?';
     $params = array($this->id_usuario);
     return Database::getRow($sql, $params);
@@ -97,7 +97,7 @@ public function readOne()
  
 public function deleteRow()
 {
-    $sql = 'DELETE FROM usuarios
+    $sql = 'DELETE FROM usuario
             WHERE id_usuario = ?';
     $params = array($this->id_usuario);
     return Database::executeRow($sql, $params);
