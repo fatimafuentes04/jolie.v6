@@ -11,6 +11,12 @@
     border-radius: 20px;
 }
 
+.container select{
+    border-radius: 20px;
+    width: 100%;
+
+}
+
 
 .r1{
     width: 45%;

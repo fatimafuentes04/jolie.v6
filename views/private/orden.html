@@ -53,12 +53,16 @@
                         <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
                     </div>
                     <div class="mb-3">
-                        <label for="exampleInputEmail1" class="form-label">Estado</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                        <label for="Select" class="form-label">Estado</label>
+                        <select id="Select" class="form-select">
+                            <option>Seleccionar</option>
+                        </select>
                     </div>
                     <div class="mb-3">
-                        <label for="exampleInputEmail1" class="form-label">Cliente</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                        <label for="Select" class="form-label">Cliente</label>
+                        <select id="Select" class="form-select">
+                            <option>Seleccionar</option>
+                        </select>
                     </div>
                     <div class="mb-3">
                         <label for="exampleInputEmail1" class="form-label">Dirección</label>
@@ -66,6 +70,19 @@
                     </div>
                     <button type="submit" class="btn btn-primary">Registrar pedido</button>
                 </form>
+
+                <br>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Cliente</th>
+                    <th scope="col">Fecha</th>
+                    <th scope="col">Dirección</th>
+                    <th scope="col">Estado</th>
+                </tr>
+            </thead>
+        </table>
             </div>
 
 
@@ -73,12 +90,20 @@
                 <form>
                     <div>
                         <br>
-                        <h6 style="text-align: center;">Número de pedido</h6>
+                        <h6 style="text-align: center;">Detalle del pedido</h6>
                         <br>
                     </div>
                     <div class="mb-3">
-                        <label for="exampleInputEmail1" class="form-label">Código de producto</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                        <label for="Select" class="form-label">Número de pedido</label>
+                        <select id="Select" class="form-select">
+                            <option>Seleccionar</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="Select" class="form-label">Código del producto</label>
+                        <select id="Select" class="form-select">
+                            <option>Seleccionar</option>
+                        </select>
                     </div>
                     <div class="mb-3">
                         <label for="exampleInputEmail1" class="form-label">Precio</label>
@@ -88,12 +113,21 @@
                         <label for="exampleInputEmail1" class="form-label">Cantidad</label>
                         <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
                     </div>
-                    <div class="mb-3">
-                        <label for="exampleInputEmail1" class="form-label">Confirmar clave</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                    </div>
                     <button type="submit" class="btn btn-primary">Registrar detalle</button>
                 </form>
+                <br>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Pedido</th>
+                    <th scope="col">Producto</th>
+                    <th scope="col">Cantidad</th>
+                    <th scope="col">Precio</th>
+                </tr>
+            </thead>
+        </table>
+
             </div>
         </div>
 
