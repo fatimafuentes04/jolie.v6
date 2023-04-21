@@ -15,9 +15,9 @@ if (isset($_GET['action'])) {
         // Se compara la acción a realizar cuando un administrador ha iniciado sesión.
         switch ($_GET['action']) {
             case 'getUser':
-                if (isset($_SESSION['alias_usuario'])) {
+                if (isset($_SESSION['usuario'])) {
                     $result['status'] = 1;
-                    $result['username'] = $_SESSION['alias_usuario'];
+                    $result['username'] = $_SESSION['usuario'];
                 } else {
                     $result['exception'] = 'Alias de usuario indefinido';
                 }
@@ -200,9 +200,9 @@ if (isset($_GET['action'])) {
                 break;
             case 'login':
                 $_POST = Validator::validateForm($_POST);
-                if (!$usuario->checkUser($_POST['correo'])) {
-                    $result['exception'] = 'Alias incorrecto';
-                } elseif ($usuario->checkPassword($_POST['clave'])) {
+                if (!$usuario->checkUser($_POST['usuario'])) {
+                    $result['exception'] = 'Usuario incorrecto';
+                } elseif ($usuario->checkPassword($_POST['clave_usuario'])) {
                     $result['status'] = 1;
                     $result['message'] = 'Autenticacion correcta';
                     $_SESSION['id_usuario'] = $usuario->getId_usuario();

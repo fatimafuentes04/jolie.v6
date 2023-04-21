@@ -4,5 +4,5 @@ define('SERVER', 'localhost');
 define('DATABASE', 'jolie');
 define('USERNAME', 'postgres');
 //clave de su pgadmin
-define('PASSWORD', '123');
+define('PASSWORD', '1234');
 ?>
