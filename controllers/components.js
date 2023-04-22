@@ -1,4 +1,4 @@
-const SERVER_URL = 'http://localhost/jolieV3/api/';
+const SERVER_URL = 'http://localhost/jolie.v6/api/';
 /*CAMBIAR LA DIRECCION */
 
 function confirmAction(message) {
