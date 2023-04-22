@@ -5,7 +5,7 @@ require_once('../../helpers/database.php');
  /*funcion para leer datos*/
     class ProductoQueries{
     public function readAll(){
-        $sql = 'SELECT * FROM productos ORDER BY id_producto';
+        $sql = 'SELECT * FROM producto ORDER BY id_producto';
         return Database::getRows($sql);
     }
 
@@ -21,7 +21,7 @@ require_once('../../helpers/database.php');
      /*funcion para leer datos*/
     public function readOne()
     {
-        $sql = 'SELECT * FROM productos
+        $sql = 'SELECT * FROM producto
                 WHERE id_producto = ?';
         $params = array($this->id_producto);
         return Database::getRow($sql, $params);
@@ -37,7 +37,7 @@ public function readEditoriales(){
     return Database::getRows($sql);
 }
 public function readUsuarios (){
-    $sql = 'SELECT id_usuario, nombre FROM usuarios';
+    $sql = 'SELECT id_usuario, nombre FROM usuario';
     return Database::getRows($sql);
 }
 public function readAutores(){
