@@ -79,15 +79,15 @@ class UsuarioQueries
         return Database::getRows($sql, $params);
     }
     */
-/*
+
     public function createRow()
     {
-        $sql = 'INSERT INTO usuarios(nombres_usuario, apellidos_usuario, correo_usuario, alias_usuario, clave_usuario)
-                VALUES(?, ?, ?, ?, ?)';
-        $params = array($this->nombres, $this->apellidos, $this->correo, $this->alias, $this->clave);
+        $sql = 'INSERT INTO usuarios(nombre_usuario, apellido_usuario, usuario, clave_usuario, estado_usuario, idtipo_usuario)
+                VALUES(?, ?, ?, ?, ?, ?)';
+        $params = array($this->nombre_usuario, $this->apellido_usuario, $this->usuario, $this->clave_usuario, $this->estado_usuario, $this->idtipo_usuario);
         return Database::executeRow($sql, $params);
     }
-*/
+
 
 
 public function readOne()
