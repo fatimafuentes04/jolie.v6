@@ -42,17 +42,17 @@ if (isset($_GET['action'])) {
                 break;
             case 'editProfile':
                 $_POST = Validator::validateForm($_POST);
-                if (!$usuario->setNombres($_POST['nombres'])) {
+                if (!$usuario->setNombres($_POST['nombre'])) {
                     $result['exception'] = 'Nombres incorrectos';
                 } elseif (!$usuario->setApellidos($_POST['apellidos'])) {
                     $result['exception'] = 'Apellidos incorrectos';
-                } elseif (!$usuario->setCorreo($_POST['correo'])) {
+                } elseif (!$usuario->setCorreo($_POST['usuario'])) {
                     $result['exception'] = 'Correo incorrecto';
                 } elseif (!$usuario->setAlias($_POST['alias'])) {
-                    $result['exception'] = 'Alias incorrecto';
+                    $result['exception'] = 'Usuario incorrecto';
                 } elseif ($usuario->editProfile()) {
                     $result['status'] = 1;
-                    $_SESSION['alias_usuario'] = $usuario->getAlias();
+                    $_SESSION['clave'] = $usuario->getAlias();
                     $result['message'] = 'Perfil modificado correctamente';
                 } else {
                     $result['exception'] = Database::getException();
@@ -75,6 +75,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = Database::getException();
                 }
                 break;
+                
             case 'readAll':
                 if ($result['dataset'] = $usuario->readAll()) {
                     $result['status'] = 1;
@@ -85,6 +86,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'No hay datos registrados';
                 }
                 break;
+
             case 'search':
                 $_POST = Validator::validateForm($_POST);
                 if ($_POST['search'] == '') {
@@ -120,7 +122,7 @@ if (isset($_GET['action'])) {
                 }
                 break;
             case 'readOne':
-                if (!$usuario->setid_usuario($_POST['id_usuario'])) {
+                if (!$usuario->setId_usuario($_POST['id_usuario'])) {
                     $result['exception'] = 'Usuario incorrecto';
                 } elseif ($result['dataset'] = $usuario->readOne()) {
                     $result['status'] = 1;
@@ -174,7 +176,7 @@ if (isset($_GET['action'])) {
                     $result['status'] = 1;
                     $result['message'] = 'Debe autenticarse para ingresar';
                 } else {
-                    $result['exception'] = 'Debe crear un usuario para comenzar';
+                    $result['exception'] = Database::getException();
                 }
                 break;
             case 'signup':
@@ -201,12 +203,12 @@ if (isset($_GET['action'])) {
             case 'login':
                 $_POST = Validator::validateForm($_POST);
                 if (!$usuario->checkUser($_POST['usuario'])) {
-                    $result['exception'] = 'Usuario incorrecto';
-                } elseif ($usuario->checkPassword($_POST['clave_usuario'])) {
+                    $result['exception'] = Database::getException();
+                } elseif ($usuario->checkPassword($_POST['clave'])) {
                     $result['status'] = 1;
                     $result['message'] = 'Autenticacion correcta';
                     $_SESSION['id_usuario'] = $usuario->getId_usuario();
-                    $_SESSION['nombre'] = $usuario->getNombre();
+                    $_SESSION['usuario'] = $usuario->getUsuario();
                 } else {
                     $result['exception'] = 'Clave incorrecta';
                 }

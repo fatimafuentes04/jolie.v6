@@ -5,16 +5,23 @@ require_once('../../helpers/database.php');
 */
 class UsuarioQueries
 {
+    public function readAll(){
+        $sql = 'SELECT id_usuario, nombre_usuario, apellido_usuario, usuario, clave_usuario, estado_usuario, tipo_usuario
+        FROM usuario
+        INNER JOIN tipo_usuario USING(idtipo_usuario)';
+        return Database::getRows($sql);
+    }
+
     /*
     *   Métodos para gestionar la cuenta del usuario. si les muestra error en el id_usuario o algo mas es porque casi siempre muestra el error pero siempre sigue funcionando 
     */
-    public function checkUser($nombre)
+    public function checkUser($usuario)
     {
         $sql = 'SELECT id_usuario FROM usuario WHERE usuario = ?';
-        $params = array($nombre);
+        $params = array($usuario);
         if ($data = Database::getRow($sql, $params)) {
             $this->id_usuario = $data['id_usuario'];
-            $this->usuario = $nombre;
+            $this->usuario = $usuario;
             return true;
         } else {
             return false;
@@ -32,7 +39,7 @@ class UsuarioQueries
         return false;
         }
     }
-
+/* 
     public function changePassword()
     {
         $sql = 'UPDATE usuario SET clave_usuario = ? WHERE id_usuario = ?';
@@ -81,10 +88,7 @@ class UsuarioQueries
         return Database::executeRow($sql, $params);
     }
 */
-public function readAll(){
-    $sql = 'SELECT * FROM usuario ORDER BY id_usuario';
-    return Database::getRows($sql);
-}
+
 
 public function readOne()
 {

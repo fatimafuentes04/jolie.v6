@@ -4,7 +4,7 @@ require_once('config.php');
 
 /*
 *   Clase para realizar las operaciones en la base de datos.
-*/  
+*/
 class Database
 {
     // Propiedades de la clase para manejar las acciones respectivas.
@@ -22,7 +22,6 @@ class Database
         try {
             // Se crea la conexión mediante la clase PDO con el controlador de PostgreSQL.
             self::$connection = new PDO('pgsql:host=' . SERVER . ';dbname=' . DATABASE . ';port=5432', USERNAME, PASSWORD);
-           // print('Conectado');
             // Se prepara la sentencia SQL.
             self::$statement = self::$connection->prepare($query);
             // Se ejecuta la sentencia preparada y se retorna el resultado.
@@ -118,6 +117,3 @@ class Database
         return self::$error;
     }
 }
-
-//$sql='Select*from usuarios';
-//DATABASE::executeRow($sql, null);

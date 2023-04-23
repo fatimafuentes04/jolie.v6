@@ -1,11 +1,10 @@
 // Constantes para completar las rutas de la API.
 const USUARIO_API = 'business/dashboard/usuario.php';
 const titulo_modal =document.getElementById('modal-title');
-const TBODY_ROWS = document.getElementById('tboby-row');
+const TBODY_ROWS = document.getElementById('tbody-rows');
+const RECORDS = document.getElementById('records');
 
-const OPTIONS = {
-    dismissible: false
-}
+
 
 // Método manejador de eventos para cuando el documento ha cargado.
 document.addEventListener('DOMContentLoaded', () => {
@@ -19,9 +18,9 @@ document.addEventListener('DOMContentLoaded', () => {
 *   Retorno: ninguno.
 */
 async function fillTable(form = null) {
-    // Se inicializa el contenido de la tabla.
-    TBODY_ROWS.innerHTML = '';
-
+   
+    TBODY_ROWS.innerHTML ='';
+    RECORDS.textContent ='';
     // Se verifica la acción a realizar.
     (form) ? action = 'search' : action = 'readAll';
     // Petición para obtener los registros disponibles.
@@ -36,13 +35,12 @@ async function fillTable(form = null) {
             TBODY_ROWS.innerHTML += `
                 <tr>
                     <td>${row.id_usuario}</td>
-                    <td>${row.nombre}</td>
-                    <td>${row.id_tipodoc}</td>
-                    <td>${row.numero_doc}</td>
-                    <td>${row.telefono}</td>
-                    <td>${row.correo_electronico}</td>
-                    <td>${row.direccion}</td>
-                    <td>${row.clave}</td>
+                    <td>${row.nombre_usuario}</td>
+                    <td>${row.apellido_usuario}</td>
+                    <td>${row.usuario}</td>
+                    <td>${row.clave_usuario}</td>
+                    <td>${row.estado_usuario}</td>
+                    <td>${row.idtipo_usuario}</td>
                     <td>
                     <button><i class='bx bx-edit'></i></button>
                     <button id="deletebtn" onclick="Deleteusuario(${row.id_usuario})">
@@ -52,6 +50,8 @@ async function fillTable(form = null) {
                 </tr>
             `;
         });
+
+        RECORDS.textContent = JSON.message;
 
     } else {
         sweetAlert(4, JSON.exception, true);
