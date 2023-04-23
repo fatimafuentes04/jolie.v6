@@ -1,25 +1,32 @@
 .navbar {
-    background-color: white !important;    
+    background-color: white !important;
 }
 
-.container{
+.container {
     display: flex;
     justify-content: space-between;
 }
 
-.container input{
+.container input {
     border-radius: 20px;
 }
 
+.container select {
+    border-radius: 20px;
+    width: 100%;
+}
 
-.r1{
+
+.r1 {
     width: 45%;
 }
 
-.r2{
+.r2 {
     width: 45%;
 }
-.r2 button{
+
+
+.r2 button {
     background-color: #4c7383;
     color: white;
     border-color: #4c7383;
@@ -27,14 +34,14 @@
     border-radius: 20px;
 }
 
-.r2 button:hover{
+.r2 button:hover {
     background-color: white;
     color: #4c7383;
     border-color: #4c7383;
     width: 100%;
 }
 
-.r2 button{
+.r2 button {
     background-color: #4c7383;
     color: white;
     border-color: #4c7383;
@@ -42,14 +49,14 @@
     border-radius: 20px;
 }
 
-.r2 button:hover{
+.r2 button:hover {
     background-color: white;
     color: #4c7383;
     border-color: #4c7383;
     width: 100%;
 }
 
-.divider li{
+.divider li {
     list-style: none;
     width: 92%;
     margin-left: 3em;

@@ -80,6 +80,16 @@ class UsuarioQueries
     }
     */
 
+
+    /**Funci'on para cargar combobox */
+    public function readEstado(){
+        $sql='SELECT id_estado, estado FROM estado';
+        return Database::getRow($sql);
+    }
+
+   
+
+    /**Metodo para crear usuario */
     public function createRow()
     {
         $sql = 'INSERT INTO usuarios(nombre_usuario, apellido_usuario, usuario, clave_usuario, estado_usuario, idtipo_usuario)
