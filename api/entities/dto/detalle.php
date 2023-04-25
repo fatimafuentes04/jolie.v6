@@ -4,7 +4,7 @@ require_once('../../entities/dao/detalle_queries.php');
 /*
 *	Clase para manejar la transferencia de datos de la entidad USUARIO.
 */
-class Usuario extends UsuarioQueries
+class Detalle extends DetalleQueries
 {
     // Declaración de atributos (propiedades).
     protected $id_detalle = null;
@@ -38,7 +38,7 @@ class Usuario extends UsuarioQueries
 
     public function setId_producto($value)
     {
-        if (Validator::validateNaturalNumber($value)) {
+        if (Validator::validateAlphabetic($value, 1, 50)) {
             $this->id_producto = $value;
             return true;
         } else {

@@ -1,0 +1,9 @@
+.container input{
+    border-radius: 20px;
+}
+
+.container select{
+    border-radius: 20px;
+    width: 100%;
+
+}

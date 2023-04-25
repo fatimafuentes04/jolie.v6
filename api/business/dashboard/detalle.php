@@ -6,14 +6,26 @@ if (isset($_GET['action'])) {
     // Se crea una sesión o se reanuda la actual para poder utilizar variables de sesión en el script.
     session_start();
     // Se instancia la clase correspondiente.
-    $usuario = new Usuario;
+    $detalle = new Detalle;
     // Se declara e inicializa un arreglo para guardar el resultado que retorna la API.
-    $result = array('status' => 0, 'session' => 0, 'message' => null, 'exception' => null, 'dataset' => null, 'username' => null);
+    $result = array('status' => 0, 'message' => null, 'exception' => null, 'dataset' => null);
     // Se verifica si existe una sesión iniciada como administrador, de lo contrario se finaliza el script con un mensaje de error.
     if (isset($_SESSION['id_usuario'])) {
         $result['session'] = 1;
         // Se compara la acción a realizar cuando un administrador ha iniciado sesión.
         switch ($_GET['action']) {
+            case 'readAll':
+                if ($result['dataset'] = $detalle->readAll()) {
+                    $result['status'] = 1;
+                    $result['message'] = 'Existen '.count($result['dataset']).' registros';
+                } elseif (Database::getException()) {
+                    $result['exception'] = Database::getException();
+                } else {
+                    $result['exception'] = 'No hay datos registrados';
+                }
+                break;
+
+
             case 'getUser':
                 if (isset($_SESSION['usuario'])) {
                     $result['status'] = 1;
@@ -76,16 +88,7 @@ if (isset($_GET['action'])) {
                 }
                 break;
                 
-            case 'readAll':
-                if ($result['dataset'] = $usuario->readAll()) {
-                    $result['status'] = 1;
-                    $result['message'] = 'Existen '.count($result['dataset']).' registros';
-                } elseif (Database::getException()) {
-                    $result['exception'] = Database::getException();
-                } else {
-                    $result['exception'] = 'No hay datos registrados';
-                }
-                break;
+           
 
             case 'search':
                 $_POST = Validator::validateForm($_POST);
@@ -100,6 +103,22 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'No hay coincidencias';
                 }
                 break;
+
+
+                case 'readProducto':
+                    if ($result['dataset'] = $detalle->readProducto()) {
+                        $result['status'] = 1;
+                        $result['message'] = 'Existen '.count($result['dataset']).' registros';
+                    } elseif (Database::getException()) {
+                        $result['exception'] = Database::getException();
+                    } else {
+                        $result['exception'] = 'No hay datos registrados';
+                    }
+                    break;
+
+
+
+
             case 'create':
                 $_POST = Validator::validateForm($_POST);
                 if (!$usuario->setNombres($_POST['nombres'])) {
@@ -122,14 +141,14 @@ if (isset($_GET['action'])) {
                 }
                 break;
             case 'readOne':
-                if (!$usuario->setId_usuario($_POST['id_usuario'])) {
-                    $result['exception'] = 'Usuario incorrecto';
-                } elseif ($result['dataset'] = $usuario->readOne()) {
+                if (!$detalle->setId_detalle($_POST['id_detalle'])) {
+                    $result['exception'] = 'Registro incorrecto';
+                } elseif ($result['dataset'] = $detalle->readOne()) {
                     $result['status'] = 1;
                 } elseif (Database::getException()) {
                     $result['exception'] = Database::getException();
                 } else {
-                    $result['exception'] = 'Usuario inexistente';
+                    $result['exception'] = 'Registro inexistente';
                 }
                 break;
 
@@ -165,20 +184,18 @@ if (isset($_GET['action'])) {
                     $result['exception'] = Database::getException();
                 }
                 break;
-            case 'delete':
-                if ($_POST['id_usuario'] == $_SESSION['id_usuario']) {
-                    $result['exception'] = 'No se puede eliminar a sí mismo';
-                } elseif (!$usuario->setid_usuario($_POST['id_usuario'])) {
-                    $result['exception'] = 'Usuario incorrecto';
-                } elseif (!$usuario->readOne()) {
-                    $result['exception'] = 'Usuario inexistente';
-                } elseif ($usuario->deleteRow()) {
-                    $result['status'] = 1;
-                    $result['message'] = 'Usuario eliminado correctamente';
-                } else {
-                    $result['exception'] = Database::getException();
-                }
-                break;
+                case 'delete':
+                    if (!$detalle->setId_detalle($_POST['id_detalle'])) {
+                        $result['exception'] = 'Detalle incorrecto';
+                    } elseif (!$data = $detalle->readOne()) {
+                        $result['exception'] = 'Detalle inexistente';
+                    } elseif ($detalle->deleteRow()) {
+                        $result['status'] = 1;
+                            $result['message'] = 'Registro eliminado correctamente';
+                    } else{ 
+                        $result['exception'] = Database::getException();
+                    }
+                    break;
             default:
                 $result['exception'] = 'Acción no disponible dentro de la sesión';
         }

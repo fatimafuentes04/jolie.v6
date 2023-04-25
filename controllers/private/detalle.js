@@ -1,6 +1,6 @@
 // Constantes para completar las rutas de la API.
-const USUARIO_API = 'business/dashboard/usuario.php';
-const titulo_modal =document.getElementById('modal-title');
+const DETALLE_API = 'business/dashboard/detalle.php';
+const titulo_modal = document.getElementById('modal-title');
 const TBODY_ROWS = document.getElementById('tbody-rows');
 const RECORDS = document.getElementById('records');
 
@@ -19,32 +19,29 @@ document.addEventListener('DOMContentLoaded', () => {
 *   Retorno: ninguno.
 */
 async function fillTable(form = null) {
-   
-    TBODY_ROWS.innerHTML ='';
-    RECORDS.textContent ='';
+
+    TBODY_ROWS.innerHTML = '';
     // Se verifica la acción a realizar.
     (form) ? action = 'search' : action = 'readAll';
     // Petición para obtener los registros disponibles.
-    const JSON = await dataFetch(USUARIO_API, action, form);
+    const JSON = await dataFetch(DETALLE_API, action, form);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
     if (JSON.status) {
         // Se recorre el conjunto de registros (dataset) fila por fila a través del objeto row.
         JSON.dataset.forEach(row => {
             // Se establece un icono para el estado del producto.
-        
+
             // Se crean y concatenan las filas de la tabla con los datos de cada registro.
             TBODY_ROWS.innerHTML += `
                 <tr>
-                    <td>${row.id_usuario}</td>
-                    <td>${row.nombre_usuario}</td>
-                    <td>${row.apellido_usuario}</td>
-                    <td>${row.usuario}</td>
-                    <td>${row.clave_usuario}</td>
-                    <td>${row.estado_usuario}</td>
-                    <td>${row.idtipo_usuario}</td>
+                <td>${row.id_detalle}</td>
+                <td>${row.id_pedido}</td>
+                <td>${row.id_producto}</td>
+                <td>${row.cantidad}</td>
+                <td>${row.precio_producto}</td>
                     <td>
                     <button><i class='bx bx-edit'></i></button>
-                    <button id="deletebtn" onclick="Deleteusuario(${row.id_usuario})">
+                    <button id="deletebtn" onclick="DeleteDetalle(${row.id_detalle})">
                     <i class='bx bxs-trash'></i>
                     </button>
                     </td>
@@ -52,34 +49,38 @@ async function fillTable(form = null) {
             `;
         });
 
-        RECORDS.textContent = JSON.message;
 
     } else {
         sweetAlert(4, JSON.exception, true);
     }
 }
 
-function createProductos() {
-    titulo_modal.textContent ='CREATE PRODUCTO';
-    fillSelect(USUARIO_API, 'readCategoria', 'categoria');
+// function createProductos() {
+//     titulo_modal.textContent = 'CREATE PRODUCTO';
+//     fillSelect(USUARIO_API, 'readCategoria', 'categoria');
+// }
+
+// function createUsuario() {
+//     titulo_modal.textContent = 'CREAR USUARIO';
+//     fillSelect(USUARIO_API, 'readEstado', 'estadou');
+// }
+
+
+function createDetalle(){
+    titulo_modal.textContent = 'CREAR DETALLE';
+    fillSelect(DETALLE_API, 'readProducto', 'producto');
 }
 
-function createUsuario(){
-    titulo_modal.textContent ='CREAR USUARIO';
-    fillSelect(USUARIO_API, 'readEstado', 'estadou');
-}
-
-
-async function Deleteusuario(id_usuario) {
+async function DeleteDetalle(id_detalle) {
     // Llamada a la función para mostrar un mensaje de confirmación, capturando la respuesta en una constante.
     const RESPONSE = await confirmAction('¿Desea eliminar el producto de forma permanente?');
     // Se verifica la respuesta del mensaje.
     if (RESPONSE) {
         // Se define una constante tipo objeto con los datos del registro seleccionado.
         const FORM = new FormData();
-        FORM.append('id_usuario', id_usuario);
+        FORM.append('id_detalle', id_detalle);
         // Petición para eliminar el registro seleccionado.
-        const JSON = await dataFetch(USUARIO_API, 'delete', FORM);
+        const JSON = await dataFetch(DETALLE_API, 'delete', FORM);
         // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
         if (JSON.status) {
             // Se carga nuevamente la tabla para visualizar los cambios.
