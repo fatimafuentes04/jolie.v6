@@ -45,10 +45,10 @@ async function fillTable(form = null) {
                     <td>${row.estado_usuario}</td>
                     <td>${row.idtipo_usuario}</td>
                     <td>
-                    <button id="editbtn" onclick="updateUsuario(${row.id_usuario})" data-bs-toggle="modal" data-bs-target="#save-modal"  >
-                    <i class='bx bx-edit'></i>
+                    <button id="editbtn" onclick="updateUsuario(${row.id_usuario})" data-bs-toggle="modal" data-bs-target="#save-modal"  class="btn btn-secondary btns">
+                    <i class='bx bx-edit' ></i>
                     </button>
-                    <button id="deletebtn" onclick="Deleteusuario(${row.id_usuario})">
+                    <button id="deletebtn" onclick="Deleteusuario(${row.id_usuario})"  class="btn btn-secondary btns">
                     <i class='bx bxs-trash'></i>
                     </button>
                     </td>
