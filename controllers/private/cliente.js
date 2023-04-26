@@ -80,7 +80,8 @@ async function fillTable(form = null) {
 
 
 function createCliente() {
-    titulo_modal.textContent ='CREAR CLIENTE';
+    titulo_modal.textContent ='CREAR CLIENTE modal'; 
+    console.log('Clientes Modal');
     // fillSelect(USUARIO_API, 'readtipo_doc', 'documento');
     // fillSelect(USUARIO_API, 'readestado_usuario', 'estado_usuario');
 }
