@@ -4,23 +4,21 @@ require_once('../../entities/dao/producto_queries.php');
 /*
 *	Clase para manejar la transferencia de datos de la entidad PRODUCTO.
 */
-class producto extends ProductoQueries
+class Producto extends ProductoQueries
 {
     // Declaración de atributos (propiedades).
     protected $id_producto = null;
+    protected $id_categoria = null;
     protected $nombre_producto = null;
     protected $descripcion = null;
     protected $precio = null;
-    protected $id_categoria = null;
-    protected $editorial = null;
+    protected $imagen = null;
     protected $estado_producto = null;
     protected $id_usuario = null;
-    protected $id_autor = null;
-    protected $porcentaje_descuento = null;
-    protected $isbn = null;
-    protected $imagen = null;
+    protected $id_talla = null;
+    protected $imgcarucel = null;
     protected $ruta = '../../images/productos/';
-    protected $stock = null;
+    protected $rutaCarrusel = '../../images/carrucelp/';
 
 
     /*
@@ -38,7 +36,7 @@ class producto extends ProductoQueries
 
     public function setNombre($value)
     {
-        if (Validator::validateString($value, 1, 50)) {
+        if (Validator::validateAlphanumeric($value, 1, 50)) {
             $this->nombre_producto = $value;
             return true;
         } else {
@@ -68,7 +66,7 @@ class producto extends ProductoQueries
     
     public function setCategoria($value)
     {
-        if (Validator::validateString($value, 1, 250)) {
+        if (Validator::validateNaturalNumber($value, 1, 250)) {
             $this->id_categoria = $value;
             return true;
         } else {
@@ -76,80 +74,56 @@ class producto extends ProductoQueries
         }
     }
 
-    public function seteditorial($value)
-    {
-        if (Validator::validateString($value, 1, 250)) {
-            $this->editorial = $value;
-            return true;
-        } else {
-            return false;
-        }
-    }
-    public function setId_usuario($value)
-    {
-        if (Validator::validateString($value, 1, 250)) {
-            $this->id_usuario = $value;
-            return true;
-        } else {
-            return false;
-        }
-    }
-    public function setidautor($value)
-    {
-        if (Validator::validateString($value, 1, 250)) {
-            $this->id_autor = $value;
-            return true;
-        } else {
-            return false;
-        }
-    }
-    public function setPorcentaje_descuento($value)
-    {
-        if (Validator::validateString($value, 1, 250)) {
-            $this->porcentaje_descuento = $value;
-            return true;
-        } else {
-            return false;
-        }
-    }
-    public function setisbn($value)
-    {
-        if (Validator::validateString($value, 1, 250)) {
-            $this->isbn = $value;
-            return true;
-        } else {
-            return false;
-        }
-    }
-    public function setstock($value)
-    {
-        if (Validator::validateString($value, 1, 250)) {
-            $this->stock = $value;
-            return true;
-        } else {
-            return false;
-        }
-    }
     public function setImagen($file)
     {
         if (Validator::validateImageFile($file, 500, 500)) {
-            $this->imagen = Validator::getFileName();
+            $this->imagen =  Validator::getFileName();
             return true;
         } else {
             return false;
         }
     }
-    
-    
-    public function setEstado($value)
+
+    public function setEstadoProducto($value)
     {
-        if (Validator::validateBoolean($value)) {
+        if (Validator::validateNaturalNumber($value, 1, 250)) {
             $this->estado_producto = $value;
             return true;
         } else {
             return false;
         }
     }
+
+    public function setUsuario($value)
+    {
+        if (Validator::validateNaturalNumber($value, 1, 250)) {
+            $this->id_usuario = $value;
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function setTalla($value)
+    {
+        if (Validator::validateNaturalNumber($value, 1, 250)) {
+            $this->id_talla = $value;
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function setImgCarrusel($value)
+    {
+        if (Validator::validateImageFile($value, 1, 250)) {
+            $this->imgcarucel = $value;
+            return true;
+        } else {
+            return false;
+        }
+    }
+   
     /*
     *   Métodos para obtener valores de los atributos.
     */
@@ -173,47 +147,46 @@ class producto extends ProductoQueries
         return $this->precio;
     }
 
-    public function getImagen()
-    {
-        return $this->imagen;
-    }
 
     public function getCategoria()
     {
         return $this->id_categoria;
     }
 
-    public function getEstado()
+    public function getImagen()
+    {
+        return $this->imagen;
+    }
+
+    public function getEstadoProducto()
     {
         return $this->estado_producto;
     }
-    public function getEditorial()
-    {
-        return $this->editorial;
-    }
-    public function getId_usuario()
+
+    
+    public function getUsuario()
     {
         return $this->id_usuario;
     }
-    public function getAutor()
+
+    public function getTalla()
     {
-        return $this->id_autor;
+        return $this->id_talla;
     }
-    public function getPorcentaje_descuento()
+
+    public function getImagenC()
     {
-        return $this->porcentaje_descuento;
+        return $this->imgcarucel;
     }
-    public function getIsbn()
-    {
-        return $this->isbn;
-    }
-    public function getStok()
-    {
-        return $this->stock;
-    }
+
     public function getRuta()
     {
         return $this->ruta;
+    }
+
+    public function getRutaCarrucel()
+    {
+        return $this->rutaCarrusel;
     }
         
 }

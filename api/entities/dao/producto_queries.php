@@ -18,7 +18,6 @@ require_once('../../helpers/database.php');
         return Database::getRows($sql);
     }
 
-        /*funcion para leer datos*/    
     public function deleteRow()
     {
         $sql = 'DELETE FROM producto
