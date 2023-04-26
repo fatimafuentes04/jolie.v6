@@ -10,13 +10,13 @@ require_once('../../helpers/database.php');
     }
 
      /*funcion para eliminar datos*/
-    // public function deleteRow()
-    // {
-    //     $sql = 'DELETE FROM cliente
-    //             WHERE id_cliente = ?';
-    //     $params = array($this->id_cliente);
-    //     return Database::executeRow($sql, $params);
-    // }
+    public function deleteRow()
+    {
+        $sql = 'DELETE FROM cliente
+                WHERE id_cliente = ?';
+        $params = array($this->id_cliente);
+        return Database::executeRow($sql, $params);
+    }
 
      /*funcion para leer datos*/
     public function readOne()
@@ -28,14 +28,20 @@ require_once('../../helpers/database.php');
     }
 
  /*funcion para crear insercion*/
-/*
+
     public function createRow()
     {
-        $sql = 'INSERT INTO productos(nombre_producto, descripcion, precio, id_editorial, id_categoria, estado_producto, id_usuario, id_autor, procentaje_descuento, isbn, imagen, stock)
-                VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
-        $params = array($this->nombre_producto, $this->descripcion, $this->precio, $this->editorial, $this->id_categoria, $this->estado_producto, $this->id_usuario, $this->id_autor, $this->porcentaje_descuento,$this->isbn,$this->imagen,$this->stock, $_SESSION['id_usuario']);
-        return Database::getException($sql, $params);
+        $sql = 'INSERT INTO cliente (nombre_cliente, apellido_cliente, dui_cliente, correo_cliente, telefono_cliente, nacimiento_cliente, direccion_cliente, estado_cliente)
+                VALUES(?, ?, ?, ?, ?, ?, ?, ?)';
+        $params = array($this->nombre_cliente, $this->apellido_cliente, $this->dui_cliente, $this->correo_cliente, $this->telefono_cliente, $this->nacimiento_cliente, $this->direccion_cliente, $this->estado_cliente);
+        return Database::executeRow($sql, $params);
     }
-    */
+    
+    public function updateRow()
+    {
+        $sql = 'UPDATE cliente SET nombre_cliente = ? , apellido_cliente = ?, dui_cliente = ?, correo_cliente = ?, telefono_cliente = ?, nacimiento_cliente = ?, direccion_cliente = ?, estado_cliente = ? WHERE id_cliente = ? ';
+        $params = array($this->nombre_cliente, $this->apellido_cliente, $this->dui_cliente, $this->correo_cliente, $this->telefono_cliente, $this->nacimiento_cliente, $this->direccion_cliente, $this->estado_cliente, $this->id_cliente);
+        return Database::executeRow($sql, $params);
+    }
+
 }
- 

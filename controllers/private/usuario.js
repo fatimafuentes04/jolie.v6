@@ -43,7 +43,9 @@ async function fillTable(form = null) {
                     <td>${row.estado_usuario}</td>
                     <td>${row.idtipo_usuario}</td>
                     <td>
-                    <button><i class='bx bx-edit'></i></button>
+                    <button id="editbtn" onclick="updateusuario(${row.id_usuario})" data-bs-toggle="modal" data-bs-target="#save-modal"  >
+                    <i class='bx bx-edit'></i>
+                    </button>
                     <button id="deletebtn" onclick="Deleteusuario(${row.id_usuario})">
                     <i class='bx bxs-trash'></i>
                     </button>
@@ -59,14 +61,9 @@ async function fillTable(form = null) {
     }
 }
 
-function createProductos() {
-    titulo_modal.textContent ='CREATE PRODUCTO';
-    fillSelect(USUARIO_API, 'readCategoria', 'categoria');
-}
-
 function createUsuario(){
     titulo_modal.textContent ='CREAR USUARIO';
-    fillSelect(USUARIO_API, 'readEstado', 'estadou');
+    fillSelect(USUARIO_API, 'readTipo', 'idtipo_usuario');
 }
 
 

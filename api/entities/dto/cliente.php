@@ -8,8 +8,8 @@ class cliente extends clientesQueries
 {
     // Declaración de atributos (propiedades).
     protected $id_cliente = null;
-    protected $nombres_cliente = null;
-    protected $apellidos_cliente = null;
+    protected $nombre_cliente = null;
+    protected $apellido_cliente = null;
     protected $dui_cliente = null;
     protected $correo_cliente = null;
     protected $telefono_cliente = null;
@@ -34,7 +34,7 @@ class cliente extends clientesQueries
     public function setNombres($value)
     {
         if (Validator::validateString($value, 1, 50)) {
-            $this->nombres_cliente = $value;
+            $this->nombre_cliente = $value;
             return true;
         } else {
             return false;
@@ -44,7 +44,7 @@ class cliente extends clientesQueries
     public function setapellidos($value)
     {
         if (Validator::validateString($value, 1, 250)) {
-            $this->apellidos_cliente = $value;
+            $this->apellido_cliente = $value;
             return true;
         } else {
             return false;
@@ -53,7 +53,7 @@ class cliente extends clientesQueries
     
     public function setDUI($value)
     {
-        if (Validator::validateDUI($value)) {
+        if (Validator::validateString($value, 1, 100)) {
             $this->dui_cliente = $value;
             return true;
         } else {
@@ -73,7 +73,7 @@ class cliente extends clientesQueries
 
     public function setTelefono($value)
     {
-        if (Validator::validatePhone($value)) {
+        if (Validator::validateString($value,1,150)) {
             $this->telefono_cliente = $value;
             return true;
         } else {
@@ -121,12 +121,12 @@ class cliente extends clientesQueries
 
     public function getnombres_cliente()
     {
-        return $this->nombres_cliente;
+        return $this->nombre_cliente;
     }
 
     public function getapellidos()
     {
-        return $this->apellidos_cliente;
+        return $this->apellido_cliente;
     }
 
     public function getDUI()

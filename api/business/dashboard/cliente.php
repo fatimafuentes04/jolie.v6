@@ -38,31 +38,27 @@ if (isset($_GET['action'])) {
                 break;
             case 'create':
                 $_POST = Validator::validateForm($_POST);
-                if (!$Producto_p->setNombre($_POST['Nombre_P'])) {
+                if (!$Cliente_p->setNombres($_POST['nombre'])) {
                     $result['exception'] = 'Nombre incorrecto';
-                } elseif (!$Producto_p->setDescripcion($_POST['Descripcion_P'])) {
-                    $result['exception'] = 'Descripción incorrecta';
-                } elseif (!$Producto_p->setPrecio($_POST['Precio_P'])) {
-                    $result['exception'] = 'Precio incorrecto';
-                } elseif (!isset($_POST['categoria'])) {
-                    $result['exception'] = 'Seleccione una categoría';
-                } elseif (!$Producto_p->setCategoria($_POST['categoria'])) {
-                    $result['exception'] = 'Categoría incorrecta';
-                } elseif (!$Producto_p->setEstado(isset($_POST['estado']) ? 1 : 0)) {
+                } elseif (!$Cliente_p->setDUI($_POST['dui'])) {
+                    $result['exception'] = 'dui incorrecta';
+                } elseif (!$Cliente_p->setCorreo($_POST['correo'])) {
+                    $result['exception'] = 'correo incorrecto';
+                } elseif (!$Cliente_p->setapellidos($_POST['apellido'])) {
+                    $result['exception'] = 'apellido incorrecto';
+                } elseif (!$Cliente_p->setTelefono($_POST['telefono'])) {
+                    $result['exception'] = 'telefono incorrecto';
+                }elseif (!$Cliente_p->setNacimiento($_POST['nacimiento'])) {
+                    $result['exception'] = 'nacimiento incorrecto';
+                } elseif (!$Cliente_p->setdireccion($_POST['direccion'])) {
+                    $result['exception'] = 'direccion incorrecto';
+                }elseif (!$Cliente_p->setEstado(isset($_POST['toggler-1']) ? 1 : 0)) {
                     $result['exception'] = 'Estado incorrecto';
-                } elseif (!is_uploaded_file($_FILES['archivo']['tmp_name'])) {
-                    $result['exception'] = 'Seleccione una imagen';
-                } elseif (!$Producto_p->setImagen($_FILES['archivo'])) {
-                    $result['exception'] = Validator::getFileError();
-                } elseif ($Producto_p->createRow()) {
+                } elseif ($Cliente_p->createRow()) {
                     $result['status'] = 1;
-                    if (Validator::saveFile($_FILES['archivo'], $Producto_p->getRuta(), $producto->getImagen())) {
-                        $result['message'] = 'Producto creado correctamente';
-                    } else {
-                        $result['message'] = 'Producto creado pero no se guardó la imagen';
-                    }
+                    $result['message'] = 'Se ha creado, correctamente';
                 } else {
-                    $result['exception'] = Database::getException();;
+                    $result['exception'] = Database::getException();
                 }
                 break;
             case 'readOne':
@@ -78,52 +74,45 @@ if (isset($_GET['action'])) {
                 break;
             case 'update':
                 $_POST = Validator::validateForm($_POST);
-                if (!$producto->setId($_POST['id'])) {
-                    $result['exception'] = 'Producto incorrecto';
-                } elseif (!$data = $producto->readOne()) {
-                    $result['exception'] = 'Producto inexistente';
-                } elseif (!$producto->setNombre($_POST['nombre'])) {
+                if (!$Cliente_p->setid_cliente($_POST['id'])) {
+                    $result['exception'] = 'Cliente_p incorrecto';
+                } elseif (!$data = $Cliente_p->readOne()) {
+                    $result['exception'] = 'Cliente_p inexistente';
+                } elseif (!$Cliente_p->setNombres($_POST['nombre'])) {
                     $result['exception'] = 'Nombre incorrecto';
-                } elseif (!$producto->setDescripcion($_POST['descripcion'])) {
+                } elseif (!$Cliente_p->setDUI($_POST['dui'])) {
                     $result['exception'] = 'Descripción incorrecta';
-                } elseif (!$producto->setPrecio($_POST['precio'])) {
+                } elseif (!$Cliente_p->setCorreo($_POST['correo'])) {
                     $result['exception'] = 'Precio incorrecto';
-                } elseif (!$producto->setCategoria($_POST['categoria'])) {
-                    $result['exception'] = 'Seleccione una categoría';
-                } elseif (!$producto->setEstado(isset($_POST['estado']) ? 1 : 0)) {
+                } elseif (!$Cliente_p->setapellidos($_POST['apellido'])) {
+                    $result['exception'] = 'Seleccione una apellido';
+                } elseif (!$Cliente_p->setTelefono($_POST['telefono'])) {
+                    $result['exception'] = 'Seleccione una apellido';
+                } elseif (!$Cliente_p->setNacimiento($_POST['nacimiento'])) {
+                    $result['exception'] = 'Seleccione una apellido';
+                } elseif (!$Cliente_p->setdireccion($_POST['direccion'])) {
+                    $result['exception'] = 'Seleccione una apellido';
+                } elseif (!$Cliente_p->setEstado(isset($_POST['toggler-1']) ? 1 : 0)) {
                     $result['exception'] = 'Estado incorrecto';
-                } elseif (!is_uploaded_file($_FILES['archivo']['tmp_name'])) {
-                    if ($producto->updateRow($data['imagen_producto'])) {
-                        $result['status'] = 1;
-                        $result['message'] = 'Producto modificado correctamente';
-                    } else {
-                        $result['exception'] = Database::getException();
-                    }
-                } elseif (!$producto->setImagen($_FILES['archivo'])) {
-                    $result['exception'] = Validator::getFileError();
-                } elseif ($producto->updateRow($data['imagen_producto'])) {
+                }  elseif ($Cliente_p->updateRow()) {
                     $result['status'] = 1;
-                    if (Validator::saveFile($_FILES['archivo'], $producto->getRuta(), $producto->getImagen())) {
-                        $result['message'] = 'Producto modificado correctamente';
-                    } else {
-                        $result['message'] = 'Producto modificado pero no se guardó la imagen';
-                    }
+                    $result['message'] = 'Se ha actualizado, correctamente';
                 } else {
                     $result['exception'] = Database::getException();
                 }
                 break;
-            // case 'delete':
-            //     if (!$Cliente_p->setid_cliente($_POST['id_cliente'])) {
-            //         $result['exception'] = 'Producto incorrecto';
-            //     } elseif (!$data = $Cliente_p->readOne()) {
-            //         $result['exception'] = 'Producto inexistente';
-            //     } elseif ($Cliente_p->deleteRow()) {
-            //         $result['status'] = 1;
-            //             $result['message'] = 'Producto eliminado correctamente';
-            //     } else{ 
-            //         $result['exception'] = Database::getException();
-            //     }
-            //     break;
+            case 'delete':
+                if (!$Cliente_p->setid_cliente($_POST['id_cliente'])) {
+                    $result['exception'] = 'Producto incorrecto';
+                } elseif (!$data = $Cliente_p->readOne()) {
+                    $result['exception'] = 'Producto inexistente';
+                } elseif ($Cliente_p->deleteRow()) {
+                    $result['status'] = 1;
+                        $result['message'] = 'Producto eliminado correctamente';
+                } else{ 
+                    $result['exception'] = Database::getException();
+                }
+                break;
             case 'porcentajeProductosCategoria':
                 if ($result['dataset'] = $producto->porcentajeProductosCategoria()) {
                     $result['status'] = 1;

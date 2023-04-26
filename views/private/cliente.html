@@ -9,6 +9,8 @@
     <!--LINK PARA CARGAR CSS-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+
     <link rel="stylesheet" href="../../css/cliente.css">
 </head>
 
@@ -27,7 +29,8 @@
                         <a class="nav-link active" aria-current="page" href="../../views/private/home.html">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="../../views/private/cliente.html">Cliente</a>
+                        <a class="nav-link active" aria-current="page"
+                            href="../../views/private/cliente.html">Cliente</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true"><img
@@ -40,62 +43,109 @@
 
     <!--PANTALLA PRINCIPAL-->
     <main>
-        <div>
-            <br>
-            <h6 style="text-align: center;">Interfaz Cliente</h6>
-            <br>
-        </div>
 
-        <div class="container">
-            <div class="r1" style="margin-right: 2em;">
-                <form>
-                    <div class="mb-3">
-                        <label for="exampleInputEmail1" class="form-label">Nombre</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+        <button type="button" id="add" data-bs-toggle="modal" data-bs-target="#save-modal" onclick="createCliente()">
+            Agregar
+        </button>
+
+        <div id="save-modal" class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+            aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 id="modal-title" ></h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <div class="mb-3">
-                        <label for="exampleInputEmail1" class="form-label">DUI</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    <div class="modal-body">
+
+
                     </div>
-                    <div class="mb-3">
-                        <label for="exampleInputEmail1" class="form-label">Correo</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+
+                    <div class="container">
+                        <div class="r1" style="margin-right: 2em;">
+                            <form id="save-form">
+                                <div class="mb-3">
+                                    <label for="exampleInputEmail1" class="form-label">id referencia</label>
+                                    <input type="text" class="form-control" id="id" name="id"
+                                        aria-describedby="emailHelp">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="exampleInputEmail1" class="form-label">Nombre</label>
+                                    <input type="text" class="form-control" id="nombre" name="nombre"
+                                        aria-describedby="emailHelp">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="exampleInputEmail1" class="form-label">DUI</label>
+                                    <input type="text" class="form-control" id="dui" name="dui"
+                                        aria-describedby="emailHelp">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="exampleInputEmail1" class="form-label">Correo</label>
+                                    <input type="email" class="form-control" id="correo" name="correo"
+                                        aria-describedby="emailHelp">
+                                </div>
+
+
+                        </div>
+
+                        <div class="r2" style="margin-right: 2em;">
+
+                            <div class="mb-3">
+                                <label for="exampleInputEmail1" class="form-label">Apellido</label>
+                                <input type="text" class="form-control" id="apellido" name="apellido"
+                                    aria-describedby="emailHelp">
+                            </div>
+                            <div class="mb-3">
+                                <label for="exampleInputEmail1" class="form-label">Número de contácto</label>
+                                <input type="text" class="form-control" id="telefono" name="telefono"
+                                    aria-describedby="emailHelp">
+                            </div>
+                            <div class="mb-3">
+                                <label for="exampleInputEmail1" class="form-label">Fecha de nacimiento</label>
+                                <input type="date" class="form-control" id="nacimiento" name="nacimiento"
+                                    aria-describedby="emailHelp">
+                            </div>
+                            <div class="mb-3">
+                                <label for="exampleInputEmail1" class="form-label">Dirección</label>
+                                <input type="text" class="form-control" id="direccion" name="direccion"
+                                    aria-describedby="emailHelp">
+                            </div>
+                            <!-- toggler -->
+                            <div class="mb-3">
+                                <label for="exampleInputEmail1" class="form-label">Estado</label>
+                                <div class="toggler">
+                                    <input id="toggler-1" name="toggler-1" type="checkbox" value="1">
+                                    <label for="toggler-1">
+                                        <svg class="toggler-on" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                                            viewBox="0 0 130.2 130.2">
+                                            <polyline class="path check" points="100.2,40.2 51.5,88.8 29.8,67.5">
+                                            </polyline>
+                                        </svg>
+                                        <svg class="toggler-off" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                                            viewBox="0 0 130.2 130.2">
+                                            <line class="path line" x1="34.4" y1="34.4" x2="95.8" y2="95.8"></line>
+                                            <line class="path line" x1="95.8" y1="34.4" x2="34.4" y2="95.8"></line>
+                                        </svg>
+                                    </label>
+                                </div>
+                            </div>
+
+
+
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                <button type="submit" class="btn btn-primary">Guardar</button>
+                                </form>
+                            </div>
+                        </div>
                     </div>
-                    <div class="mb-3">
-                        <label for="Select" class="form-label">Estado</label>
-                        <select id="Select" class="form-select">
-                            <option>Seleccionar</option>
-                        </select>
-                    </div>
-                </form>
+                </div>
+
+                <!-- fin del modal -->
             </div>
-
-            <div class="r2" style="margin-right: 2em;">
-                <form>
-                    <div class="mb-3">
-                        <label for="exampleInputEmail1" class="form-label">Apellido</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                    </div>
-                    <div class="mb-3">
-                        <label for="exampleInputEmail1" class="form-label">Número de contácto</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                    </div>
-                    <div class="mb-3">
-                        <label for="exampleInputEmail1" class="form-label">Fecha de nacimiento</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                    </div>
-                    <div class="mb-3">
-                        <label for="exampleInputEmail1" class="form-label">Dirección</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                    </div>
-
-                </form>
-            </div>
         </div>
+        <br>
 
-        <div class="b1">
-            <button type="submit" class="btn btn-primary">Registrar cliente</button>
-        </div>
         <br>
         <table class="table">
             <thead>
@@ -109,20 +159,30 @@
                     <th scope="col">Nacimiento</th>
                     <th scope="col">Dirección</th>
                     <th scope="col">Estado</th>
+                    <th scope="col">Acciones</th>
                 </tr>
             </thead>
+            <tbody id="tboby-rows">
+
+            </tbody>
         </table>
 
     </main>
+
+    <script src="../../controllers/private/sweetalert.min.js"></script>
+    <script src="../../controllers/private/account.js"></script>
+    <script src="../../controllers/components.js"></script>
+    <script src="../../controllers/private/cliente.js"></script>
+
+    <!-- linck de javascript de bootstrap  -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
 
     <!--SCRIPT BOOTSTRAP JS-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
-        <script src="../../controllers/private/sweetalert.min.js"></script>
-    <script src="../../controllers/private/account.js" ></script>
-    <script src="../../controllers/components.js"></script>
-    <script src="../../controllers/private/cliente.js"></script>
 </body>
 
 </html>

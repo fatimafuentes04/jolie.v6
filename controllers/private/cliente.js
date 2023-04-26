@@ -2,6 +2,7 @@
 const CLIENTE_API = 'business/dashboard/cliente.php';
 const titulo_modal = document.getElementById('modal-title');
 const TBODY_ROWS = document.getElementById('tboby-rows');
+const FORMULARIO = document.getElementById('save-form');
 
 const OPTIONS = {
     dismissible: false
@@ -12,6 +13,22 @@ document.addEventListener('DOMContentLoaded', () => {
     // Llamada a la función para llenar la tabla con los registros disponibles.
     fillTable();
 });
+
+FORMULARIO.addEventListener('submit', async(event) =>{
+    event.preventDefault();
+    (document.getElementById('id').value) ? action = 'update' : action = 'create';
+    const FORM = new FormData(FORMULARIO);
+    const JSON = await dataFetch(CLIENTE_API, action, FORM);
+    if (JSON.status) {
+        // Se carga nuevamente la tabla para visualizar los cambios.
+        fillTable();      
+        // Se muestra un mensaje de éxito.
+        sweetAlert(1, JSON.message, true);
+    } else {
+        sweetAlert(2, JSON.exception, false);
+    }
+});
+
 
 /*
 *   Función asíncrona para llenar la tabla con los registros disponibles.
@@ -45,7 +62,9 @@ async function fillTable(form = null) {
                     <td>${row.direccion_cliente}</td>
                     <td>${row.estado_cliente}</td>
                     <td>
-                    <button><i class='bx bx-edit'></i></button>
+                    <button id="editbtn" onclick="updateCliente(${row.id_cliente})" data-bs-toggle="modal" data-bs-target="#save-modal"  >
+                    <i class='bx bx-edit'></i>
+                    </button>
                     <button id="deletebtn" onclick="Deletecliente(${row.id_cliente})">
                     <i class='bx bxs-trash'></i>
                     </button>
@@ -59,9 +78,37 @@ async function fillTable(form = null) {
     }
 }
 
-function createProductos() {
-    titulo_modal.textContent ='CREATE PRODUCTO';
-    fillSelect(CLIENTE_API, 'readCategoria', 'categoria');
+
+function createCliente() {
+    titulo_modal.textContent ='CREAR CLIENTE';
+    // fillSelect(USUARIO_API, 'readtipo_doc', 'documento');
+    // fillSelect(USUARIO_API, 'readestado_usuario', 'estado_usuario');
+}
+
+
+async function updateCliente(id_cliente) {
+    // FORMULARIO.reset();
+    const FORM = new FormData();
+    FORM.append('id_cliente', id_cliente);
+    const JSON = await dataFetch(CLIENTE_API, 'readOne', FORM);
+    if (JSON.status) {
+        titulo_modal.textContent ='MODIFICAR CLIENTE';
+        document.getElementById('id').value = JSON.dataset.id_cliente;
+        document.getElementById('nombre').value = JSON.dataset.nombre_cliente;
+        document.getElementById('dui').value = JSON.dataset.dui_cliente;
+        document.getElementById('correo').value = JSON.dataset.correo_cliente;
+        document.getElementById('apellido').value = JSON.dataset.apellido_cliente;
+        document.getElementById('telefono').value = JSON.dataset.telefono_cliente;
+        document.getElementById('nacimiento').value = JSON.dataset.nacimiento_cliente;
+        document.getElementById('direccion').value = JSON.dataset.direccion_cliente;
+        // document.getElementById('estado').value = JSON.dataset.estado_producto;
+        fillSelect(CLIENTE_API, 'readAll', 'cliente', JSON.dataset.id_cliente);
+        if (JSON.dataset.estado_cliente) {
+            document.getElementById('toggler-1').checked = true;
+        } else {
+            document.getElementById('toggler-1').checked = false;
+        }
+    }
 }
 
 async function Deletecliente(id_cliente) {
