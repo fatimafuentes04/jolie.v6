@@ -39,7 +39,7 @@ class UsuarioQueries
         return false;
         }
     }
-/* 
+ 
     public function changePassword()
     {
         $sql = 'UPDATE usuario SET clave_usuario = ? WHERE id_usuario = ?';
@@ -47,21 +47,21 @@ class UsuarioQueries
         return Database::executeRow($sql, $params);
     }
 
-    public function readProfile()
-    {
-        $sql = 'SELECT id_usuario, nombre_usuario, apellido_usuario, usuario, clave_usuario, estado_usuario, idtipo_usuario
-                FROM usuario
-                WHERE id_usuario = ?';
-        $params = array($_SESSION['id_usuario']);
-        return Database::getRow($sql, $params);
-    }
+    // public function readProfile()
+    // {
+    //     $sql = 'SELECT id_usuario, nombre_usuario, apellido_usuario, usuario, clave_usuario, estado_usuario, idtipo_usuario
+    //             FROM usuario
+    //             WHERE id_usuario = ?';
+    //     $params = array($_SESSION['id_usuario']);
+    //     return Database::getRow($sql, $params);
+    // }
 
-    public function editProfile()
+    public function updateRow()
     {
         $sql = 'UPDATE usuario
-                SET nombre_usuario = ?, apellido_usuario = ?, usuario = ?, clave_usuario = ?estado_usuario, idtipo_usuario = ?
+                SET nombre_usuario = ?, apellido_usuario = ?, usuario = ?, clave_usuario = ?, estado_usuario = ?, idtipo_usuario = ?
                 WHERE id_usuario = ?';
-        $params = array($this->nombre_usuario, $this->apellido_usuario, $this->usuario, $this->clave_usuario,, $this->estado_usuario, $this->idtipo_usuario, $_SESSION['id_usuario']);
+        $params = array($this->nombre_usuario, $this->apellido_usuario, $this->usuario, $this->clave_usuario, $this->estado_usuario, $this->idtipo_usuario, $this->id_usuario);
         return Database::executeRow($sql, $params);
     }
 
@@ -92,7 +92,7 @@ class UsuarioQueries
     /**Metodo para crear usuario */
     public function createRow()
     {
-        $sql = 'INSERT INTO usuario(nombre_usuario, apellido_usuario, usuario, clave_usuario, estado_usuario, idtipo_usuario)
+        $sql = 'INSERT INTO usuario (nombre_usuario, apellido_usuario, usuario, clave_usuario, estado_usuario, idtipo_usuario)
                 VALUES(?, ?, ?, ?, ?, ?)';
         $params = array($this->nombre_usuario, $this->apellido_usuario, $this->usuario, $this->clave_usuario, $this->estado_usuario, $this->idtipo_usuario);
         return Database::executeRow($sql, $params);

@@ -40,24 +40,24 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Usuario inexistente';
                 }
                 break;
-            case 'editProfile':
-                $_POST = Validator::validateForm($_POST);
-                if (!$usuario->setNombres($_POST['nombre'])) {
-                    $result['exception'] = 'Nombres incorrectos';
-                } elseif (!$usuario->setApellidos($_POST['apellidos'])) {
-                    $result['exception'] = 'Apellidos incorrectos';
-                } elseif (!$usuario->setCorreo($_POST['usuario'])) {
-                    $result['exception'] = 'Correo incorrecto';
-                } elseif (!$usuario->setAlias($_POST['alias'])) {
-                    $result['exception'] = 'Usuario incorrecto';
-                } elseif ($usuario->editProfile()) {
-                    $result['status'] = 1;
-                    $_SESSION['clave'] = $usuario->getAlias();
-                    $result['message'] = 'Perfil modificado correctamente';
-                } else {
-                    $result['exception'] = Database::getException();
-                }
-                break;
+            // case 'editProfile':
+            //     $_POST = Validator::validateForm($_POST);
+            //     if (!$usuario->setNombres($_POST['nombre'])) {
+            //         $result['exception'] = 'Nombres incorrectos';
+            //     } elseif (!$usuario->setApellidos($_POST['apellidos'])) {
+            //         $result['exception'] = 'Apellidos incorrectos';
+            //     } elseif (!$usuario->setCorreo($_POST['usuario'])) {
+            //         $result['exception'] = 'Correo incorrecto';
+            //     } elseif (!$usuario->setAlias($_POST['alias'])) {
+            //         $result['exception'] = 'Usuario incorrecto';
+            //     } elseif ($usuario->editProfile()) {
+            //         $result['status'] = 1;
+            //         $_SESSION['clave'] = $usuario->getAlias();
+            //         $result['message'] = 'Perfil modificado correctamente';
+            //     } else {
+            //         $result['exception'] = Database::getException();
+            //     }
+            //     break;
             case 'changePassword':
                 $_POST = Validator::validateForm($_POST);
                 if (!$usuario->setId($_SESSION['id_usuario'])) {
@@ -149,16 +149,22 @@ if (isset($_GET['action'])) {
            
             case 'update':
                 $_POST = Validator::validateForm($_POST);
-                if (!$usuario->setId($_POST['id'])) {
+                if (!$usuario->setId_usuario($_POST['id'])) {
                     $result['exception'] = 'Usuario incorrecto';
                 } elseif (!$usuario->readOne()) {
                     $result['exception'] = 'Usuario inexistente';
-                } elseif (!$usuario->setNombres($_POST['nombres'])) {
+                } elseif (!$usuario->setNombre_usuario($_POST['nombre_usuario'])) {
                     $result['exception'] = 'Nombres incorrectos';
-                } elseif (!$usuario->setApellidos($_POST['apellidos'])) {
+                } elseif (!$usuario->setApellido_usuario($_POST['apellido_usuario'])) {
                     $result['exception'] = 'Apellidos incorrectos';
-                } elseif (!$usuario->setCorreo($_POST['correo'])) {
-                    $result['exception'] = 'Correo incorrecto';
+                } elseif (!$usuario->setUsuario($_POST['usuario'])) {
+                    $result['exception'] = 'Usuario incorrecto';
+                } elseif (!$usuario->setClave_usuario($_POST['clave_usuario'])) {
+                    $result['exception'] = Validator::getPasswordError();
+                } elseif (!$usuario->setIdtipo_usuario($_POST['idtipo_usuario'])) {
+                    $result['exception'] = 'Tipo de usuario incorrecto';
+                } elseif (!$usuario->setEstado_usuario(isset($_POST['toggler-1']) ? 1 : 0)) {
+                    $result['exception'] = 'Estado incorrecto';
                 } elseif ($usuario->updateRow()) {
                     $result['status'] = 1;
                     $result['message'] = 'Usuario modificado correctamente';

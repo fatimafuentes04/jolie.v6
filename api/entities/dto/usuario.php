@@ -61,7 +61,7 @@ class Usuario extends UsuarioQueries
     public function setClave_usuario($value)
     {
         if (Validator::validatePassword($value)) {
-            $this->setclave_usuario = password_hash($value, PASSWORD_DEFAULT);
+            $this->clave_usuario = password_hash($value, PASSWORD_DEFAULT);
             return true;
         } else {
             return false;
@@ -80,7 +80,7 @@ class Usuario extends UsuarioQueries
 
     public function setIdtipo_usuario($value)
     {
-        if (Validator::validateAlphabetic($value, 1, 50)) {
+        if (Validator::validateNaturalNumber($value)) {
             $this->idtipo_usuario = $value;
             return true;
         } else {

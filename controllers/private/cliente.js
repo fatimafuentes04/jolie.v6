@@ -62,10 +62,10 @@ async function fillTable(form = null) {
                     <td>${row.direccion_cliente}</td>
                     <td>${row.estado_cliente}</td>
                     <td>
-                    <button id="editbtn" onclick="updateCliente(${row.id_cliente})" data-bs-toggle="modal" data-bs-target="#save-modal"  >
+                    <button id="editbtn" onclick="updateCliente(${row.id_cliente})" data-bs-toggle="modal" data-bs-target="#save-modal" class="btn btn-secondary btns" >
                     <i class='bx bx-edit'></i>
                     </button>
-                    <button id="deletebtn" onclick="Deletecliente(${row.id_cliente})">
+                    <button id="deletebtn" onclick="Deletecliente(${row.id_cliente})" class="btn btn-secondary btns">
                     <i class='bx bxs-trash'></i>
                     </button>
                     </td>
@@ -80,7 +80,8 @@ async function fillTable(form = null) {
 
 
 function createCliente() {
-    titulo_modal.textContent ='CREAR CLIENTE';
+    titulo_modal.textContent ='CREAR CLIENTE'; 
+    console.log('Clientes Modal');
     // fillSelect(USUARIO_API, 'readtipo_doc', 'documento');
     // fillSelect(USUARIO_API, 'readestado_usuario', 'estado_usuario');
 }
