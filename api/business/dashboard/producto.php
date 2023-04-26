@@ -13,6 +13,7 @@ if (isset($_GET['action'])) {
     if (isset($_SESSION['id_usuario'])) {
         // Se compara la acción a realizar cuando un administrador ha iniciado sesión.
         switch ($_GET['action']) {
+
             case 'readAll':
                 if ($result['dataset'] = $Producto_p->readAll()) {
                     $result['status'] = 1;
@@ -23,6 +24,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'No hay datos registrados';
                 }
                 break;
+            /*
             case 'search':
                 $_POST = Validator::validateForm($_POST);
                 if ($_POST['search'] == '') {
@@ -65,6 +67,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = Database::getException();;
                 }
                 break;
+            */
             case 'readOne':
                 if (!$Producto_p->setid_producto($_POST['id_producto'])) {
                     $result['exception'] = 'Producto incorrecto';
@@ -75,7 +78,8 @@ if (isset($_GET['action'])) {
                 } else {
                     $result['exception'] = 'Producto inexistente';
                 }
-                break;
+            break;
+                /*
             case 'update':
                 $_POST = Validator::validateForm($_POST);
                 if (!$producto->setId($_POST['id'])) {
@@ -112,6 +116,8 @@ if (isset($_GET['action'])) {
                     $result['exception'] = Database::getException();
                 }
                 break;
+                */
+
             case 'delete':
                 if (!$Producto_p->setid_producto($_POST['id_producto'])) {
                     $result['exception'] = 'Producto incorrecto';
@@ -123,7 +129,9 @@ if (isset($_GET['action'])) {
                 } else{ 
                     $result['exception'] = Database::getException();
                 }
-                break;
+            break;
+
+               /*
             case 'readCategoria':
                 if ($result['dataset'] = $Producto_p->readCategorias()) {
                     $result['status'] = 1;
@@ -171,6 +179,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'No hay datos disponibles';
                 }
                 break;
+                */
             default:
                 $result['exception'] = 'Acción no disponible dentro de la sesión';
         }
