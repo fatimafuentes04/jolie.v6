@@ -82,9 +82,9 @@ class UsuarioQueries
 
 
     /**Funci'on para cargar combobox */
-    public function readEstado(){
-        $sql='SELECT id_estado, estado FROM estado';
-        return Database::getRow($sql);
+    public function readTipo(){
+        $sql='SELECT idtipo_usuario, tipo_usuario FROM tipo_usuario';
+        return Database::getRows($sql);
     }
 
    
@@ -92,7 +92,7 @@ class UsuarioQueries
     /**Metodo para crear usuario */
     public function createRow()
     {
-        $sql = 'INSERT INTO usuarios(nombre_usuario, apellido_usuario, usuario, clave_usuario, estado_usuario, idtipo_usuario)
+        $sql = 'INSERT INTO usuario(nombre_usuario, apellido_usuario, usuario, clave_usuario, estado_usuario, idtipo_usuario)
                 VALUES(?, ?, ?, ?, ?, ?)';
         $params = array($this->nombre_usuario, $this->apellido_usuario, $this->usuario, $this->clave_usuario, $this->estado_usuario, $this->idtipo_usuario);
         return Database::executeRow($sql, $params);

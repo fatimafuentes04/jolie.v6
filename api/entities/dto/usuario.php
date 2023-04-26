@@ -80,13 +80,14 @@ class Usuario extends UsuarioQueries
 
     public function setIdtipo_usuario($value)
     {
-        if (Validator::validateNaturalNumber($value)) {
+        if (Validator::validateAlphabetic($value, 1, 50)) {
             $this->idtipo_usuario = $value;
             return true;
         } else {
             return false;
         }
     }
+
 
     /*
     *   Métodos para obtener valores de los atributos.

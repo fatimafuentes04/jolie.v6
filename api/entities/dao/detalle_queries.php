@@ -28,7 +28,12 @@ public function readOne()
 
 public function readProducto(){
     $sql='SELECT id_producto, nombre_producto FROM producto';
-    return Database::getRow($sql);
+    return Database::getRows($sql);
+}
+
+public function readPedido(){
+    $sql='SELECT id_pedido FROM pedido';
+    return Database::getRows($sql);
 }
 
 public function createRow()

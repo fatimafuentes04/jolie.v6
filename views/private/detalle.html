@@ -45,7 +45,7 @@
         <button type="button" id="add" data-bs-toggle="modal" data-bs-target="#save-modal" onclick="createDetalle()">
             Agregar
         </button>
-        <form method="post"></form>
+        <form method="post">
         <div id="save-modal" class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
             aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog">
@@ -69,7 +69,7 @@
                                 </div>
                                 <div class="mb-3">
                                     <label for="Select" class="form-label">Producto</label>
-                                    <select id="Select" class="form-select" name="producto">
+                                    <select id="producto" class="form-select" name="producto"  >
                                         <option>Seleccionar</option>
                                     </select>
                                 </div>
@@ -98,6 +98,7 @@
                 </div>
             </div>
         </div>
+    </form>
         <br>
         <br>
         <table class="table">
