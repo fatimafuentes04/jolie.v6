@@ -65,12 +65,9 @@ class PedidoQueries
     //Detalle pedido CAMBIAR
     public function readAllDetallePedido()
     {
-        $sql = 'SELECT id_valoracion, calificacion_producto, comentario_producto, fecha_comentario, estado_comentario
-        from valoracion 
-        inner join detalle_pedido USING (id_detalle_pedido)
-        inner join detalle_producto USING (id_detalle_producto)
-        inner join producto USING (id_producto)
-        where id_producto = ?';
+        $sql = 'SELECT id_detalle, id_pedido, id_producto, cantidad, precio_producto
+        from detalle_pedido 
+        where id_pedido = ?';
         $params = array($this->id);
         return Database::getRows($sql, $params);
     }
@@ -78,9 +75,9 @@ class PedidoQueries
         //Detalle pedido CAMBIAR
     public function readOneDetallePedido()
     {
-        $sql = 'SELECT * FROM valoracion
-        WHERE id_valoracion = ?';
-        $params = array($this->idvalo);
+        $sql = 'SELECT * FROM detalle_pedido
+        WHERE id_detalle = ?';
+        $params = array($this->iddetalle);
         return Database::getRow($sql, $params);
     }
 

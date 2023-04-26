@@ -13,6 +13,15 @@ class Pedido extends PedidoQueries
     protected $direccion_pedido = null;
     protected $cliente = null;
     
+    public function setIddetalle($value)
+    {
+        if(Validator::validateNaturalNumber($value)){
+            $this->id = $value;
+            return true;
+        } else{
+            return false;
+        }
+    }
 
     public function setId($value)
     {
@@ -68,6 +77,11 @@ class Pedido extends PedidoQueries
     public function getId()
     {
         return $this->id;
+    }
+
+    public function getIddetalle()
+    {
+        return $this->iddetalle;
     }
 
     public function getEstadoPedido()

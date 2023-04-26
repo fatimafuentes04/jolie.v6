@@ -37,10 +37,10 @@ if (isset($_GET['action'])) {
                 break;
                 //Detalle Pedido CAMBIAR que este no lo toque
             case 'readAllValoracion':
-                if (!$producto->setId($_POST['id_producto'])) {
+                if (!$pedido->setIddetalle($_POST['id_pedido'])) {
 
                     $result['exception'] = 'Valoracion incorrecta';
-                } elseif ($result['dataset'] = $producto->readAllValoracion()) {
+                } elseif ($result['dataset'] = $pedido->readAllDetallePedido()) {
 
                     $result['status'] = 1;
 

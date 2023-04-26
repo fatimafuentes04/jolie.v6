@@ -18,7 +18,7 @@ const RECORDS = document.getElementById('recordsPed');
 
 //Cargar cosntanstes cuepor de las tablas de detalle pedido
 const TBODYDT_ROWS = document.getElementById('tbody-rowsv');
-const RECORDDT = document.getElementById('recordsv');
+const RECORDDT = document.getElementById('recordsPed');
 
 //Método para que cargue graficamente la tabla
 document.addEventListener('DOMContentLoaded', () => {
@@ -92,16 +92,14 @@ async function fillTable(form = null) {
                 <td>${row.direccion_pedido}</td>
                 <td>${row.estado_pedido}</td>
                 <td>
+                <button id="editbtn" onclick="updateUsuario(${row.id_pedido})" data-bs-toggle="modal" data-bs-target="#save-modal"  class="btn btn-secondary btns">
+                    <i class='bx bx-edit' ></i>
+                    </button>
+                    <button id="deletebtn" onclick="Deleteusuario(${row.id_pedido})"  class="btn btn-secondary btns">
+                    <i class='bx bxs-trash'></i>
+                    </button>
 
-                <button type="button" onclick="openUpdate(${row.id_pedido})">
-                <i class="fa-solid fa-rotate-right"></i>
-                </button>
-                
-                <button id="" onclick="openDelete(${row.id_pedido})">
-                <i class="fa-solid fa-delete-left"></i>
-                </button>
-
-                <button id="" data-bs-toggle="modal" data-bs-target="#detallepedido">
+                <button id="" data-bs-toggle="modal" data-bs-target="#detallepedido" onclick="fillTableDetallePedido(${row.id_pedido})" class="btn btn-secondary btns">
                 <i class="fa-regular fa-clipboard"></i>
                 </button>
  
@@ -170,7 +168,7 @@ async function fillTableDetallePedido(id) {
     const FORM = new FormData();
     FORM.append('id_pedido', id);
     // Petición para obtener los registros disponibles.
-    const JSON = await dataFetch(PRODUCTO_API, 'readAllValoracion', FORM);
+    const JSON = await dataFetch(PEDIDO_API, 'readAllValoracion', FORM);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
     if (JSON.status) {
         // Se recorre el conjunto de registros fila por fila.
@@ -179,21 +177,17 @@ async function fillTableDetallePedido(id) {
             TBODYDT_ROWS.innerHTML += `
             <tr>
                 <td>${row.id_pedido}</td>
-                <td>${row.nombre_cliente}</td>
-                <td>${row.fecha_pedido}</td>
-                <td>${row.direccion_pedido}</td>
-                <td>${row.estado_pedido}</td>
+                <td>${row.id_producto}</td>
+                <td>${row.cantidad}</td>
+                <td>${row.precio_producto}</td>
                 <td>
-                   
-
-                    <button type="button" class="btn btn-info" onclick="openUpdate(${row.id_valoracion})">
-                        <img height="20px" width="20px" src="../../resources/img/imgtablas/update.png" alt="actualizar">
+                    <button id="editbtn" onclick="updateUsuario(${row.id_valoracion})" data-bs-toggle="modal" data-bs-target="#save-modal"  class="btn btn-secondary btns">
+                    <i class='bx bx-edit' ></i>
                     </button>
-
-                    <button onclick="openDeleteValo(${row.id_valoracion})" class="btn btn-danger"><img height="20px"
-                            width="20px" src="../../resources/img/imgtablas/delete.png" alt="eliminar">
+                    <button id="deletebtn" onclick="Deleteusuario(${row.id_valoracion})"  class="btn btn-secondary btns">
+                    <i class='bx bxs-trash'></i>
                     </button>
-                </td>
+                    </td>
             </tr>
             `;
         });
