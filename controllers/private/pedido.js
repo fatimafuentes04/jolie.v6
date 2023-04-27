@@ -92,14 +92,16 @@ async function fillTable(form = null) {
                 <td>${row.direccion_pedido}</td>
                 <td>${row.estado_pedido}</td>
                 <td>
-                <button id="editbtn" onclick="updateUsuario(${row.id_pedido})" data-bs-toggle="modal" data-bs-target="#save-modal"  class="btn btn-secondary btns">
-                    <i class='bx bx-edit' ></i>
-                    </button>
-                    <button id="deletebtn" onclick="Deleteusuario(${row.id_pedido})"  class="btn btn-secondary btns">
-                    <i class='bx bxs-trash'></i>
-                    </button>
 
-                <button id="" data-bs-toggle="modal" data-bs-target="#detallepedido" onclick="fillTableDetallePedido(${row.id_pedido})" class="btn btn-secondary btns">
+                <button type="button" onclick="openUpdate(${row.id_pedido})">
+                <i class="fa-solid fa-rotate-right"></i>
+                </button>
+                
+                <button id="" onclick="openDelete(${row.id_pedido})">
+                <i class="fa-solid fa-delete-left"></i>
+                </button>
+
+                <button id="" data-bs-toggle="modal" data-bs-target="#detallepedido" onclick="fillTableDetallePedido(${row.id_pedido})">
                 <i class="fa-regular fa-clipboard"></i>
                 </button>
  
@@ -181,13 +183,16 @@ async function fillTableDetallePedido(id) {
                 <td>${row.cantidad}</td>
                 <td>${row.precio_producto}</td>
                 <td>
-                    <button id="editbtn" onclick="updateUsuario(${row.id_valoracion})" data-bs-toggle="modal" data-bs-target="#save-modal"  class="btn btn-secondary btns">
-                    <i class='bx bx-edit' ></i>
+                   
+
+                    <button type="button" class="btn btn-info" onclick="openUpdate(${row.id_valoracion})">
+                        <img height="20px" width="20px" src="../../resources/img/imgtablas/update.png" alt="actualizar">
                     </button>
-                    <button id="deletebtn" onclick="Deleteusuario(${row.id_valoracion})"  class="btn btn-secondary btns">
-                    <i class='bx bxs-trash'></i>
+
+                    <button onclick="openDeleteValo(${row.id_valoracion})" class="btn btn-danger"><img height="20px"
+                            width="20px" src="../../resources/img/imgtablas/delete.png" alt="eliminar">
                     </button>
-                    </td>
+                </td>
             </tr>
             `;
         });
