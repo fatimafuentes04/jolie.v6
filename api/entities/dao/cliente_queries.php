@@ -39,6 +39,7 @@ class clientesQueries
         return Database::executeRow($sql, $params);
     }
 
+     /*funcion para actualizar cliente*/
     public function updateRow()
     {
         $sql = 'UPDATE cliente SET nombre_cliente = ? , apellido_cliente = ?, dui_cliente = ?, correo_cliente = ?, telefono_cliente = ?, nacimiento_cliente = ?, direccion_cliente = ?, estado_cliente = ? WHERE id_cliente = ? ';
@@ -46,6 +47,7 @@ class clientesQueries
         return Database::executeRow($sql, $params);
     }
 
+         /*funcion para buscar cliente*/
     public function searchRows($value)
     {
         $sql = 'SELECT id_cliente,  nombre_cliente, apellido_cliente, dui_cliente, correo_cliente

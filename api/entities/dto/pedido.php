@@ -2,9 +2,12 @@
 <?php
 require_once('../../helpers/validator.php');
 require_once('../../entities/dao/pedido_queries.php');
-
+/*
+*	Clase para manejar la transferencia de datos de la entidad USUARIO.
+*/
 class Pedido extends PedidoQueries
 {
+    // Declaración de atributos (propiedades).
     protected $id = null;
     //Detalle pedido parametro
     protected $iddetalle = null;
@@ -13,6 +16,9 @@ class Pedido extends PedidoQueries
     protected $direccion_pedido = null;
     protected $cliente = null;
 
+    /*
+    *   Métodos para validar y asignar valores de los atributos.
+    */
     public function setIddetalle($value)
     {
         if (Validator::validateNaturalNumber($value)) {
@@ -73,7 +79,9 @@ class Pedido extends PedidoQueries
         }
     }
 
-
+      /*
+    *   Métodos para obtener valores de los atributos.
+    */
     public function getId()
     {
         return $this->id;

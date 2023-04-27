@@ -26,7 +26,8 @@ class ProductoQueries
         $params = array($this->id_producto);
         return Database::executeRow($sql, $params);
     }
-
+    
+     /*funcion para lectura de datos*/
     public function readOne()
     {
         $sql = 'SELECT id_producto, id_categoria, categoria, nombre_producto, descripcion_producto, precio_producto, imagen_producto, idestado_producto, estado_producto, id_usuario, usuario, id_talla, talla, id_imagen, imagen 
@@ -41,6 +42,7 @@ class ProductoQueries
         return Database::getRow($sql, $params);
     }
 
+     /*funcion para crear insercion*/
     public function createRow()
     {
         $sql = 'INSERT INTO producto(id_categoria, nombre_producto, descripcion_producto, precio_producto, imagen_producto, idestado_producto, id_usuario, id_talla, id_imagen)
@@ -48,6 +50,8 @@ class ProductoQueries
         $params = array($this->id_categoria, $this->nombre_producto, $this->descripcion, $this->precio, $this->imagen, $this->estado_producto, $this->id_usuario, $this->id_talla, $this->imgcarucel);
         return Database::executeRow($sql, $params);
     }
+
+     /*funcion para actualizar producto*/
     public function updateRow()
     {
         $sql = 'UPDATE producto SET id_categoria = ?, nombre_producto = ?, descripcion_producto = ?, precio_producto = ?, imagen_producto = ?, idestado_producto = ?, id_usuario = ?, id_talla = ?, id_imagen = ? WHERE id_producto = ? ';

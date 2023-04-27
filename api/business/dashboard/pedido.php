@@ -13,6 +13,7 @@ if (isset($_GET['action'])) {
         // Se compara la acción a realizar cuando un administrador ha iniciado sesión.
         switch ($_GET['action']) {
 
+              // Función leer de pedido
             case 'readAll':
                 if ($result['dataset'] = $pedido->readAll()) {
                     $result['status'] = 1;
@@ -23,7 +24,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'No hay datos registrados';
                 }
                 break;
-
+                // Función leer de pedido
             case 'readOne':
                 if (!$pedido->setId($_POST['id_pedido'])) {
                     $result['exception'] = 'Pedido incorrecto';
@@ -53,7 +54,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'No hay datos registrados';
                 }
                 break;
-
+                // Función buscar de pedido
             case 'search':
                 $_POST = Validator::validateForm($_POST);
                 if ($_POST['search'] == '') {
@@ -67,7 +68,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'No hay coincidencias';
                 }
                 break;
-
+                // Función crear de pedido
             case 'create':
                 $_POST = Validator::validateForm($_POST);
                 if (!$pedido->setCliente($_POST['cliente'])) {
@@ -85,7 +86,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = Database::getException();
                 }
                 break;
-
+                // Función actualizar de pedido
             case 'update':
                 $_POST = Validator::validateForm($_POST);
                 if (!$pedido->setId($_POST['id'])) {
@@ -109,7 +110,7 @@ if (isset($_GET['action'])) {
                 break;
 
 
-
+                // Función eliminar de pedido
             case 'delete':
                 if (!$pedido->setId($_POST['id_pedido'])) {
                     $result['exception'] = 'Pedido incorrecto';

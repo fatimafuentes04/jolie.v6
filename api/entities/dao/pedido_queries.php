@@ -8,6 +8,7 @@ class PedidoQueries
     */
 
 
+     /*funcion para lectura de datos*/
     public function readAll()
     {
         $sql = 'SELECT id_pedido, fecha_pedido, direccion_pedido, nombre_cliente, estado_pedido
@@ -17,6 +18,7 @@ class PedidoQueries
         return Database::getRows($sql);
     }
 
+     /*funcion para buscar datos de pedido*/
     public function searchRows($value)
     {
         $sql = 'SELECT id_pedido,  nombre_cliente, fecha_pedido, direccion_pedido, estado_pedido
@@ -28,6 +30,7 @@ class PedidoQueries
         return Database::getRows($sql, $params);
     }
 
+     /*funcion para lectura de datos*/
     public function readOne()
     {
         $sql = 'SELECT id_pedido, fecha_pedido, direccion_pedido, idestado_pedido, id_cliente
@@ -39,6 +42,7 @@ class PedidoQueries
         return Database::getRow($sql, $params);
     }
 
+     /*funcion para eliminar pedido*/
     public function deleteRow()
     {
         $sql = 'DELETE FROM pedido 
@@ -47,6 +51,7 @@ class PedidoQueries
         return Database::executeRow($sql, $params);
     }
 
+     /*funcion para crear insercion*/
     public function createRow()
     {
         $sql = 'INSERT INTO pedido(fecha_pedido, direccion_pedido, idestado_pedido, id_cliente)
@@ -55,6 +60,7 @@ class PedidoQueries
         return Database::executeRow($sql, $params);
     }
 
+     /*funcion para actualizar pedido*/
     public function updateRow()
     {
         $sql = 'UPDATE pedido

@@ -5,12 +5,14 @@ require_once('../../helpers/database.php');
 */
 class DetalleQueries
 {
+     /*funcion para lectura de datos*/
     public function readAll()
     {
         $sql = 'SELECT * FROM detalle_pedido ORDER BY id_detalle';
         return Database::getRows($sql);
     }
 
+     /*funcion para eliminar detalle pedido*/
     public function deleteRow()
     {
         $sql = 'DELETE FROM detalle_pedido
@@ -19,6 +21,7 @@ class DetalleQueries
         return Database::executeRow($sql, $params);
     }
 
+     /*funcion para lectura de datos*/
     public function readOne()
     {
         $sql = 'SELECT * FROM detalle_pedido
@@ -27,12 +30,15 @@ class DetalleQueries
         return Database::getRow($sql, $params);
     }
 
+         /*funcion para lectura de datos*/
     public function readProducto()
     {
         $sql = 'SELECT id_producto, nombre_producto FROM producto';
         return Database::getRows($sql);
     }
 
+
+         /*funcion para lectura de datos de pedido*/
     public function readPedido()
     {
         $sql = 'SELECT id_pedido FROM pedido';

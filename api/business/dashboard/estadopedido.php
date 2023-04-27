@@ -12,6 +12,7 @@ if (isset($_GET['action'])) {
     if (isset($_SESSION['id_usuario'])) {
         // Se compara la acción a realizar cuando un administrador ha iniciado sesión.
         switch ($_GET['action']) {
+              // Función lectura de cliente
             case 'readAll':
                 if ($result['dataset'] = $estadopedido->readAll()) {
                     $result['status'] = 1;
