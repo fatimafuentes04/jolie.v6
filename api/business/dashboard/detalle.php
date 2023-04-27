@@ -118,7 +118,7 @@ if (isset($_GET['action'])) {
 
 
 
-
+                  // Función crear de detalle
             case 'create':
                 $_POST = Validator::validateForm($_POST);
                 if (!$usuario->setNombres($_POST['nombres'])) {
@@ -140,6 +140,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = Database::getException();
                 }
                 break;
+                  // Lectura de datos de detalle del pedido
             case 'readOne':
                 if (!$detalle->setId_detalle($_POST['id_detalle'])) {
                     $result['exception'] = 'Registro incorrecto';
@@ -164,7 +165,7 @@ if (isset($_GET['action'])) {
                 break;
 
 
-
+                  // Función actualizar de cliente
             case 'update':
                 $_POST = Validator::validateForm($_POST);
                 if (!$usuario->setId($_POST['id'])) {
@@ -184,6 +185,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = Database::getException();
                 }
                 break;
+                  // Función eliminar de cliente
             case 'delete':
                 if (!$detalle->setId_detalle($_POST['id_detalle'])) {
                     $result['exception'] = 'Detalle incorrecto';

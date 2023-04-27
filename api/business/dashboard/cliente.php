@@ -23,6 +23,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'No hay datos registrados';
                 }
                 break;
+                // Buscador de cliente
                 case 'search':
                     $_POST = Validator::validateForm($_POST);
                     if ($_POST['search'] == '') {
@@ -37,6 +38,7 @@ if (isset($_GET['action'])) {
                     }
                     break;
     
+                     // Función crear de cliente
             case 'create':
                 $_POST = Validator::validateForm($_POST);
                 if (!$Cliente_p->setNombres($_POST['nombre'])) {
@@ -62,6 +64,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = Database::getException();
                 }
                 break;
+                  // Función leer de cliente
             case 'readOne':
                 if (!$Cliente_p->setid_cliente($_POST['id_cliente'])) {
                     $result['exception'] = 'cliente incorrecto';
@@ -73,6 +76,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Producto inexistente';
                 }
                 break;
+                  // Función actualizar de cliente
             case 'update':
                 $_POST = Validator::validateForm($_POST);
                 if (!$Cliente_p->setid_cliente($_POST['id'])) {
@@ -102,6 +106,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = Database::getException();
                 }
                 break;
+                  // Función eliminar de cliente
             case 'delete':
                 if (!$Cliente_p->setid_cliente($_POST['id_cliente'])) {
                     $result['exception'] = 'Producto incorrecto';

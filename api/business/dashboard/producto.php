@@ -14,6 +14,7 @@ if (isset($_GET['action'])) {
         // Se compara la acción a realizar cuando un administrador ha iniciado sesión.
         switch ($_GET['action']) {
 
+            // Función leer de producto
             case 'readAll':
                 if ($result['dataset'] = $Producto_p->readAll()) {
                     $result['status'] = 1;
@@ -39,6 +40,7 @@ if (isset($_GET['action'])) {
                 //     }
                 //     break;
 
+                // Función crear de producto
             case 'create':
                 $_POST = Validator::validateForm($_POST);
                 if (!isset($_POST['categoria'])) {
@@ -79,6 +81,7 @@ if (isset($_GET['action'])) {
                 }
                 break;
 
+                // Función leer de producto
             case 'readOne':
                 if (!$Producto_p->setid_producto($_POST['id_producto'])) {
                     $result['exception'] = 'Producto incorrecto';
@@ -117,7 +120,7 @@ if (isset($_GET['action'])) {
                 //     }
                 //     break;
 
-
+                    // Función leer de categoria en producto
             case 'readCategoria':
                 if ($result['dataset'] = $Producto_p->readCategoria()) {
                     $result['status'] = 1;
@@ -128,6 +131,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'No hay datos registrados';
                 }
                 break;
+                 // Función leer de estado en producto
             case 'readEstado':
                 if ($result['dataset'] = $Producto_p->readEstado()) {
                     $result['status'] = 1;
@@ -138,6 +142,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'No hay datos registrados';
                 }
                 break;
+                 // Función leer de talla en producto
             case 'readTalla':
                 if ($result['dataset'] = $Producto_p->readTalla()) {
                     $result['status'] = 1;
@@ -148,6 +153,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'No hay datos registrados';
                 }
                 break;
+                 // Función leer de imagen en producto
             case 'readImagen':
                 if ($result['dataset'] = $Producto_p->readImagen()) {
                     $result['status'] = 1;
@@ -159,6 +165,7 @@ if (isset($_GET['action'])) {
                 }
                 break;
 
+                 // Función leer de usuario en producto
             case 'readUsuario':
                 if ($result['dataset'] = $Producto_p->readUsuario()) {
                     $result['status'] = 1;
@@ -171,7 +178,7 @@ if (isset($_GET['action'])) {
                 break;
 
 
-
+                 // Función actualizar producto
             case 'update':
                 $_POST = Validator::validateForm($_POST);
                 if (!$Producto_p->setid_producto($_POST['id'])) {
@@ -208,7 +215,7 @@ if (isset($_GET['action'])) {
                 }
                 break;
 
-
+                 // Función eliminar producto
             case 'delete':
                 if (!$Producto_p->setid_producto($_POST['id_producto'])) {
                     $result['exception'] = 'Producto incorrecto';

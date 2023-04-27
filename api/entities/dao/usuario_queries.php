@@ -5,6 +5,7 @@ require_once('../../helpers/database.php');
 */
 class UsuarioQueries
 {
+     /*funcion para lectura de  datos*/
     public function readAll()
     {
         $sql = 'SELECT id_usuario, nombre_usuario, apellido_usuario, usuario, clave_usuario, estado_usuario, tipo_usuario
@@ -29,6 +30,7 @@ class UsuarioQueries
         }
     }
 
+     /*funcion para verificar contraseña*/
     public function checkPassword($password)
     {
         $sql = 'SELECT clave_usuario FROM usuario WHERE id_usuario = ?';
@@ -57,6 +59,7 @@ class UsuarioQueries
     //     return Database::getRow($sql, $params);
     // }
 
+     /*funcion para actualizar usuario*/
     public function updateRow()
     {
         $sql = 'UPDATE usuario
@@ -101,7 +104,7 @@ class UsuarioQueries
     }
 
 
-
+     /*funcion para lectura de usuario*/
     public function readOne()
     {
         $sql = 'SELECT * FROM usuario
@@ -110,7 +113,7 @@ class UsuarioQueries
         return Database::getRow($sql, $params);
     }
 
-
+     /*funcion para eliminar usuario*/
     public function deleteRow()
     {
         $sql = 'DELETE FROM usuario

@@ -76,6 +76,7 @@ if (isset($_GET['action'])) {
                 }
                 break;
 
+                 // Función leer en usuario
             case 'readAll':
                 if ($result['dataset'] = $usuario->readAll()) {
                     $result['status'] = 1;
@@ -87,6 +88,7 @@ if (isset($_GET['action'])) {
                 }
                 break;
 
+                 // Función buscar producto
             case 'search':
                 $_POST = Validator::validateForm($_POST);
                 if ($_POST['search'] == '') {
@@ -100,6 +102,8 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'No hay coincidencias';
                 }
                 break;
+
+                 // Función leer tipo de usuairo en producto
             case 'readTipo':
                 if ($result['dataset'] = $usuario->readTipo()) {
                     $result['status'] = 1;
@@ -110,6 +114,8 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'No hay datos registrados';
                 }
                 break;
+
+                 // Función crear usuario
             case 'create':
                 $_POST = Validator::validateForm($_POST);
                 if (!$usuario->setNombre_usuario($_POST['nombre_usuario'])) {
@@ -133,7 +139,7 @@ if (isset($_GET['action'])) {
                 break;
 
 
-
+                 // Función de lectura usuario
             case 'readOne':
                 if (!$usuario->setId_usuario($_POST['id_usuario'])) {
                     $result['exception'] = 'Usuario incorrecto';
@@ -145,6 +151,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Usuario inexistente';
                 }
                 break;
+                 // Función actualizar usuario
             case 'update':
                 $_POST = Validator::validateForm($_POST);
                 if (!$usuario->setId_usuario($_POST['id'])) {
@@ -170,6 +177,8 @@ if (isset($_GET['action'])) {
                     $result['exception'] = Database::getException();
                 }
                 break;
+
+                 // Función eliminar usuario
             case 'delete':
                 if ($_POST['id_usuario'] == $_SESSION['id_usuario']) {
                     $result['exception'] = 'No se puede eliminar a sí mismo';
