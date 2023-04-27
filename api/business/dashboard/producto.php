@@ -17,57 +17,68 @@ if (isset($_GET['action'])) {
             case 'readAll':
                 if ($result['dataset'] = $Producto_p->readAll()) {
                     $result['status'] = 1;
-                    $result['message'] = 'Existen '.count($result['dataset']).' registros';
+                    $result['message'] = 'Existen ' . count($result['dataset']) . ' registros';
                 } elseif (Database::getException()) {
                     $result['exception'] = Database::getException();
                 } else {
                     $result['exception'] = 'No hay datos registrados';
                 }
                 break;
-            /*
-            case 'search':
-                $_POST = Validator::validateForm($_POST);
-                if ($_POST['search'] == '') {
-                    $result['exception'] = 'Ingrese un valor para buscar';
-                } elseif ($result['dataset'] = $producto->searchRows($_POST['search'])) {
-                    $result['status'] = 1;
-                    $result['message'] = 'Existen '.count($result['dataset']).' coincidencias';
-                } elseif (Database::getException()) {
-                    $result['exception'] = Database::getException();
-                } else {
-                    $result['exception'] = 'No hay coincidencias';
-                }
-                break;
+
+                // case 'search':
+                //     $_POST = Validator::validateForm($_POST);
+                //     if ($_POST['search'] == '') {
+                //         $result['exception'] = 'Ingrese un valor para buscar';
+                //     } elseif ($result['dataset'] = $producto->searchRows($_POST['search'])) {
+                //         $result['status'] = 1;
+                //         $result['message'] = 'Existen '.count($result['dataset']).' coincidencias';
+                //     } elseif (Database::getException()) {
+                //         $result['exception'] = Database::getException();
+                //     } else {
+                //         $result['exception'] = 'No hay coincidencias';
+                //     }
+                //     break;
+
             case 'create':
                 $_POST = Validator::validateForm($_POST);
-                if (!$Producto_p->setNombre($_POST['Nombre_P'])) {
-                    $result['exception'] = 'Nombre incorrecto';
-                } elseif (!$Producto_p->setDescripcion($_POST['Descripcion_P'])) {
-                    $result['exception'] = 'Descripción incorrecta';
-                } elseif (!$Producto_p->setPrecio($_POST['Precio_P'])) {
-                    $result['exception'] = 'Precio incorrecto';
-                } elseif (!isset($_POST['categoria'])) {
+                if (!isset($_POST['categoria'])) {
                     $result['exception'] = 'Seleccione una categoría';
                 } elseif (!$Producto_p->setCategoria($_POST['categoria'])) {
                     $result['exception'] = 'Categoría incorrecta';
-                } elseif (!$Producto_p->setEstado(isset($_POST['estado']) ? 1 : 0)) {
-                    $result['exception'] = 'Estado incorrecto';
+                } elseif (!$Producto_p->setNombre($_POST['nombre'])) {
+                    $result['exception'] = 'Descripción incorrecta';
+                } elseif (!$Producto_p->setDescripcion($_POST['descripcion'])) {
+                    $result['exception'] = 'Precio incorrecto';
+                } elseif (!$Producto_p->setPrecio($_POST['precio'])) {
+                    $result['exception'] = 'Precio incorrecto';
+                } elseif (!isset($_POST['estado'])) {
+                    $result['exception'] = 'Seleccione una categoría';
+                } elseif (!$Producto_p->setEstadoProducto($_POST['estado'])) {
+                    $result['exception'] = 'Categoría incorrecta';
+                } elseif (!isset($_POST['talla'])) {
+                    $result['exception'] = 'Seleccione una categoría';
+                } elseif (!$Producto_p->setTalla($_POST['talla'])) {
+                    $result['exception'] = 'Categoría incorrecta';
+                } elseif (!isset($_POST['usuario'])) {
+                    $result['exception'] = 'Seleccione una categoría';
+                } elseif (!$Producto_p->setUsuario($_POST['usuario'])) {
+                    $result['exception'] = 'Categoría incorrecta';
                 } elseif (!is_uploaded_file($_FILES['archivo']['tmp_name'])) {
                     $result['exception'] = 'Seleccione una imagen';
                 } elseif (!$Producto_p->setImagen($_FILES['archivo'])) {
                     $result['exception'] = Validator::getFileError();
+                } elseif (!is_uploaded_file($_FILES['moreimg']['tmp_name'])) {
+                    $result['exception'] = 'Seleccione una imagen';
+                } elseif (!$Producto_p->setImgCarrusel($_FILES['moreimg'])) {
+                    $result['exception'] = Validator::getFileError();
                 } elseif ($Producto_p->createRow()) {
                     $result['status'] = 1;
-                    if (Validator::saveFile($_FILES['archivo'], $Producto_p->getRuta(), $producto->getImagen())) {
-                        $result['message'] = 'Producto creado correctamente';
-                    } else {
-                        $result['message'] = 'Producto creado pero no se guardó la imagen';
-                    }
+                    $result['message'] = 'Se ha creado, correctamente';
                 } else {
-                    $result['exception'] = Database::getException();;
+                    $result['exception'] = Database::getException();
                 }
                 break;
-            */
+
             case 'readOne':
                 if (!$Producto_p->setid_producto($_POST['id_producto'])) {
                     $result['exception'] = 'Producto incorrecto';
@@ -78,7 +89,52 @@ if (isset($_GET['action'])) {
                 } else {
                     $result['exception'] = 'Producto inexistente';
                 }
-            break;
+                break;
+
+
+            case 'readCategoria':
+                if ($result['dataset'] = $Producto_p->readCategoria()) {
+                    $result['status'] = 1;
+                    $result['message'] = 'Existen registros';
+                } elseif (Database::getException()) {
+                    $result['exception'] = Database::getException();
+                } else {
+                    $result['exception'] = 'No hay datos registrados';
+                }
+                break;
+            case 'readEstado':
+                if ($result['dataset'] = $Producto_p->readEstado()) {
+                    $result['status'] = 1;
+                    $result['message'] = 'Existen registros';
+                } elseif (Database::getException()) {
+                    $result['exception'] = Database::getException();
+                } else {
+                    $result['exception'] = 'No hay datos registrados';
+                }
+                break;
+            case 'readTalla':
+                if ($result['dataset'] = $Producto_p->readTalla()) {
+                    $result['status'] = 1;
+                    $result['message'] = 'Existen registros';
+                } elseif (Database::getException()) {
+                    $result['exception'] = Database::getException();
+                } else {
+                    $result['exception'] = 'No hay datos registrados';
+                }
+                break;
+
+            case 'readUsuario':
+                if ($result['dataset'] = $Producto_p->readUsuario()) {
+                    $result['status'] = 1;
+                    $result['message'] = 'Existen registros';
+                } elseif (Database::getException()) {
+                    $result['exception'] = Database::getException();
+                } else {
+                    $result['exception'] = 'No hay datos registrados';
+                }
+                break;
+
+
                 /*
             case 'update':
                 $_POST = Validator::validateForm($_POST);
@@ -125,13 +181,13 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Producto inexistente';
                 } elseif ($Producto_p->deleteRow()) {
                     $result['status'] = 1;
-                        $result['message'] = 'Producto eliminado correctamente';
-                } else{ 
+                    $result['message'] = 'Producto eliminado correctamente';
+                } else {
                     $result['exception'] = Database::getException();
                 }
-            break;
+                break;
 
-               /*
+                /*
             case 'readCategoria':
                 if ($result['dataset'] = $Producto_p->readCategorias()) {
                     $result['status'] = 1;

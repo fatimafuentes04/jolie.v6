@@ -42,12 +42,42 @@
 
     <!--PANTALLA PRINCIPAL-->
     <main>
-        <h1 class="text-center">Usuarios</h1>
+        <div class="table-responsive">
+            <table class="table align-middle">
+                <thead>
+                    <h1 class="text-center">Usuarios</h1>
+                    <br>
 
-        <button type="button" id="add" data-bs-toggle="modal" data-bs-target="#save-modal" onclick="createUsuario()"  class="btn btn-secondary btns" >
-            Agregar
-        </button>
+                    <form method="post" id="search-form">
 
+                        <td>
+                            <div class="rounded float-star">
+                                <input id="search" type="text" name="search" class="form-control"
+                                    placeholder="Buscar por: Nombre, Apellido, Usuario, Estado" aria-label="Buscar"
+                                    required />
+                            </div>
+                        </td>
+
+                        <td>
+                            <button type="submit" class="btn">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                            </button>
+                        </td>
+
+                        <td>
+
+                            <div class="rounded float-end">
+                                <button type="button" id="add" data-bs-toggle="modal" data-bs-target="#save-modal" onclick="createUsuario()"  class="btn btn-secondary btns" >
+                                    Registrar nuevo usuario
+                                </button>
+                            </div>
+
+                        </td>
+
+                    </form>
+                </thead>
+            </table>
+        </div>
         <div id="save-modal" class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
             aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog">
@@ -136,9 +166,6 @@
                 <!-- fin del modal -->
             </div>
         </div>
-        <br>
-
-        <br>
         <table class="table">
             <thead>
                 <tr id="records"></tr>

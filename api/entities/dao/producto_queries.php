@@ -2,12 +2,13 @@
 require_once('../../helpers/database.php');
 
 
- /*funcion para leer datos*/
-    class ProductoQueries
+/*funcion para leer datos*/
+class ProductoQueries
+{
+
+
+    public function readAll()
     {
-
-
-    public function readAll(){
         $sql = 'SELECT id_producto, categoria, nombre_producto, descripcion_producto, precio_producto, imagen_producto, estado_producto, nombre_usuario, talla, imagen
         FROM producto
         INNER JOIN categoria USING(id_categoria)
@@ -40,16 +41,35 @@ require_once('../../helpers/database.php');
         return Database::getRow($sql, $params);
     }
 
-    /*
     public function createRow()
     {
-        $sql = 'INSERT INTO productos(nombre_producto, descripcion, precio, id_editorial, id_categoria, estado_producto, id_usuario, id_autor, procentaje_descuento, isbn, imagen, stock)
-                VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
-        $params = array($this->nombre_producto, $this->descripcion, $this->precio, $this->editorial, $this->id_categoria, $this->estado_producto, $this->id_usuario, $this->id_autor, $this->porcentaje_descuento,$this->isbn,$this->imagen,$this->stock, $_SESSION['id_usuario']);
-        return Database::getException($sql, $params);
+        $sql = 'INSERT INTO producto(id_categoria, nombre_producto, descripcion_producto, precio_producto, imagen_producto, idestado_producto, id_usuario, id_talla, id_imagen)
+                VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)';
+        $params = array($this->id_categoria, $this->nombre_producto, $this->descripcion_producto, $this->precio_producto, $this->imagen_producto, $this->idestado_producto, $this->id_usuario, $this->id_talla, $this->id_imagen);
+        return Database::executeRow($sql, $params);
     }
-    */
 
+    /*cargar combox */
+
+    public function readCategoria()
+    {
+        $sql = 'SELECT id_categoria, categoria FROM categoria';
+        return Database::getRows($sql);
+    }
+    public function readEstado()
+    {
+        $sql = 'SELECT idestado_producto, estado_producto FROM estado_producto';
+        return Database::getRows($sql);
+    }
+    public function readTalla()
+        {
+            $sql = 'SELECT id_talla, talla FROM talla';
+            return Database::getRows($sql);
+        }
+    public function readUsuario()
+    {
+        $sql = 'SELECT id_usuario, usuario FROM usuario';
+        return Database::getRows($sql);
+    }
     
 }
- 

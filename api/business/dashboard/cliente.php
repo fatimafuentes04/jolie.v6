@@ -23,19 +23,20 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'No hay datos registrados';
                 }
                 break;
-            case 'search':
-                $_POST = Validator::validateForm($_POST);
-                if ($_POST['search'] == '') {
-                    $result['exception'] = 'Ingrese un valor para buscar';
-                } elseif ($result['dataset'] = $producto->searchRows($_POST['search'])) {
-                    $result['status'] = 1;
-                    $result['message'] = 'Existen '.count($result['dataset']).' coincidencias';
-                } elseif (Database::getException()) {
-                    $result['exception'] = Database::getException();
-                } else {
-                    $result['exception'] = 'No hay coincidencias';
-                }
-                break;
+                case 'search':
+                    $_POST = Validator::validateForm($_POST);
+                    if ($_POST['search'] == '') {
+                        $result['exception'] = 'Ingrese un valor para buscar';
+                    } elseif ($result['dataset'] = $pedido->searchRows($_POST['search'])) {
+                        $result['status'] = 1;
+                        $result['message'] = 'Existen ' . count($result['dataset']) . ' coincidencias';
+                    } elseif (Database::getException()) {
+                        $result['exception'] = Database::getException();
+                    } else {
+                        $result['exception'] = 'No hay coincidencias';
+                    }
+                    break;
+    
             case 'create':
                 $_POST = Validator::validateForm($_POST);
                 if (!$Cliente_p->setNombres($_POST['nombre'])) {

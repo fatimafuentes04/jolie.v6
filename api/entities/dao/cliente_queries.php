@@ -44,4 +44,13 @@ require_once('../../helpers/database.php');
         return Database::executeRow($sql, $params);
     }
 
+    public function searchRows($value)
+    {
+        $sql = 'SELECT id_cliente,  nombre_cliente, apellido_cliente, dui_cliente, correo_cliente
+        FROM cliente
+        WHERE nombre_cliente ILIKE ? OR apellido_cliente::text ILIKE ? OR dui_cliente ILIKE ? OR correo_cliente ILIKE ?';
+        $params = array("%$value%", "%$value%", "%$value%", "%$value%");
+        return Database::getRows($sql, $params);
+    }
+
 }

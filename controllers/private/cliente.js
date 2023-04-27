@@ -4,6 +4,8 @@ const titulo_modal = document.getElementById('modal-title');
 const TBODY_ROWS = document.getElementById('tboby-rows');
 const FORMULARIO = document.getElementById('save-form');
 
+const SEARCH_FORM = document.getElementById('search-form');
+
 const OPTIONS = {
     dismissible: false
 }
@@ -27,6 +29,15 @@ FORMULARIO.addEventListener('submit', async(event) =>{
     } else {
         sweetAlert(2, JSON.exception, false);
     }
+});
+
+SEARCH_FORM.addEventListener('submit', (event) => {
+    // Se evita recargar la página web después de enviar el formulario.
+    event.preventDefault();
+    // Constante tipo objeto con los datos del formulario.
+    const FORM = new FormData(SEARCH_FORM);
+    // Llamada a la función para llenar la tabla con los resultados de la búsqueda.
+    fillTable(FORM);
 });
 
 

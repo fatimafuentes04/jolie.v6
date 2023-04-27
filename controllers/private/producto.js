@@ -5,6 +5,7 @@ const MODAL_TITLE = document.getElementById('modal-title');
 
 const TBODY_ROWS = document.getElementById('tbody-rows');
 const RECORDS = document.getElementById('records');
+const FORMULARIO = document.getElementById('save-form');
 
 
 // Método manejador de eventos para cuando el documento ha cargado.
@@ -43,7 +44,7 @@ async function fillTable(form = null) {
                 <button id="editbtn" onclick="updateUsuario(${row.id_producto})" data-bs-toggle="modal" data-bs-target="#save-modal"  class="btn btn-secondary btns">
                     <i class='bx bx-edit' ></i>
                     </button>
-                    <button id="deletebtn" onclick="Deleteusuario(${row.id_producto})"  class="btn btn-secondary btns">
+                    <button id="deletebtn" onclick="openDelete(${row.id_producto})"  class="btn btn-secondary btns">
                     <i class='bx bxs-trash'></i>
                     </button>
 
@@ -63,13 +64,52 @@ async function fillTable(form = null) {
 
 function openCreate() {
 
-    SAVE_MODAL.show();
-    SAVE_FORM.reset();
-    fillSelect(CATEGP_API, 'readAll', 'catgp');
-    fillSelect(USUARIOP_API, 'readAll', 'usuap');
+    // SAVE_MODAL.show();
+    // SAVE_FORM.reset();
+    fillSelect(PRODUCTO_API, 'readCategoria', 'categoria');
+    fillSelect(PRODUCTO_API, 'readEstado', 'estado');
+    fillSelect(PRODUCTO_API, 'readTalla', 'talla');
+    fillSelect(PRODUCTO_API, 'readUsuario', 'usuario');
     // Se asigna título a la caja de diálogo.
     MODAL_TITLE.textContent = 'Crear producto';
 
+}
+
+FORMULARIO.addEventListener('submit', async(event) =>{
+    event.preventDefault();
+    (document.getElementById('id').value) ? action = 'update' : action = 'create';
+    const FORM = new FormData(FORMULARIO);
+    const JSON = await dataFetch(PRODUCTO_API, action, FORM);
+    if (JSON.status) {
+        // Se carga nuevamente la tabla para visualizar los cambios.
+        fillTable();      
+        // Se muestra un mensaje de éxito.
+        sweetAlert(1, JSON.message, true);
+    } else {
+        sweetAlert(2, JSON.exception, false);
+    }
+});
+
+async function openDelete(id_producto) {
+    // Llamada a la función para mostrar un mensaje de confirmación, capturando la respuesta en una constante.
+    const RESPONSE = await confirmAction('¿Desea eliminar el pedido de forma permanente?');
+    // Se verifica la respuesta del mensaje.
+    if (RESPONSE) {
+        // Se define una constante tipo objeto con los datos del registro seleccionado.
+        const FORM = new FormData();
+        FORM.append('id_producto', id_producto);
+        // Petición para eliminar el registro seleccionado.
+        const JSON = await dataFetch(PRODUCTO_API, 'delete', FORM);
+        // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
+        if (JSON.status) {
+            // Se carga nuevamente la tabla para visualizar los cambios.
+            fillTable();
+            // Se muestra un mensaje de éxito.
+            sweetAlert(1, JSON.message, true);
+        } else {
+            sweetAlert(2, JSON.exception, false);
+        }
+    }
 }
 
 
