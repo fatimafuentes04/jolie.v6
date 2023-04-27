@@ -93,15 +93,14 @@ async function fillTable(form = null) {
                 <td>${row.estado_pedido}</td>
                 <td>
 
-                <button type="button" onclick="openUpdate(${row.id_pedido})">
-                <i class="fa-solid fa-rotate-right"></i>
+                <button id="editbtn" onclick="openUpdate(${row.id_pedido})" data-bs-toggle="modal" data-bs-target="#save-modal"  class="btn btn-secondary btns">
+                <i class='bx bx-edit' ></i>
                 </button>
-                
-                <button id="" onclick="openDelete(${row.id_pedido})">
-                <i class="fa-solid fa-delete-left"></i>
+                <button id="deletebtn" onclick="openDelete(${row.id_pedido})"  class="btn btn-secondary btns">
+                <i class='bx bxs-trash'></i>
                 </button>
 
-                <button id="" data-bs-toggle="modal" data-bs-target="#detallepedido" onclick="fillTableDetallePedido(${row.id_pedido})">
+                <button id="" data-bs-toggle="modal" data-bs-target="#detallepedido" onclick="fillTableDetallePedido(${row.id_pedido})" class="btn btn-secondary btns">
                 <i class="fa-regular fa-clipboard"></i>
                 </button>
  
