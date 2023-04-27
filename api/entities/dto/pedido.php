@@ -6,19 +6,19 @@ require_once('../../entities/dao/pedido_queries.php');
 class Pedido extends PedidoQueries
 {
     protected $id = null;
-        //Detalle pedido parametro
+    //Detalle pedido parametro
     protected $iddetalle = null;
     protected $estado_pedido = null;
     protected $fecha_pedido = null;
     protected $direccion_pedido = null;
     protected $cliente = null;
-    
+
     public function setIddetalle($value)
     {
-        if(Validator::validateNaturalNumber($value)){
+        if (Validator::validateNaturalNumber($value)) {
             $this->id = $value;
             return true;
-        } else{
+        } else {
             return false;
         }
     }
@@ -60,7 +60,7 @@ class Pedido extends PedidoQueries
             return true;
         } else {
             return false;
-        } 
+        }
     }
 
     public function setCliente($value)
@@ -103,5 +103,4 @@ class Pedido extends PedidoQueries
     {
         return $this->cliente;
     }
-
 }

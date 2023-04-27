@@ -8,6 +8,7 @@ class Producto extends ProductoQueries
 {
     // Declaración de atributos (propiedades).
     protected $id_producto = null;
+    // protected $id_valo = null;
     protected $id_categoria = null;
     protected $nombre_producto = null;
     protected $descripcion = null;
@@ -34,6 +35,16 @@ class Producto extends ProductoQueries
         }
     }
 
+    // public function setid_valo($value)
+    // {
+    //     if (Validator::validateNaturalNumber($value)) {
+    //         $this->id_valo = $value;
+    //         return true;
+    //     } else {
+    //         return false;
+    //     }
+    // }
+
     public function setNombre($value)
     {
         if (Validator::validateAlphanumeric($value, 1, 50)) {
@@ -46,14 +57,14 @@ class Producto extends ProductoQueries
 
     public function setDescripcion($value)
     {
-        if (Validator::validateString($value, 1, 250)) {
+        if (Validator::validateString($value, 1, 550)) {
             $this->descripcion = $value;
             return true;
         } else {
             return false;
         }
     }
-    
+
     public function setPrecio($value)
     {
         if (Validator::validateMoney($value)) {
@@ -63,7 +74,7 @@ class Producto extends ProductoQueries
             return false;
         }
     }
-    
+
     public function setCategoria($value)
     {
         if (Validator::validateNaturalNumber($value, 1, 250)) {
@@ -114,16 +125,16 @@ class Producto extends ProductoQueries
         }
     }
 
-    public function setImgCarrusel($value)
+
+    public function setimagencarrusel($value)
     {
-        if (Validator::validateImageFile($value, 1, 250)) {
+        if (Validator::validateNaturalNumber($value, 1, 250)) {
             $this->imgcarucel = $value;
             return true;
         } else {
             return false;
         }
     }
-   
     /*
     *   Métodos para obtener valores de los atributos.
     */
@@ -163,7 +174,7 @@ class Producto extends ProductoQueries
         return $this->estado_producto;
     }
 
-    
+
     public function getUsuario()
     {
         return $this->id_usuario;
@@ -188,5 +199,4 @@ class Producto extends ProductoQueries
     {
         return $this->rutaCarrusel;
     }
-        
 }

@@ -16,7 +16,7 @@ class cliente extends clientesQueries
     protected $nacimiento_cliente = null;
     protected $direccion_cliente = null;
     protected $estado_cliente = null;
-    
+
 
     /*
     *   Métodos para validar y asignar valores de los atributos. 13 campos
@@ -50,7 +50,7 @@ class cliente extends clientesQueries
             return false;
         }
     }
-    
+
     public function setDUI($value)
     {
         if (Validator::validateString($value, 1, 100)) {
@@ -73,14 +73,14 @@ class cliente extends clientesQueries
 
     public function setTelefono($value)
     {
-        if (Validator::validateString($value,1,150)) {
+        if (Validator::validateString($value, 1, 150)) {
             $this->telefono_cliente = $value;
             return true;
         } else {
             return false;
         }
     }
-    
+
     public function setNacimiento($value)
     {
         if (Validator::validateDate($value)) {
@@ -101,7 +101,7 @@ class cliente extends clientesQueries
         }
     }
 
-    
+
     public function setEstado($value)
     {
         if (Validator::validateBoolean($value)) {
@@ -156,5 +156,4 @@ class cliente extends clientesQueries
     {
         return $this->estado_cliente;
     }
-    
 }

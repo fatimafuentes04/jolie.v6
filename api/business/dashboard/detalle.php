@@ -17,7 +17,7 @@ if (isset($_GET['action'])) {
             case 'readAll':
                 if ($result['dataset'] = $detalle->readAll()) {
                     $result['status'] = 1;
-                    $result['message'] = 'Existen '.count($result['dataset']).' registros';
+                    $result['message'] = 'Existen ' . count($result['dataset']) . ' registros';
                 } elseif (Database::getException()) {
                     $result['exception'] = Database::getException();
                 } else {
@@ -87,8 +87,8 @@ if (isset($_GET['action'])) {
                     $result['exception'] = Database::getException();
                 }
                 break;
-                
-           
+
+
 
             case 'search':
                 $_POST = Validator::validateForm($_POST);
@@ -96,7 +96,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Ingrese un valor para buscar';
                 } elseif ($result['dataset'] = $usuario->searchRows($_POST['search'])) {
                     $result['status'] = 1;
-                    $result['message'] = 'Existen '.count($result['dataset']).' coincidencias';
+                    $result['message'] = 'Existen ' . count($result['dataset']) . ' coincidencias';
                 } elseif (Database::getException()) {
                     $result['exception'] = Database::getException();
                 } else {
@@ -105,16 +105,16 @@ if (isset($_GET['action'])) {
                 break;
 
 
-                case 'readProducto':
-                    if ($result['dataset'] = $detalle->readProducto()) {
-                        $result['status'] = 1;
-                        $result['message'] = 'Existen '.count($result['dataset']).' registros';
-                    } elseif (Database::getException()) {
-                        $result['exception'] = Database::getException();
-                    } else {
-                        $result['exception'] = 'No hay datos registrados';
-                    }
-                    break;
+            case 'readProducto':
+                if ($result['dataset'] = $detalle->readProducto()) {
+                    $result['status'] = 1;
+                    $result['message'] = 'Existen ' . count($result['dataset']) . ' registros';
+                } elseif (Database::getException()) {
+                    $result['exception'] = Database::getException();
+                } else {
+                    $result['exception'] = 'No hay datos registrados';
+                }
+                break;
 
 
 
@@ -152,10 +152,10 @@ if (isset($_GET['action'])) {
                 }
                 break;
 
-                case 'readEstado':
-                    if ($result['dataset'] = $usuario->readEstado()) {
+            case 'readEstado':
+                if ($result['dataset'] = $usuario->readEstado()) {
                     $result['status'] = 1;
-                    $result['message'] = 'Existen '.count($result['dataset']).' registros';
+                    $result['message'] = 'Existen ' . count($result['dataset']) . ' registros';
                 } elseif (Database::getException()) {
                     $result['exception'] = Database::getException();
                 } else {
@@ -184,18 +184,18 @@ if (isset($_GET['action'])) {
                     $result['exception'] = Database::getException();
                 }
                 break;
-                case 'delete':
-                    if (!$detalle->setId_detalle($_POST['id_detalle'])) {
-                        $result['exception'] = 'Detalle incorrecto';
-                    } elseif (!$data = $detalle->readOne()) {
-                        $result['exception'] = 'Detalle inexistente';
-                    } elseif ($detalle->deleteRow()) {
-                        $result['status'] = 1;
-                            $result['message'] = 'Registro eliminado correctamente';
-                    } else{ 
-                        $result['exception'] = Database::getException();
-                    }
-                    break;
+            case 'delete':
+                if (!$detalle->setId_detalle($_POST['id_detalle'])) {
+                    $result['exception'] = 'Detalle incorrecto';
+                } elseif (!$data = $detalle->readOne()) {
+                    $result['exception'] = 'Detalle inexistente';
+                } elseif ($detalle->deleteRow()) {
+                    $result['status'] = 1;
+                    $result['message'] = 'Registro eliminado correctamente';
+                } else {
+                    $result['exception'] = Database::getException();
+                }
+                break;
             default:
                 $result['exception'] = 'Acción no disponible dentro de la sesión';
         }

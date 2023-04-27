@@ -45,7 +45,13 @@ class ProductoQueries
     {
         $sql = 'INSERT INTO producto(id_categoria, nombre_producto, descripcion_producto, precio_producto, imagen_producto, idestado_producto, id_usuario, id_talla, id_imagen)
                 VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)';
-        $params = array($this->id_categoria, $this->nombre_producto, $this->descripcion_producto, $this->precio_producto, $this->imagen_producto, $this->idestado_producto, $this->id_usuario, $this->id_talla, $this->id_imagen);
+        $params = array($this->id_categoria, $this->nombre_producto, $this->descripcion, $this->precio, $this->imagen, $this->estado_producto, $this->id_usuario, $this->id_talla, $this->imgcarucel);
+        return Database::executeRow($sql, $params);
+    }
+    public function updateRow()
+    {
+        $sql = 'UPDATE producto SET id_categoria = ?, nombre_producto = ?, descripcion_producto = ?, precio_producto = ?, imagen_producto = ?, idestado_producto = ?, id_usuario = ?, id_talla = ?, id_imagen = ? WHERE id_producto = ? ';
+        $params = array($this->id_categoria, $this->nombre_producto, $this->descripcion, $this->precio, $this->imagen, $this->estado_producto, $this->id_usuario, $this->id_talla, $this->imgcarucel, $this->id_producto);
         return Database::executeRow($sql, $params);
     }
 
@@ -62,14 +68,50 @@ class ProductoQueries
         return Database::getRows($sql);
     }
     public function readTalla()
-        {
-            $sql = 'SELECT id_talla, talla FROM talla';
-            return Database::getRows($sql);
-        }
+    {
+        $sql = 'SELECT id_talla, talla FROM talla';
+        return Database::getRows($sql);
+    }
     public function readUsuario()
     {
         $sql = 'SELECT id_usuario, usuario FROM usuario';
         return Database::getRows($sql);
     }
-    
+
+    public function readImagen()
+    {
+        $sql = 'SELECT id_imagen, imagen FROM imagen';
+        return Database::getRows($sql);
+    }
+
+//     public function readAllValoracion()
+//     {
+//         $sql = 'SELECT id_valoracion, nombre_cliente, calificacion_producto, comentario_producto, correo_cliente, fecha_comentario, estado_comentario, id_detalle
+//         from valoracion 
+//         inner join detalle_pedido USING (id_detalle)
+//         inner join producto USING (id_producto)
+//         where id_producto = ?';
+//         $params = array($this->id_producto);
+//         return Database::getRows($sql, $params);
+//     }
+
+//  public function readOneValo()
+//     {
+//         $sql = 'SELECT id_valoracion, nombre_cliente, estado_comentario, calificacion_producto, comentario_producto, correo_cliente, fecha_comentario, id_detalle
+//         from valoracion 
+//         where id_valoracion = ?';
+//         $params = array($this->id_valo);
+//         return Database::getRow($sql, $params);
+//     }
+
+
+//     public function deleteRowValo($estado)
+//     {
+//         ($estado) ? $estado=0 : $estado=1;
+//         $sql = 'UPDATE valoracion
+//         SET estado_comentario = ?
+//         WHERE id_valoracion = ?';
+//         $params = array($estado, $this->id_valo);
+//         return Database::executeRow($sql, $params);
+//     }
 }

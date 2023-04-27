@@ -95,8 +95,39 @@
         <div class="b1">
             <button type="submit" class="btn btn-primary">Añadir Producto</button>
             <a href="../../views/private/productospriv.html">
-            <button type="submit" class="btn btn-primary">editar registros</button>
-        </a>
+                <button type="submit" class="btn btn-primary">editar registros</button>
+            </a>
+        </div>
+
+        <div class="modal fade" id="valoraciones" tabindex="-1" aria-labelledby="valoraciones" aria-hidden="true">
+            <div class="modal-dialog modal-xl">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modal-title">VALORACION</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <main class="container">
+                            <table class="table">
+                                <thead>
+                                    <tr id="recordsvalo"></tr>
+                                    <tr>
+                                        <th scope="col">Nombre cliente</th>
+                                        <th scope="col">Calificacion</th>
+                                        <th scope="col">Comentario</th>
+                                        <th scope="col">Correo</th>
+                                        <th scope="col">Fecha</th>
+                                        <th scope="col">Numero de detalle</th>
+                                        <th scope="col">Estado</th>
+                                        <th scope="col">Acciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tbody-rowsvalo"></tbody>
+                            </table>
+                        </main>
+                    </div>
+                </div>
+            </div>
         </div>
     </main>
 

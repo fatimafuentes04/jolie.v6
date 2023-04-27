@@ -55,18 +55,8 @@ async function fillTable(form = null) {
     }
 }
 
-// function createProductos() {
-//     titulo_modal.textContent = 'CREATE PRODUCTO';
-//     fillSelect(USUARIO_API, 'readCategoria', 'categoria');
-// }
 
-// function createUsuario() {
-//     titulo_modal.textContent = 'CREAR USUARIO';
-//     fillSelect(USUARIO_API, 'readEstado', 'estadou');
-// }
-
-
-function createDetalle(){
+function createDetalle() {
     titulo_modal.textContent = 'CREAR DETALLE';
     fillSelect(DETALLE_API, 'readProducto', 'producto');
 }

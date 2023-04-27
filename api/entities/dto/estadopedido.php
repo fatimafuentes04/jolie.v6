@@ -37,5 +37,4 @@ class EstadoPedido extends EstadoPedidoQueries
     {
         return $this->estadopedido;
     }
-
 }

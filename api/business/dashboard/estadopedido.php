@@ -15,14 +15,14 @@ if (isset($_GET['action'])) {
             case 'readAll':
                 if ($result['dataset'] = $estadopedido->readAll()) {
                     $result['status'] = 1;
-                    $result['message'] = 'Existen '.count($result['dataset']).' registros';
+                    $result['message'] = 'Existen ' . count($result['dataset']) . ' registros';
                 } elseif (Database::getException()) {
                     $result['exception'] = Database::getException();
                 } else {
                     $result['exception'] = 'No hay datos registrados';
                 }
                 break;
-/*
+                /*
                 case 'readOne':
                     if (!$estadopedido->setId($_POST['id_talla'])) {
                         $result['exception'] = 'Categoría incorrecta';

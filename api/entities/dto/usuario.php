@@ -9,7 +9,7 @@ class Usuario extends UsuarioQueries
     // Declaración de atributos (propiedades).
     protected $id_usuario = null;
     protected $nombre_usuario = null;
-    protected $apellido_usuario = null;   
+    protected $apellido_usuario = null;
     protected $usuario = null;
     protected $clave_usuario = null;
     protected $estado_usuario = null;

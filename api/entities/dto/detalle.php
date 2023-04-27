@@ -9,10 +9,10 @@ class Detalle extends DetalleQueries
     // Declaración de atributos (propiedades).
     protected $id_detalle = null;
     protected $id_pedido = null;
-    protected $id_producto = null;   
+    protected $id_producto = null;
     protected $cantidad = null;
     protected $precio_producto = null;
-  
+
     /*
     *   Métodos para validar y asignar valores de los atributos.
     */
@@ -94,7 +94,4 @@ class Detalle extends DetalleQueries
     {
         return $this->precio_producto;
     }
-
-
-    
 }

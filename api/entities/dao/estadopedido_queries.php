@@ -10,5 +10,4 @@ class EstadoPedidoQueries
         FROM estado_pedido';
         return Database::getRows($sql);
     }
-
 }

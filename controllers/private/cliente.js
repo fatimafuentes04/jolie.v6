@@ -16,14 +16,14 @@ document.addEventListener('DOMContentLoaded', () => {
     fillTable();
 });
 
-FORMULARIO.addEventListener('submit', async(event) =>{
+FORMULARIO.addEventListener('submit', async (event) => {
     event.preventDefault();
     (document.getElementById('id').value) ? action = 'update' : action = 'create';
     const FORM = new FormData(FORMULARIO);
     const JSON = await dataFetch(CLIENTE_API, action, FORM);
     if (JSON.status) {
         // Se carga nuevamente la tabla para visualizar los cambios.
-        fillTable();      
+        fillTable();
         // Se muestra un mensaje de éxito.
         sweetAlert(1, JSON.message, true);
     } else {
@@ -59,7 +59,7 @@ async function fillTable(form = null) {
         // Se recorre el conjunto de registros (dataset) fila por fila a través del objeto row.
         JSON.dataset.forEach(row => {
             // Se establece un icono para el estado del producto.
-        
+
             // Se crean y concatenan las filas de la tabla con los datos de cada registro.
             TBODY_ROWS.innerHTML += `
                 <tr>
@@ -91,7 +91,7 @@ async function fillTable(form = null) {
 
 
 function createCliente() {
-    titulo_modal.textContent ='CREAR CLIENTE'; 
+    titulo_modal.textContent = 'CREAR CLIENTE';
     console.log('Clientes Modal');
     // fillSelect(USUARIO_API, 'readtipo_doc', 'documento');
     // fillSelect(USUARIO_API, 'readestado_usuario', 'estado_usuario');
@@ -104,7 +104,7 @@ async function updateCliente(id_cliente) {
     FORM.append('id_cliente', id_cliente);
     const JSON = await dataFetch(CLIENTE_API, 'readOne', FORM);
     if (JSON.status) {
-        titulo_modal.textContent ='MODIFICAR CLIENTE';
+        titulo_modal.textContent = 'MODIFICAR CLIENTE';
         document.getElementById('id').value = JSON.dataset.id_cliente;
         document.getElementById('nombre').value = JSON.dataset.nombre_cliente;
         document.getElementById('dui').value = JSON.dataset.dui_cliente;

@@ -5,7 +5,8 @@ require_once('../../helpers/database.php');
 */
 class UsuarioQueries
 {
-    public function readAll(){
+    public function readAll()
+    {
         $sql = 'SELECT id_usuario, nombre_usuario, apellido_usuario, usuario, clave_usuario, estado_usuario, tipo_usuario
         FROM usuario
         INNER JOIN tipo_usuario USING(idtipo_usuario)';
@@ -32,14 +33,14 @@ class UsuarioQueries
     {
         $sql = 'SELECT clave_usuario FROM usuario WHERE id_usuario = ?';
         $params = array($this->id_usuario);
-        $data= Database::getRow($sql,$params);
-        if ($password==$data['clave_usuario']) {
-        return true;
-        }else{
-        return false;
+        $data = Database::getRow($sql, $params);
+        if ($password == $data['clave_usuario']) {
+            return true;
+        } else {
+            return false;
         }
     }
- 
+
     public function changePassword()
     {
         $sql = 'UPDATE usuario SET clave_usuario = ? WHERE id_usuario = ?';
@@ -82,12 +83,13 @@ class UsuarioQueries
 
 
     /**Funci'on para cargar combobox */
-    public function readTipo(){
-        $sql='SELECT idtipo_usuario, tipo_usuario FROM tipo_usuario';
+    public function readTipo()
+    {
+        $sql = 'SELECT idtipo_usuario, tipo_usuario FROM tipo_usuario';
         return Database::getRows($sql);
     }
 
-   
+
 
     /**Metodo para crear usuario */
     public function createRow()
@@ -100,20 +102,20 @@ class UsuarioQueries
 
 
 
-public function readOne()
-{
-    $sql = 'SELECT * FROM usuario
+    public function readOne()
+    {
+        $sql = 'SELECT * FROM usuario
             WHERE id_usuario = ?';
-    $params = array($this->id_usuario);
-    return Database::getRow($sql, $params);
-}
+        $params = array($this->id_usuario);
+        return Database::getRow($sql, $params);
+    }
 
- 
-public function deleteRow()
-{
-    $sql = 'DELETE FROM usuario
+
+    public function deleteRow()
+    {
+        $sql = 'DELETE FROM usuario
             WHERE id_usuario = ?';
-    $params = array($this->id_usuario);
-    return Database::executeRow($sql, $params);
-}
+        $params = array($this->id_usuario);
+        return Database::executeRow($sql, $params);
+    }
 }

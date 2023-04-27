@@ -6,7 +6,7 @@ class PedidoQueries
     /*
     *   Métodos para realizar las operaciones de buscar(search) de pedido
     */
-    
+
 
     public function readAll()
     {
@@ -28,8 +28,9 @@ class PedidoQueries
         return Database::getRows($sql, $params);
     }
 
-    public function readOne(){
-        $sql='SELECT id_pedido, fecha_pedido, direccion_pedido, idestado_pedido, id_cliente
+    public function readOne()
+    {
+        $sql = 'SELECT id_pedido, fecha_pedido, direccion_pedido, idestado_pedido, id_cliente
         FROM pedido 
         INNER JOIN cliente USING(id_cliente)
         INNER JOIN estado_pedido USING(idestado_pedido)
@@ -37,13 +38,14 @@ class PedidoQueries
         $params = array($this->id);
         return Database::getRow($sql, $params);
     }
-        
-    public function deleteRow(){
-        $sql='DELETE FROM pedido 
+
+    public function deleteRow()
+    {
+        $sql = 'DELETE FROM pedido 
               WHERE id_pedido = ?';
-        $params=array($this->id);
-        return Database:: executeRow($sql, $params);
-    } 
+        $params = array($this->id);
+        return Database::executeRow($sql, $params);
+    }
 
     public function createRow()
     {
@@ -58,21 +60,22 @@ class PedidoQueries
         $sql = 'UPDATE pedido
                 SET  id_cliente=?, fecha_pedido =?, direccion_pedido =?, idestado_pedido =?
                 WHERE id_pedido = ?';
-        $params = array($this-> cliente, $this->fecha_pedido, $this-> direccion_pedido, $this->estado_pedido, $this->id);
+        $params = array($this->cliente, $this->fecha_pedido, $this->direccion_pedido, $this->estado_pedido, $this->id);
         return Database::executeRow($sql, $params);
     }
 
     //Detalle pedido CAMBIAR
     public function readAllDetallePedido()
     {
-        $sql = 'SELECT id_detalle, id_pedido, id_producto, cantidad, precio_producto
-        from detalle_pedido 
+        $sql = 'SELECT d.id_detalle, d.id_pedido, v.nombre_producto, d.cantidad, d.precio_producto
+        from detalle_pedido d
+        inner join producto v using (id_producto)
         where id_pedido = ?';
         $params = array($this->id);
         return Database::getRows($sql, $params);
     }
-   
-        //Detalle pedido CAMBIAR
+
+    //Detalle pedido CAMBIAR
     public function readOneDetallePedido()
     {
         $sql = 'SELECT * FROM detalle_pedido
@@ -80,5 +83,4 @@ class PedidoQueries
         $params = array($this->iddetalle);
         return Database::getRow($sql, $params);
     }
-
 }

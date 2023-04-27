@@ -2,7 +2,7 @@
 const LOGIN = document.getElementById('login');
 // Método manejador de eventos para cuando el documento ha cargado.
 document.addEventListener('DOMContentLoaded', async () => {
-     //Petición para consultar los usuarios registrados.
+    //Petición para consultar los usuarios registrados.
     const JSON = await dataFetch(USER_API, 'readUsers');
     // Se comprueba si existe una sesión, de lo contrario se sigue con el flujo normal.
     if (JSON.session) {

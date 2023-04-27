@@ -2,14 +2,16 @@
 require_once('../../helpers/database.php');
 
 
- /*funcion para leer datos*/
-    class clientesQueries{
-    public function readAll(){
+/*funcion para leer datos*/
+class clientesQueries
+{
+    public function readAll()
+    {
         $sql = 'SELECT * FROM cliente ORDER BY id_cliente';
         return Database::getRows($sql);
     }
 
-     /*funcion para eliminar datos*/
+    /*funcion para eliminar datos*/
     public function deleteRow()
     {
         $sql = 'DELETE FROM cliente
@@ -18,7 +20,7 @@ require_once('../../helpers/database.php');
         return Database::executeRow($sql, $params);
     }
 
-     /*funcion para leer datos*/
+    /*funcion para leer datos*/
     public function readOne()
     {
         $sql = 'SELECT * FROM cliente
@@ -27,7 +29,7 @@ require_once('../../helpers/database.php');
         return Database::getRow($sql, $params);
     }
 
- /*funcion para crear insercion*/
+    /*funcion para crear insercion*/
 
     public function createRow()
     {
@@ -36,7 +38,7 @@ require_once('../../helpers/database.php');
         $params = array($this->nombre_cliente, $this->apellido_cliente, $this->dui_cliente, $this->correo_cliente, $this->telefono_cliente, $this->nacimiento_cliente, $this->direccion_cliente, $this->estado_cliente);
         return Database::executeRow($sql, $params);
     }
-    
+
     public function updateRow()
     {
         $sql = 'UPDATE cliente SET nombre_cliente = ? , apellido_cliente = ?, dui_cliente = ?, correo_cliente = ?, telefono_cliente = ?, nacimiento_cliente = ?, direccion_cliente = ?, estado_cliente = ? WHERE id_cliente = ? ';
@@ -52,5 +54,4 @@ require_once('../../helpers/database.php');
         $params = array("%$value%", "%$value%", "%$value%", "%$value%");
         return Database::getRows($sql, $params);
     }
-
 }

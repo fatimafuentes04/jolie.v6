@@ -40,24 +40,24 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Usuario inexistente';
                 }
                 break;
-            // case 'editProfile':
-            //     $_POST = Validator::validateForm($_POST);
-            //     if (!$usuario->setNombres($_POST['nombre'])) {
-            //         $result['exception'] = 'Nombres incorrectos';
-            //     } elseif (!$usuario->setApellidos($_POST['apellidos'])) {
-            //         $result['exception'] = 'Apellidos incorrectos';
-            //     } elseif (!$usuario->setCorreo($_POST['usuario'])) {
-            //         $result['exception'] = 'Correo incorrecto';
-            //     } elseif (!$usuario->setAlias($_POST['alias'])) {
-            //         $result['exception'] = 'Usuario incorrecto';
-            //     } elseif ($usuario->editProfile()) {
-            //         $result['status'] = 1;
-            //         $_SESSION['clave'] = $usuario->getAlias();
-            //         $result['message'] = 'Perfil modificado correctamente';
-            //     } else {
-            //         $result['exception'] = Database::getException();
-            //     }
-            //     break;
+                // case 'editProfile':
+                //     $_POST = Validator::validateForm($_POST);
+                //     if (!$usuario->setNombres($_POST['nombre'])) {
+                //         $result['exception'] = 'Nombres incorrectos';
+                //     } elseif (!$usuario->setApellidos($_POST['apellidos'])) {
+                //         $result['exception'] = 'Apellidos incorrectos';
+                //     } elseif (!$usuario->setCorreo($_POST['usuario'])) {
+                //         $result['exception'] = 'Correo incorrecto';
+                //     } elseif (!$usuario->setAlias($_POST['alias'])) {
+                //         $result['exception'] = 'Usuario incorrecto';
+                //     } elseif ($usuario->editProfile()) {
+                //         $result['status'] = 1;
+                //         $_SESSION['clave'] = $usuario->getAlias();
+                //         $result['message'] = 'Perfil modificado correctamente';
+                //     } else {
+                //         $result['exception'] = Database::getException();
+                //     }
+                //     break;
             case 'changePassword':
                 $_POST = Validator::validateForm($_POST);
                 if (!$usuario->setId($_SESSION['id_usuario'])) {
@@ -100,16 +100,16 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'No hay coincidencias';
                 }
                 break;
-                case 'readTipo':
-                    if ($result['dataset'] = $usuario->readTipo()) {
-                        $result['status'] = 1;
-                        $result['message'] = 'Existen ' . count($result['dataset']) . ' registros';
-                    } elseif (Database::getException()) {
-                        $result['exception'] = Database::getException();
-                    } else {
-                        $result['exception'] = 'No hay datos registrados';
-                    }
-                    break;
+            case 'readTipo':
+                if ($result['dataset'] = $usuario->readTipo()) {
+                    $result['status'] = 1;
+                    $result['message'] = 'Existen ' . count($result['dataset']) . ' registros';
+                } elseif (Database::getException()) {
+                    $result['exception'] = Database::getException();
+                } else {
+                    $result['exception'] = 'No hay datos registrados';
+                }
+                break;
             case 'create':
                 $_POST = Validator::validateForm($_POST);
                 if (!$usuario->setNombre_usuario($_POST['nombre_usuario'])) {
@@ -145,8 +145,6 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Usuario inexistente';
                 }
                 break;
-
-           
             case 'update':
                 $_POST = Validator::validateForm($_POST);
                 if (!$usuario->setId_usuario($_POST['id'])) {

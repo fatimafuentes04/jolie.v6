@@ -24,7 +24,7 @@ const RECORDDT = document.getElementById('recordsPed');
 document.addEventListener('DOMContentLoaded', () => {
     // Llamada a la función para llenar la tabla con los registros disponibles.
     fillTable();
-    
+
 
 });
 
@@ -178,19 +178,11 @@ async function fillTableDetallePedido(id) {
             TBODYDT_ROWS.innerHTML += `
             <tr>
                 <td>${row.id_pedido}</td>
-                <td>${row.id_producto}</td>
+                <td>${row.nombre_producto}</td>
                 <td>${row.cantidad}</td>
                 <td>${row.precio_producto}</td>
                 <td>
                    
-
-                    <button type="button" class="btn btn-info" onclick="openUpdate(${row.id_valoracion})">
-                        <img height="20px" width="20px" src="../../resources/img/imgtablas/update.png" alt="actualizar">
-                    </button>
-
-                    <button onclick="openDeleteValo(${row.id_valoracion})" class="btn btn-danger"><img height="20px"
-                            width="20px" src="../../resources/img/imgtablas/delete.png" alt="eliminar">
-                    </button>
                 </td>
             </tr>
             `;

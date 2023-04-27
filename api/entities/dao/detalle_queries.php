@@ -5,48 +5,51 @@ require_once('../../helpers/database.php');
 */
 class DetalleQueries
 {
-    public function readAll(){
+    public function readAll()
+    {
         $sql = 'SELECT * FROM detalle_pedido ORDER BY id_detalle';
         return Database::getRows($sql);
     }
 
     public function deleteRow()
-{
-    $sql = 'DELETE FROM detalle_pedido
+    {
+        $sql = 'DELETE FROM detalle_pedido
             WHERE id_detalle = ?';
-    $params = array($this->id_detalle);
-    return Database::executeRow($sql, $params);
-}
+        $params = array($this->id_detalle);
+        return Database::executeRow($sql, $params);
+    }
 
-public function readOne()
-{
-    $sql = 'SELECT * FROM detalle_pedido
+    public function readOne()
+    {
+        $sql = 'SELECT * FROM detalle_pedido
             WHERE id_detalle = ?';
-    $params = array($this->id_detalle);
-    return Database::getRow($sql, $params);
-}
+        $params = array($this->id_detalle);
+        return Database::getRow($sql, $params);
+    }
 
-public function readProducto(){
-    $sql='SELECT id_producto, nombre_producto FROM producto';
-    return Database::getRows($sql);
-}
+    public function readProducto()
+    {
+        $sql = 'SELECT id_producto, nombre_producto FROM producto';
+        return Database::getRows($sql);
+    }
 
-public function readPedido(){
-    $sql='SELECT id_pedido FROM pedido';
-    return Database::getRows($sql);
-}
+    public function readPedido()
+    {
+        $sql = 'SELECT id_pedido FROM pedido';
+        return Database::getRows($sql);
+    }
 
-public function createRow()
-{
-    $sql = 'INSERT INTO detalle_pedido (id_pedido, id_producto, cantidad, precio_producto)
+    public function createRow()
+    {
+        $sql = 'INSERT INTO detalle_pedido (id_pedido, id_producto, cantidad, precio_producto)
             VALUES(?, ?, ?, ?)';
-    $params = array($this->id_pedido, $this->id_producto, $this->cantidad, $this->precio_producto);
-    return Database::executeRow($sql, $params);
-}
+        $params = array($this->id_pedido, $this->id_producto, $this->cantidad, $this->precio_producto);
+        return Database::executeRow($sql, $params);
+    }
 
 
 
-    
+
     /*
     public function searchRows($value)
     {
@@ -61,15 +64,9 @@ public function createRow()
 
 
     /**Funci'on para cargar combobox */
-  
 
-   
+
+
 
     /**Metodo para crear usuario */
- 
-
-
-
- 
-
 }
