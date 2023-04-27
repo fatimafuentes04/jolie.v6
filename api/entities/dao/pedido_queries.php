@@ -13,7 +13,8 @@ class PedidoQueries
         $sql = 'SELECT id_pedido, fecha_pedido, direccion_pedido, nombre_cliente, estado_pedido
         FROM pedido
         INNER JOIN cliente USING(id_cliente)
-        INNER JOIN estado_pedido USING(idestado_pedido)';
+        INNER JOIN estado_pedido USING(idestado_pedido)
+        ORDER BY id_pedido';
         return Database::getRows($sql);
     }
 
