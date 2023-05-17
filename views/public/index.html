@@ -2,75 +2,101 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>JOLIE</title>
-  <!--LINK PARA CARGAR CSS-->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-  <link rel="stylesheet" href="../../css/public/style.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JOLIE</title>
+    <!--LINK PARA CARGAR CSS-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../css/public/style.css">
 </head>
 
 <body>
-  <!--BARRA DE NAVEGACION-->
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="#">JOLIE</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="/html/index.html">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/html/novedades.html">Novedades</a>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
-              aria-expanded="false">
-              Categorias
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" href="/html/productos.html">Camisas</a></li>
-              <li><a class="dropdown-item" href="#">Pantalones</a></li>
-              <li><a class="dropdown-item" href="#">Faldas</a></li>
-            </ul>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/html/ofertas.html">Promociones</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/html/login.html">Iniciar sesion</a>
-          </li>
-        </ul>
-        <form class="d-flex">
-          <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
-          <button class="btn btn-outline-success" type="submit">Buscar</button>
-        </form>
-      </div>
-    </div>
-  </nav>
+    <!--PANTALLA PRINCIPAL-->
+    <main>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Español
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="#">Ingles</a></li>
+                            </ul>
+                        </li>
 
-  <!--PANTALLA PRINCIPAL-->
-  <main>
-    <div id="container">
-      <img src="../../images/private/Principal.png" alt="Principal">
-    </div>
-  </main>
+                        <li class="nav-item">
+                            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true"><img
+                                    src="../../images/private/home.png" alt=""></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
 
-  <!--FOOTER-->
-  <footer>
-    <iframe src="/html/footer.html" frameborder="0"></iframe>
-  </footer>
+        <div class="container">
+            <div class="login" style="margin-left: 5em; margin-right: 5em;">
+                <form id="login" method="post">
+                    <div class="mb-3">
+                        <h3>BIENVENIDO A LA FAMILIA JOLIE!</h3>
+                        <h6>¿No tienes una cuenta?, Registrate</h6>
+                        <br>
+                        <label for="" class="form-label">Usario</label>
+                        <input type="text" class="form-control" id="" name="usuario" aria-describedby="">
+                        <div id="" class="form-text">Te recomendamos no compartir tus credenciales con nadie.
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="" class="form-label">Clave</label>
+                        <input type="password" class="form-control" id="" name="clave">
+                    </div>
+                    <div class="mb-3 form-check">
+                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                        <label class="form-check-label" for="exampleCheck1">Recordarme</label>
+                        <p style="text-align: right;">Forget password?</p>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Iniciar sesión</button>
+                    <br>
+                    <br>
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+                    <p style="text-align: center;">o continua con</p>
+                    <div class="metodos">
+                        <div class="google"><img src="../../images/private/google.png" alt=""></div>
+                        <div class="facebook"><img src="../../images/private/facebook.png" alt=""></div>
+                        <div class="apple"><img src="../../images/private/apple.png" alt=""></div>
+                    </div>
 
-  <!--SCRIPT BOOTSTRAP JS-->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-    crossorigin="anonymous"></script>
+                </form>
+            </div>
+
+            <div class="image" style="margin-left: 2em; margin-right: 0em;">
+                <img style="float: right;" src="../../images/private/login.png" alt="">
+            </div>
+        </div>
+    </main>
+
+    <!--SCRIPT BOOTSTRAP JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+
+
+    <script src="../../controllers/private/sweetalert.min.js"></script>
+    <script src="../../controllers/private/account.js"></script>
+    <script src="../../controllers/components.js"></script>
+    <script src="../../controllers/private/index.js"></script>
+
 </body>
 
 </html>
