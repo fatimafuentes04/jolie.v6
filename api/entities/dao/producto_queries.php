@@ -5,8 +5,6 @@ require_once('../../helpers/database.php');
 /*funcion para leer datos*/
 class ProductoQueries
 {
-
-
     public function readAll()
     {
         $sql = 'SELECT id_producto, categoria, nombre_producto, descripcion_producto, precio_producto, imagen_producto, estado_producto, nombre_usuario, talla, imagen
@@ -86,36 +84,5 @@ class ProductoQueries
     {
         $sql = 'SELECT id_imagen, imagen FROM imagen';
         return Database::getRows($sql);
-    }
-
-//     public function readAllValoracion()
-//     {
-//         $sql = 'SELECT id_valoracion, nombre_cliente, calificacion_producto, comentario_producto, correo_cliente, fecha_comentario, estado_comentario, id_detalle
-//         from valoracion 
-//         inner join detalle_pedido USING (id_detalle)
-//         inner join producto USING (id_producto)
-//         where id_producto = ?';
-//         $params = array($this->id_producto);
-//         return Database::getRows($sql, $params);
-//     }
-
-//  public function readOneValo()
-//     {
-//         $sql = 'SELECT id_valoracion, nombre_cliente, estado_comentario, calificacion_producto, comentario_producto, correo_cliente, fecha_comentario, id_detalle
-//         from valoracion 
-//         where id_valoracion = ?';
-//         $params = array($this->id_valo);
-//         return Database::getRow($sql, $params);
-//     }
-
-
-//     public function deleteRowValo($estado)
-//     {
-//         ($estado) ? $estado=0 : $estado=1;
-//         $sql = 'UPDATE valoracion
-//         SET estado_comentario = ?
-//         WHERE id_valoracion = ?';
-//         $params = array($estado, $this->id_valo);
-//         return Database::executeRow($sql, $params);
-//     }
+    }   
 }

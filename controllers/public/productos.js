@@ -10,9 +10,9 @@ const PRODUCTOS = document.getElementById('productos');
 document.addEventListener('DOMContentLoaded', async () => {
     // Se define un objeto con los datos de la categoría seleccionada.
     const FORM = new FormData();
-    FORM.append('id_categoria', PARAMS.get('id'));
+    FORM.append('id_producto', PARAMS.get('id'));
     // Petición para solicitar los productos de la categoría seleccionada.
-    const JSON = await dataFetch(PRODUCTO_API, 'readProductosCategoria', FORM);
+    const JSON = await dataFetch(PRODUCTO_API, 'readAll', FORM);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
     if (JSON.status) {
         // Se inicializa el contenedor de productos.
@@ -21,20 +21,24 @@ document.addEventListener('DOMContentLoaded', async () => {
         JSON.dataset.forEach(row => {
             // Se crean y concatenan las tarjetas con los datos de cada producto.
             PRODUCTOS.innerHTML += `
-                <div class="col s12 m6 l4">
-                    <div class="card hoverable">
-                        <div class="card-image">
-                            <img src="${SERVER_URL}images/productos/${row.imagen_producto}" class="materialboxed">
-                            <a href="detail.html?id=${row.id_producto}" class="btn-floating halfway-fab waves-effect red tooltipped" data-tooltip="Ver detalle">
-                                <i class="material-icons">more_horiz</i>
-                            </a>
-                        </div>
-                        <div class="card-content">
-                            <span class="card-title">${row.nombre_producto}</span>
-                            <p>Precio(US$) ${row.precio_producto}</p>
-                        </div>
-                    </div>
-                </div>
+            <div class="card" style="width: 18rem; margin-left: 3%;">
+            <div class="card-body">
+              <a href="/html/detalle.html">
+                <img src="../../images/public/1.png" class="card-img-top" alt="...">
+              </a>
+              <p class="card-title">${row.nombre_producto}</p>
+              <div class="imagenes">
+                <div class="img2"><a href=""><img src="../../images/public/9.png" alt=""></a></div>
+                <div class="img3"><a href=""><img src="../../images/public/10.png" alt=""></a></div>
+                <div class="img4"><a href=""><img src="../../images/public/12.png" alt=""></a></div>
+                <div class="cora"><a href=""><img src="../../images/public/like.png" alt=""></a></div>
+                <div class="carrito5"><a href=""><img src="../../images/public/carrito.png" alt=""></a></div>
+              </div>
+              <div class="price">
+                <a href="#" class="ctn2">${row.precio_producto}</a>
+              </div>
+            </div>
+          </div>
             `;
         });
         // Se asigna como título la categoría de los productos.

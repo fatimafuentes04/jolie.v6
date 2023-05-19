@@ -18,7 +18,7 @@ class Producto extends ProductoQueries
     protected $id_usuario = null;
     protected $id_talla = null;
     protected $imgcarucel = null;
-    protected $ruta = '../../images/productos/';
+    protected $ruta = '../../imagenes/productos/';
     protected $rutaCarrusel = '../../images/carrucelp/';
 
 
