@@ -6,6 +6,10 @@
 .nav-link {color: white !important;}
 
 
+.img2{
+
+    align-content: flex-end;
+}
 .container{
     display: flex;
     justify-content: space-between;
