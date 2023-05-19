@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 <div class="img3"><a href=""><img src="../../images/public/10.png" alt=""></a></div>
                 <div class="img4"><a href=""><img src="../../images/public/12.png" alt=""></a></div>
                 <div class="cora"><a href=""><img src="../../images/public/like.png" alt=""></a></div>
-                <div class="carrito5"><a href=""><img src="../../images/public/carrito.png" alt=""></a></div>
+                <div class="carrito5"><a href="detalle.html?id=${row.id_producto}"><img src="../../images/public/carrito.png" alt=""></a></div>
               </div>
               <div class="price">
                 <a href="#" class="ctn2">${row.precio_producto}</a>

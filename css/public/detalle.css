@@ -34,7 +34,7 @@ nav {
 }
 
 .nav2 form {
-    background-image: url(/images/public/submenu.png);
+    background-image: url(../../images/public/submenu.png);
     height: 90%;
 }
 
