@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     // Se comprueba si existe una sesión, de lo contrario se sigue con el flujo normal.
     if (JSON.session) {
         // Se direcciona a la página web de bienvenida.
-        location.href = 'dashboard.html';
+        location.href = 'index.html';
     } else if (JSON.status) {
         // Se muestra el formulario para iniciar sesión.
         sweetAlert(4, JSON.message, true);
@@ -27,7 +27,7 @@ LOGIN.addEventListener('submit', async (event) => {
     const JSON = await dataFetch(USER_API, 'login', FORM);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
     if (JSON.status) {
-        sweetAlert(1, JSON.message, true, 'dashboard.html');
+        sweetAlert(1, JSON.message, true, 'index.html');
     } else {
         sweetAlert(2, JSON.exception, false);
     }
