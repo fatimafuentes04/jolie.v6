@@ -66,12 +66,7 @@
 
                         <td>
 
-                            <div class="rounded float-end">
-                                <button type="button" class="btn btn-secondary btns" data-bs-toggle="modal"
-                                    data-bs-target="#producto" onclick="openCreate()">
-                                    Agregar producto
-                                </button>
-                            </div>
+                          
 
                         </td>
 
@@ -132,15 +127,24 @@
                 <tr id="records"></tr>
                 <tr>
                     <th scope="col">Producto</th>
-                    <th scope="col">Precio</th>
+                    <th scope="col">Precio (US$)</th>
                     <th scope="col">Cantidad</th>
-                    <th scope="col">Sub total</th>
+                    <th scope="col">Sub total (US$)</th>
                     <th scope="col">Acciones</th>
                 </tr>
             </thead>
             <tbody id="tbody-rows"></tbody>
         </table>
-
+        <div class="rounded float-end">
+            <button type="button" class="btn btn-secondary btns" data-bs-toggle="modal"
+                data-bs-target="#producto" onclick="openCreate()">
+                Agregar producto
+            </button>
+        </div>
+        
+         <div class="row right-align">
+            <p>TOTAL A PAGAR (US$) <b id="pago"></b></p>
+        </div>
     </main>
 
     <!--SCRIPT BOOTSTRAP JS-->
