@@ -9,19 +9,18 @@ if (isset($_GET['action'])) {
     $result = array('status' => 0, 'message' => null, 'exception' => null, 'dataset' => null);
     // Se compara la acción a realizar según la petición del controlador.
     switch ($_GET['action']) {
-        case 'readProductosCategoria':
-            if (!$producto->setId($_POST['id_categoria'])) {
-                $result['exception'] = 'Categoría incorrecta';
-            } elseif ($result['dataset'] = $producto->readProductosCategoria()) {
+        case 'readAll':
+            if ($result['dataset'] = $producto->readAll()) {
                 $result['status'] = 1;
+                $result['message'] = 'Existen '.count($result['dataset']).' registros';
             } elseif (Database::getException()) {
-                $result['exception'] = Database::getException();
+                $result['exception'] = Database::getException(); 
             } else {
-                $result['exception'] = 'No existen productos para mostrar';
+                $result['exception'] = 'No hay datos registrados';
             }
-            break;
+        break;
         case 'readOne':
-            if (!$producto->setId($_POST['id_producto'])) {
+            if (!$producto->setid_producto($_POST['id_producto'])) {
                 $result['exception'] = 'Producto incorrecto';
             } elseif ($result['dataset'] = $producto->readOne()) {
                 $result['status'] = 1;
