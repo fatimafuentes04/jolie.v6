@@ -56,4 +56,32 @@ class clientesQueries
         $params = array("%$value%", "%$value%", "%$value%", "%$value%");
         return Database::getRows($sql, $params);
     }
+
+    public function checkUser($correo)
+    {
+        $sql = 'SELECT id_cliente, estado_cliente FROM cliente WHERE nombre_cliente = ?';
+        $params = array($correo);
+        if ($data = Database::getRow($sql, $params)) {
+            $this->id_cliente = $data['id_cliente'];
+            $this->estado_cliente = $data['estado_cliente'];
+            $this->nombre_cliente = $correo;
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function checkPassword($password)
+    {
+        $sql = 'SELECT clave FROM cliente WHERE id_cliente = ?';
+        $params = array($this->id_cliente);
+        $data= Database::getRow($sql,$params);
+        if ($password==$data['clave']) {
+        return true;
+        }else{
+        return false;
+    }
+    
+}
+
 }

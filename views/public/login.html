@@ -45,19 +45,19 @@
 
         <div class="container">
             <div class="login" style="margin-left: 5em; margin-right: 5em;">
-                <form id="login" method="post">
+                <form id="session-form" method="post">
                     <div class="mb-3">
                         <h3>BIENVENIDO A LA FAMILIA JOLIE!</h3>
                         <h6>¿No tienes una cuenta?, Registrate</h6>
                         <br>
                         <label for="" class="form-label">Usario</label>
-                        <input type="text" class="form-control" id="" name="usuario" aria-describedby="">
+                        <input type="text" class="form-control" id="nombre_cliente" name="nombre_cliente" aria-describedby="">
                         <div id="" class="form-text">Te recomendamos no compartir tus credenciales con nadie.
                         </div>
                     </div>
                     <div class="mb-3">
                         <label for="" class="form-label">Clave</label>
-                        <input type="password" class="form-control" id="" name="clave">
+                        <input type="password" class="form-control" id="clave" name="clave">
                     </div>
                     <div class="mb-3 form-check">
                         <input type="checkbox" class="form-check-input" id="exampleCheck1">
@@ -93,7 +93,7 @@
 
 
         <script src="../../controllers/public/sweetalert.min.js"></script>
-        <script src="../../controllers/private/account.js"></script>
+        <script src="../../controllers/public/account.js"></script>
         <script src="../../controllers/components.js"></script>
         <script src="../../controllers/public/login.js"></script>
 

@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             <div class="card" style="width: 18rem; margin-left: 3%;">
             <div class="card-body">
               <a href="/html/detalle.html">
-                <img src="../../images/public/1.png" class="card-img-top" alt="...">
+                <img src="${SERVER_URL}imagenes/productos/${row.imagen_producto}" class="card-img-top" alt="...">
               </a>
               <p class="card-title">${row.nombre_producto}</p>
               <div class="imagenes">
