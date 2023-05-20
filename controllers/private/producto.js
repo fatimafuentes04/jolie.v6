@@ -42,7 +42,7 @@ async function fillTable(form = null) {
                 <td>${row.estado_producto}</td>
                 <td>${row.nombre_usuario}</td>
                 <td>${row.talla}</td>
-                <td><img src="${SERVER_URL}imagenes/carrucelp/${row.imagen}" class="materialboxed" height="100"></td>
+                <td> <img src="${SERVER_URL}imagenes/productos/${row.imagen_producto}" width="100"></td>
                 <td>
                 <button id="editbtn" onclick="updateproducto(${row.id_producto})" data-bs-toggle="modal" data-bs-target="#producto" class="btn btn-secondary btns">
                     <i class='bx bx-edit' ></i>

@@ -75,7 +75,12 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'img incorrecta';
                 } elseif ($Producto_p->createRow()) {
                     $result['status'] = 1;
-                    $result['message'] = 'Se ha creado, correctamente';
+                    if (Validator::saveFile($_FILES['archivo'], $Producto_p->getRuta(), $Producto_p->getImagen())) {
+                        $result['message'] = 'Producto creado correctamente';
+                    } else {
+                        $result['message'] = 'Producto creado pero no se guardó la imagen';
+                 }
+                    
                 } else {
                     $result['exception'] = Database::getException();
                 }

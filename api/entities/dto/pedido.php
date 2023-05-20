@@ -7,8 +7,8 @@ require_once('../../entities/dao/pedido_queries.php');
 */
 class Pedido extends PedidoQueries
 {
-    // Declaración de atributos (propiedades).
-    protected $id = null;
+    // Declaración de atributos pedido (propiedades).
+    protected $id_pedido = null;
     //Detalle pedido parametro
     protected $iddetalle = null;
     protected $estado_pedido = null;
@@ -16,23 +16,29 @@ class Pedido extends PedidoQueries
     protected $direccion_pedido = null;
     protected $cliente = null;
 
+        //Atributos de detalle pedido
+    protected $id_producto = null;
+    protected $cantidad = null;
+    protected $precio_producto = null;
+
+
     /*
     *   Métodos para validar y asignar valores de los atributos.
     */
     public function setIddetalle($value)
     {
         if (Validator::validateNaturalNumber($value)) {
-            $this->id = $value;
+            $this->iddetalle = $value;
             return true;
         } else {
             return false;
         }
     }
 
-    public function setId($value)
+    public function setid_pedido($value)
     {
         if (Validator::validateNaturalNumber($value)) {
-            $this->id = $value;
+            $this->id_pedido = $value;
             return true;
         } else {
             return false;
@@ -59,10 +65,10 @@ class Pedido extends PedidoQueries
         }
     }
 
-    public function setDireccionPedido($value)
+    public function setcantidad($value)
     {
         if (Validator::validateString($value, 1, 200)) {
-            $this->direccion_pedido = $value;
+            $this->cantidad = $value;
             return true;
         } else {
             return false;
@@ -79,12 +85,32 @@ class Pedido extends PedidoQueries
         }
     }
 
+    public function setid_producto($value)
+    {
+        if (Validator::validateNaturalNumber($value)) {
+            $this->id_producto = $value;
+            return true;
+        } else {
+            return false;
+        }
+    }
+    public function setprecio_producto($value)
+    {
+        if (Validator::validateString($value, 1, 200)) {
+            $this->precio_producto = $value;
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+
       /*
     *   Métodos para obtener valores de los atributos.
     */
-    public function getId()
+    public function getid_pedido()
     {
-        return $this->id;
+        return $this->id_pedido;
     }
 
     public function getIddetalle()
@@ -110,5 +136,20 @@ class Pedido extends PedidoQueries
     public function getCliente()
     {
         return $this->cliente;
+    }
+
+    public function getid_producto()
+    {
+        return $this->id_producto;
+    }
+
+    public function getcantidad()
+    {
+        return $this->cantidad;
+    }
+
+    public function getprecio_producto()
+    {
+        return $this->precio_producto;
     }
 }

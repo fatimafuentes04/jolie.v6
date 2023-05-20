@@ -16,6 +16,8 @@ class cliente extends clientesQueries
     protected $nacimiento_cliente = null;
     protected $direccion_cliente = null;
     protected $estado_cliente = null;
+    protected $clave = null;    
+
 
 
     /*
@@ -111,6 +113,16 @@ class cliente extends clientesQueries
             return false;
         }
     }
+
+    public function setClave($value)
+    {
+        if (Validator::validateString($value, 1, 120)) {
+            $this->clave = $value;
+            return true;
+        } else {
+            return false;
+        }
+        }
     /*
     *   Métodos para obtener valores de los atributos.
     */
@@ -155,5 +167,10 @@ class cliente extends clientesQueries
     public function getestado_cliente()
     {
         return $this->estado_cliente;
+    }
+
+    public function getclave()
+    {
+        return $this->clave;
     }
 }
