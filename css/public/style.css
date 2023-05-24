@@ -3,9 +3,15 @@
     
 }
 
+.search-container {
+    display: flex;
+    margin-left: 5em;
+    margin-right: 6em;
+    margin-top: 2em;
+}
+
 .navbar-brand {color: white !important;}
 .nav-link {color: white !important;}
-
 
 .btn{
     color: #4c7383;
@@ -39,7 +45,7 @@ img {
     left: 0;
 }
 
-container {
+.container {
     position: absolute;
-    display: inline-block;
+    display: flex;
 }
