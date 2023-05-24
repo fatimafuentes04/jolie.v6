@@ -66,6 +66,12 @@
 
 /*butom de eliminar  */
 
+
+.fin buttin{
+width: 100%;
+height: 80%;
+
+}
 .b_elimiinar {
     position: relative;
     width: 150px;
