@@ -3,7 +3,7 @@ require_once('../../helpers/database.php');
 
   /*
     *   Un standar es el orden de las llaves
-    * Studrycaps es el nombre de la clase, la primer letra de cada palabra siempre irá en Mayúscula y luego minúscula y se repite con la segunda palabra
+    * Studlycaps es el nombre de la clase, la primer letra de cada palabra siempre irá en Mayúscula y luego minúscula y se repite con la segunda palabra
     
     */
 
