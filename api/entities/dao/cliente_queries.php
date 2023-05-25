@@ -47,6 +47,14 @@ class clientesQueries
         return Database::executeRow($sql, $params);
     }
 
+    public function createCuenta()
+    {
+        $sql = " INSERT INTO cliente(nombre_cliente, apellido_cliente, correo_cliente, direccion_cliente, numero_doc, direccion, clave)
+        VALUES (?, ?, ?, ?, ?, ?, ?)";
+        $params = array($this->nombre_cliente, $this->apellido_cliente, $this->correo_cliente, $this->dui_cliente, $this->telefono_cliente, $this->direccion_cliente, $this->clave);
+        return Database::executeRow($sql, $params);
+    }
+
          /*funcion para buscar cliente*/
     public function searchRows($value)
     {
