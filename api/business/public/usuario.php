@@ -14,6 +14,8 @@ if (isset($_GET['action'])) {
         $result['session'] = 1;
         // Se compara la acción a realizar cuando un administrador ha iniciado sesión.
         switch ($_GET['action']) {
+            
+        // Caso que permite obtener el usuario
             case 'getUser':
                 if (isset($_SESSION['usuario'])) {
                     $result['status'] = 1;
@@ -22,6 +24,8 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Alias de usuario indefinido';
                 }
                 break;
+                
+        // Caso que permite cerrar sesión
             case 'logOut':
                 if (session_destroy()) {
                     $result['status'] = 1;
@@ -31,6 +35,8 @@ if (isset($_GET['action'])) {
                 }
                 break;
 
+                
+        // Caso que permite obtener el perfil del usuario
             case 'readProfile':
                 if ($result['dataset'] = $usuario->readProfile()) {
                     $result['status'] = 1;
@@ -58,6 +64,8 @@ if (isset($_GET['action'])) {
                 //         $result['exception'] = Database::getException();
                 //     }
                 //     break;
+                
+        // Caso que permite cambiar contraseña
             case 'changePassword':
                 $_POST = Validator::validateForm($_POST);
                 if (!$usuario->setId($_SESSION['id_usuario'])) {
@@ -207,6 +215,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = Database::getException();
                 }
                 break;
+                //Caso de registrar usuario
             case 'signup':
                 $_POST = Validator::validateForm($_POST);
                 if (!$usuario->setNombres($_POST['nombres'])) {
@@ -228,6 +237,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = Database::getException();
                 }
                 break;
+                //Caso iniciar sesión 
             case 'login':
                 $_POST = Validator::validateForm($_POST);
                 if (!$usuario->checkUser($_POST['usuario'])) {
