@@ -127,7 +127,7 @@
             <div class="modal-body">
               <form  method="post" class="was-validated" id="item-form"> 
                 <!-- <label for="form-label">id</label> -->
-                <input class="visually-hidden-focusable" type="number" id="id_detallepedido" name="id_detallepedido">
+                <input class="visually-hidden-focusable" type="number" id="id_detalle" name="id_detalle">
                 <div class="col-md-4">
                
                   <label for="validationServer01" for="cantidad" class="form-label">Cantidad</label>
@@ -137,7 +137,14 @@
                     Por favor ingrese una datos en el área de texto.
                   </div>
                 </div>
-              
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <button type="submit" class="btn btn-primary">Guardar</button>
+                </form>
+              </div>
+            </div>
+          </div>
               </div>
             </div>
             
@@ -171,7 +178,7 @@
         </div>
         <div class="fin" >
           <h4>Finalizar compra</h4>
-          <button><a href=""><img src="../../images/public/Fin.png" width="40%"  alt=""></a></button>
+          <button onclick="finishOrder()" ><a href=""><img src="../../images/public/Fin.png" width="40%"  alt=""></a></button>
         </div>
     </main>
 

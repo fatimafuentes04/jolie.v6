@@ -1,6 +1,12 @@
 <?php
 require_once('../../helpers/database.php');
 
+  /*
+    *   Un standar es el orden de las llaves
+    * Studrycaps es el nombre de la clase, la primer letra de cada palabra siempre irá en Mayúscula y luego minúscula y se repite con la segunda palabra
+    
+    */
+
 class PedidoQueries
 {
     /*
@@ -8,6 +14,10 @@ class PedidoQueries
     */
 
 
+    /**
+     * Camelcase es un standar de programación que basicamente son minúsculas hasta la segunda palabra, la primer letra es Mayúscula
+     * Los nombres de las variables ejemplo: $sql, $value, $paraments
+     */
      /*funcion para lectura de datos*/
     public function readAll()
     {
@@ -96,7 +106,7 @@ class PedidoQueries
     {
         $sql = 'SELECT id_pedido
         FROM pedido
-        WHERE idestado_pedido = 1 AND id_cliente = ?';
+        WHERE idestado_pedido = 2 AND id_cliente = ?';
         $params = array($_SESSION['id_cliente']);
         if ($data = Database::getRow($sql, $params)) {
             $this->id_pedido = $data['id_pedido'];
@@ -140,28 +150,28 @@ class PedidoQueries
         // Se establece la zona horaria local para obtener la fecha del servidor.
             date_default_timezone_set('America/El_Salvador');
             $date = date('Y-m-d');
-        $this->id_estadopedido = 2;
-        $sql = 'UPDATE pedidos SET  id_estadopedido = ?, fecha_pedido = ? where id_pedido = ?';
-        $params = array($this->id_estadopedido, $date, $_SESSION['id_pedido']);
+        $this->idestado_pedido = 1;
+        $sql = 'UPDATE pedido SET  idestado_pedido = ?, fecha_pedido = ? where id_pedido = ?';
+        $params = array($this->idestado_pedido, $date, $_SESSION['id_pedido']);
         return Database::executeRow($sql, $params);
     }
 
     // Método para actualizar la cantidad de un producto agregado al carrito de compras.
     public function updateDetail()
     {
-        $sql = 'UPDATE detalles_pedidos
-                SET cantidad_producto = ?
-                WHERE id_detallepedido = ? AND id_pedido = ?';
-        $params = array($this->cantidad, $this->id_detallepedido, $_SESSION['id_pedido']);
+        $sql = 'UPDATE detalle_pedido
+                SET cantidad = ?
+                WHERE id_detalle = ? AND id_pedido = ?';
+        $params = array($this->cantidad, $this->iddetalle, $_SESSION['id_pedido']);
         return Database::executeRow($sql, $params);
     }
 
     // Método para eliminar un producto que se encuentra en el carrito de compras.
     public function deleteDetail()
     {
-        $sql = 'DELETE FROM detalles_pedidos
-                WHERE id_detallepedido = ? AND id_pedido = ?';
-        $params = array($this->id_detallepedido, $_SESSION['id_pedido']);
+        $sql = 'DELETE FROM detalle_pedido
+                WHERE id_detalle = ? AND id_pedido = ?';
+        $params = array($this->iddetalle, $_SESSION['id_pedido']);
         return Database::executeRow($sql, $params);
     }
 }

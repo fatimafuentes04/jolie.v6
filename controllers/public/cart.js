@@ -1,3 +1,9 @@
+/**
+ * Un standar de progrmación de js es la sangría de 4
+ * Tambien ;
+ * Las constantes que siempre van en mayúsculas y con un _
+ */
+
 // Constante para completar la ruta de la API.
 const PEDIDO_API = 'business/public/pedido.php';
 // Constante para establecer el formulario de cambiar producto.
@@ -20,25 +26,25 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // Método manejador de eventos para cuando se envía el formulario de cambiar cantidad de producto.
-//ITEM_FORM.addEventListener('submit', async (event) => {
+ITEM_FORM.addEventListener('submit', async (event) => {
     // Se evita recargar la página web después de enviar el formulario.
-  //  event.preventDefault();
+    event.preventDefault();
     // Constante tipo objeto con los datos del formulario.
-  //  const FORM = new FormData(ITEM_FORM);
+   const FORM = new FormData(ITEM_FORM);
     // Petición para actualizar la cantidad de producto.
-  //  const JSON = await dataFetch(PEDIDO_API, 'updateDetail', FORM);
+    const JSON = await dataFetch(PEDIDO_API, 'updateDetail', FORM);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
-  //  if (JSON.status) {
+    if (JSON.status) {
         // Se actualiza la tabla para visualizar los cambios.
-   //     readOrderDetail();
+       readOrderDetail();
         // Se cierra la caja de diálogo del formulario.
-    //    ITEM_MODAL.close();
+       // ITEM_MODAL.close();
         // Se muestra un mensaje de éxito.
-  //      sweetAlert(1, JSON.message, true);
- //   } else {
-  //      sweetAlert(2, JSON.exception, false);
-  //  }
-//});
+       sweetAlert(1, JSON.message, true);
+    } else {
+        sweetAlert(2, JSON.exception, false);
+    }
+});
 
 /*
 *   Función para obtener el detalle del carrito de compras.
@@ -95,59 +101,59 @@ async function readOrderDetail() {
 *   Parámetros: id (identificador del producto) y quantity (cantidad actual del producto).
 *   Retorno: ninguno.
 */
-//function openUpdate(id, quantity) {
-    // Se abre la caja de diálogo que contiene el formulario.
-    //ITEM_MODAL.open();
+function openUpdate(id_detalle, quantity) {
+    //Se abre la caja de diálogo que contiene el formulario.
+   // ITEM_MODAL.open();
     // Se inicializan los campos del formulario con los datos del registro seleccionado.
-   // document.getElementById('id_detalle').value = id;
-   // document.getElementById('cantidad').value = quantity;
+    document.getElementById('id_detalle').value = id_detalle;
+    document.getElementById('cantidad').value = quantity;
     // Se actualizan los campos para que las etiquetas (labels) no queden sobre los datos.
-   // M.updateTextFields();
-//}
+    //M.updateTextFields();
+}
 
 /*
 *   Función asíncrona para mostrar un mensaje de confirmación al momento de finalizar el pedido.
 *   Parámetros: ninguno.
 *   Retorno: ninguno.
 */
-//async function finishOrder() {
+async function finishOrder() {
     // Llamada a la función para mostrar un mensaje de confirmación, capturando la respuesta en una constante.
-   // const RESPONSE = await confirmAction('¿Está seguro de finalizar el pedido?');
+    const RESPONSE = await confirmAction('¿Está seguro de finalizar el pedido?');
     // Se verifica la respuesta del mensaje.
-  //  if (RESPONSE) {
+   if (RESPONSE) {
         // Petición para finalizar el pedido en proceso.
-   //     const JSON = await dataFetch(PEDIDO_API, 'finishOrder');
+        const JSON = await dataFetch(PEDIDO_API, 'finishOrder');
         // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
-   //     if (JSON.status) {
-   //        sweetAlert(1, JSON.message, true, 'index.html');
-    //    } else {
-    //        sweetAlert(2, JSON.exception, false);
-      //  }
-  //  }
-//}
+       if (JSON.status) {
+           sweetAlert(1, JSON.message, true, 'index.html');
+        } else {
+            sweetAlert(2, JSON.exception, false);
+        }
+    }
+}
 
 /*
 *   Función asíncrona para mostrar un mensaje de confirmación al momento de eliminar un producto del carrito.
 *   Parámetros: id (identificador del producto).
 *   Retorno: ninguno.
 */
-//async function openDelete(id) {
+async function openDelete(id) {
     // Llamada a la función para mostrar un mensaje de confirmación, capturando la respuesta en una constante.
-  //  const RESPONSE = await confirmAction('¿Está seguro de remover el producto?');
+   const RESPONSE = await confirmAction('¿Está seguro de remover el producto?');
     // Se verifica la respuesta del mensaje.
- //   if (RESPONSE) {
+   if (RESPONSE) {
         // Se define un objeto con los datos del producto seleccionado.
-   //     const FORM = new FormData();
- //       FORM.append('id_detalle', id);
+        const FORM = new FormData();
+       FORM.append('id_detalle', id);
         // Petición para eliminar un producto del carrito de compras.
-   //     const JSON = await dataFetch(PEDIDO_API, 'deleteDetail', FORM);
+       const JSON = await dataFetch(PEDIDO_API, 'deleteDetail', FORM);
         // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
-   //     if (JSON.status) {
+       if (JSON.status) {
             // Se carga nuevamente la tabla para visualizar los cambios.
-    //        readOrderDetail();
-     //       sweetAlert(1, JSON.message, true);
-     ///   } else {
-      //      sweetAlert(2, JSON.exception, false);
-       // }
-  //  }
-//}
+            readOrderDetail();
+            sweetAlert(1, JSON.message, true);
+        } else {
+            sweetAlert(2, JSON.exception, false);
+        }
+    }
+}

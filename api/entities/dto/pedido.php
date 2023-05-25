@@ -11,7 +11,7 @@ class Pedido extends PedidoQueries
     protected $id_pedido = null;
     //Detalle pedido parametro
     protected $iddetalle = null;
-    protected $estado_pedido = null;
+    protected $idestado_pedido = null;
     protected $fecha_pedido = null;
     protected $direccion_pedido = null;
     protected $cliente = null;
@@ -48,7 +48,7 @@ class Pedido extends PedidoQueries
     public function setEstadoPedido($value)
     {
         if (Validator::validateBoolean($value)) {
-            $this->estado_pedido = $value;
+            $this->idestado_pedido = $value;
             return true;
         } else {
             return false;
@@ -120,7 +120,7 @@ class Pedido extends PedidoQueries
 
     public function getEstadoPedido()
     {
-        return $this->estado_pedido;
+        return $this->idestado_pedido;
     }
 
     public function getDireccionPedido()
