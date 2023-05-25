@@ -15,7 +15,7 @@ class UsuarioQueries
     }
 
     /*
-    *   Métodos para gestionar la cuenta del usuario. si les muestra error en el id_usuario o algo mas es porque casi siempre muestra el error pero siempre sigue funcionando 
+    *   Métodos para gestionar la cuenta del usuario 
     */
     public function checkUser($usuario)
     {
@@ -43,6 +43,7 @@ class UsuarioQueries
         }
     }
 
+    //funcion para actualizar clave de la cuenta
     public function changePassword()
     {
         $sql = 'UPDATE usuario SET clave_usuario = ? WHERE id_usuario = ?';
@@ -85,7 +86,7 @@ class UsuarioQueries
     */
 
 
-    /**Funci'on para cargar combobox */
+    /**Funcion para cargar combobox */
     public function readTipo()
     {
         $sql = 'SELECT idtipo_usuario, tipo_usuario FROM tipo_usuario';

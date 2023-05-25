@@ -47,6 +47,7 @@ class clientesQueries
         return Database::executeRow($sql, $params);
     }
 
+    //funcion para crear una nueva cuenta
     public function createCuenta()
     {
         $sql = " INSERT INTO cliente(nombre_cliente, apellido_cliente, correo_cliente, direccion_cliente, numero_doc, direccion, clave)
@@ -65,6 +66,7 @@ class clientesQueries
         return Database::getRows($sql, $params);
     }
 
+    //funcion para verificar la credencial de usuario con la base de datos
     public function checkUser($correo)
     {
         $sql = 'SELECT id_cliente, estado_cliente FROM cliente WHERE nombre_cliente = ?';
@@ -79,6 +81,7 @@ class clientesQueries
         }
     }
 
+    //funcion para verificar que la clave coincida con el registro de la base de datos
     public function checkPassword($password)
     {
         $sql = 'SELECT clave FROM cliente WHERE id_cliente = ?';

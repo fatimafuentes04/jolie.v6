@@ -28,6 +28,7 @@ class Usuario extends UsuarioQueries
         }
     }
 
+    //funcion set del nombre de usuario
     public function setNombre_usuario($value)
     {
         if (Validator::validateAlphabetic($value, 1, 50)) {
@@ -38,6 +39,7 @@ class Usuario extends UsuarioQueries
         }
     }
 
+    //funcion set del apellido del usuario
     public function setApellido_usuario($value)
     {
         if (Validator::validateAlphabetic($value, 1, 50)) {
@@ -48,6 +50,7 @@ class Usuario extends UsuarioQueries
         }
     }
 
+    //funcion set del campo usuario
     public function setUsuario($value)
     {
         if (Validator::validateAlphabetic($value, 1, 50)) {
@@ -58,6 +61,7 @@ class Usuario extends UsuarioQueries
         }
     }
 
+    //funcion set del campo clave
     public function setClave_usuario($value)
     {
         if (Validator::validatePassword($value)) {
@@ -68,6 +72,7 @@ class Usuario extends UsuarioQueries
         }
     }
 
+    //funcion set del campo estado del usuario
     public function setEstado_usuario($value)
     {
         if (Validator::validateBoolean($value)) {
@@ -78,6 +83,7 @@ class Usuario extends UsuarioQueries
         }
     }
 
+    //funcion set del campo tipo de usuario
     public function setIdtipo_usuario($value)
     {
         if (Validator::validateNaturalNumber($value)) {
@@ -92,36 +98,43 @@ class Usuario extends UsuarioQueries
     /*
     *   Métodos para obtener valores de los atributos.
     */
+    //funcion get del campo usuario
     public function getId_usuario()
     {
         return $this->id_usuario;
     }
 
+    //funcion get del campo nombre
     public function getNombre_usuario()
     {
         return $this->nombre_usuario;
     }
 
+    //funcion get del campo apellido
     public function getApellido_usuario()
     {
         return $this->apellido_usuario;
     }
 
+    //funcion get del campo usuario
     public function getUsuario()
     {
         return $this->usuario;
     }
 
+    //funcion get del campo clave
     public function getClave_usuario()
     {
         return $this->clave_usuario;
     }
-
+    
+    //funcion get del campo estado del usuario
     public function getEstado_usuario()
     {
         return $this->estado_usuario;
     }
 
+    //funcion get del campo tipo usuario
     public function getIdtipo_usuario()
     {
         return $this->idtipo_usuario;

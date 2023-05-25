@@ -43,6 +43,7 @@ class UsuarioQueries
         }
     }
 
+    //funcion para actualizar clave de la cuenta
     public function changePassword()
     {
         $sql = 'UPDATE usuario SET clave_usuario = ? WHERE id_usuario = ?';

@@ -4,7 +4,7 @@ require_once('../../helpers/database.php');
 class EstadoPedidoQueries
 {
 
-     /*funcion para lectura de datos*/
+     /*funcion para leer el estado de un pedido*/
     public function readAll()
     {
         $sql = 'SELECT idestado_pedido, estado_pedido

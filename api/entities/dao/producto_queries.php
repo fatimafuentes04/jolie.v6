@@ -2,7 +2,7 @@
 require_once('../../helpers/database.php');
 
 
-/*funcion para leer datos*/
+/*funcion para leer datos desde la base de datos*/
 class ProductoQueries
 {
     public function readAll()
@@ -17,6 +17,7 @@ class ProductoQueries
         return Database::getRows($sql);
     }
 
+    //Funcion para eliminar un registro
     public function deleteRow()
     {
         $sql = 'DELETE FROM producto
@@ -59,27 +60,31 @@ class ProductoQueries
 
     /*cargar combox */
 
+    //leer categoria
     public function readCategoria()
     {
         $sql = 'SELECT id_categoria, categoria FROM categoria';
         return Database::getRows($sql);
     }
+    //leer estado
     public function readEstado()
     {
         $sql = 'SELECT idestado_producto, estado_producto FROM estado_producto';
         return Database::getRows($sql);
     }
+    //leer talla
     public function readTalla()
     {
         $sql = 'SELECT id_talla, talla FROM talla';
         return Database::getRows($sql);
     }
+    //leer usuario
     public function readUsuario()
     {
         $sql = 'SELECT id_usuario, usuario FROM usuario';
         return Database::getRows($sql);
     }
-
+    //leer imagen
     public function readImagen()
     {
         $sql = 'SELECT id_imagen, imagen FROM imagen';
