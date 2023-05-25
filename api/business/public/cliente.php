@@ -22,6 +22,8 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Correo de usuario indefinido';
                 }
                 break;
+                
+        // Para cerrar sesión
             case 'logOut':
                 if (session_destroy()) {
                     $result['status'] = 1;
@@ -81,6 +83,8 @@ if (isset($_GET['action'])) {
                     $result['exception'] = Database::getException();
                 }
                 break;
+                
+        // Caso de iniciar sesión
             case 'login':
                 $_POST = Validator::validateForm($_POST);
                 if (!$cliente->checkUser($_POST['nombre_cliente'])) {

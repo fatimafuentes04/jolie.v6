@@ -19,6 +19,8 @@ if (isset($_GET['action'])) {
                 $result['exception'] = 'No hay datos registrados';
             }
         break;
+        
+        // Caso que permite leer el producto
         case 'readOne':
             if (!$producto->setid_producto($_POST['id_producto'])) {
                 $result['exception'] = 'Producto incorrecto';

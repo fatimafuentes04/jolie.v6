@@ -20,6 +20,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         // Se recorre el conjunto de registros fila por fila a través del objeto row.
         JSON.dataset.forEach(row => {
             // Se crean y concatenan las tarjetas con los datos de cada producto.
+            //productos que se obtienen de la base de datos
             PRODUCTOS.innerHTML += `
             <div class="card" style="width: 18rem; margin-left: 3%;">
             <div class="card-body">

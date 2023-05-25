@@ -67,8 +67,9 @@ async function readOrderDetail() {
             subtotal = row.precio_producto * row.cantidad;
             total += subtotal;
             // Se crean y concatenan las filas de la tabla con los datos de cada registro.
+            //datos de acuerdo a la base de datos
             TBODY_ROWS.innerHTML += `
-                <tr>
+                <tr> 
                     <td>${row.nombre_producto}</td>
                     <td>${row.precio_producto}</td>
                     <td>${row.cantidad}</td>

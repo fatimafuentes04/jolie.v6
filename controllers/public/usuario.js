@@ -33,6 +33,7 @@ async function fillTable(form = null) {
             // Se establece un icono para el estado del producto.
         
             // Se crean y concatenan las filas de la tabla con los datos de cada registro.
+            // Datos obtenidos de la base de datos
             TBODY_ROWS.innerHTML += `
                 <tr>
                     <td>${row.id_usuario}</td>
@@ -63,6 +64,7 @@ async function fillTable(form = null) {
     }
 }
 
+//función de crear usuario
 function createUsuario(){
     titulo_modal.textContent ='CREAR USUARIO';
     fillSelect(USUARIO_API, 'readTipo', 'idtipo_usuario');
@@ -72,8 +74,11 @@ function createUsuario(){
 
 
 FORMULARIO.addEventListener('submit', async(event) =>{
+    // Se evita recargar la página web después de enviar el formulario.
     console.log('submit');
+    // Constante tipo objeto con los datos del formulario.
     event.preventDefault();
+    // Constante tipo objeto con los datos del formulario.
     (document.getElementById('id').value) ? action = 'update' : action = 'create';
     const FORM = new FormData(FORMULARIO);
     const JSON = await dataFetch(USUARIO_API, action, FORM);
@@ -88,7 +93,7 @@ FORMULARIO.addEventListener('submit', async(event) =>{
 });
 
 
-
+//funcion actualizar usuario
 async function updateUsuario(id_usuario) {
     // FORMULARIO.reset();
     const FORM = new FormData();
@@ -115,7 +120,7 @@ async function updateUsuario(id_usuario) {
 
 
 
-
+//Funcion eliminar usuario
 async function Deleteusuario(id_usuario) {
     // Llamada a la función para mostrar un mensaje de confirmación, capturando la respuesta en una constante.
     const RESPONSE = await confirmAction('¿Desea eliminar el producto de forma permanente?');

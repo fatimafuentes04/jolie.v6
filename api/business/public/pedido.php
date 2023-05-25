@@ -14,6 +14,8 @@ if (isset($_GET['action'])) {
         $result['session'] = 1;
         // Se compara la acción a realizar cuando un cliente ha iniciado sesión.
         switch ($_GET['action']) {
+            
+        // Crear detalle para agregarlo
             case 'createDetail':
                 $_POST = Validator::validateForm($_POST);
                 if (!$pedido->startOrder()) {
@@ -29,6 +31,8 @@ if (isset($_GET['action'])) {
                     $result['exception'] = Database::getException();
                 }
                 break;
+                
+        // Caso que permite ver o leer las ordenes
             case 'readOrderDetail':
                 if (!$pedido->startOrder()) {
                     $result['exception'] = 'Debe agregar un producto al carrito';
@@ -41,6 +45,8 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'No tiene productos en el carrito';
                 }
                 break;
+                
+        // Caso que permite actualizar el producto en el carrito
             case 'updateDetail':
                 $_POST = Validator::validateForm($_POST);
                 if (!$pedido->setIdDetalle($_POST['id_detalle'])) {
@@ -54,6 +60,8 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Ocurrió un problema al modificar la cantidad';
                 }
                 break;
+                
+        // Caso que permite eliminar el producto en el carrito
             case 'deleteDetail':
                 if (!$pedido->setIdDetalle($_POST['id_detalle'])) {
                     $result['exception'] = 'Detalle incorrecto';
@@ -64,7 +72,8 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Ocurrió un problema al remover el producto';
                 }
                 break;
-            case 'finishOrder':
+                
+        // Caso que permite finalizar la orden del carrito
                 if ($pedido->finishOrder()) {
                     $result['status'] = 1;
                     $result['message'] = 'Pedido finalizado correctamente';
