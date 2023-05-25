@@ -28,10 +28,6 @@ document.addEventListener('DOMContentLoaded', async () => {
               </a>
               <p class="card-title">${row.nombre_producto}</p>
               <div class="imagenes">
-                <div class="img2"><a href=""><img src="../../images/public/9.png" alt=""></a></div>
-                <div class="img3"><a href=""><img src="../../images/public/10.png" alt=""></a></div>
-                <div class="img4"><a href=""><img src="../../images/public/12.png" alt=""></a></div>
-                <div class="cora"><a href=""><img src="../../images/public/like.png" alt=""></a></div>
                 <div class="carrito5"><a href="detalle.html?id=${row.id_producto}"><img src="../../images/public/carrito.png" alt=""></a></div>
               </div>
               <div class="price">

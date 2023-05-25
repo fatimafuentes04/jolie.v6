@@ -106,7 +106,7 @@ class PedidoQueries
     {
         $sql = 'SELECT id_pedido
         FROM pedido
-        WHERE idestado_pedido = 2 AND id_cliente = ?';
+        WHERE idestado_pedido = 1 AND id_cliente = ?';
         $params = array($_SESSION['id_cliente']);
         if ($data = Database::getRow($sql, $params)) {
             $this->id_pedido = $data['id_pedido'];
@@ -150,7 +150,7 @@ class PedidoQueries
         // Se establece la zona horaria local para obtener la fecha del servidor.
             date_default_timezone_set('America/El_Salvador');
             $date = date('Y-m-d');
-        $this->idestado_pedido = 1;
+        $this->idestado_pedido = 2;
         $sql = 'UPDATE pedido SET  idestado_pedido = ?, fecha_pedido = ? where id_pedido = ?';
         $params = array($this->idestado_pedido, $date, $_SESSION['id_pedido']);
         return Database::executeRow($sql, $params);
