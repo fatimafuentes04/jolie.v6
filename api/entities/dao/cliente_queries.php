@@ -7,7 +7,8 @@ class clientesQueries
 {
     public function readAll()
     {
-        $sql = 'SELECT * FROM cliente ORDER BY id_cliente';
+        $sql = 'SELECT id_cliente, nombre_cliente, apellido_cliente, dui_cliente, correo_cliente, telefono_cliente, nacimiento_cliente, direccion_cliente, estado_cliente, clave
+        FROM public.cliente ORDER BY id_cliente;';
         return Database::getRows($sql);
     }
 

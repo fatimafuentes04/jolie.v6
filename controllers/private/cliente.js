@@ -79,6 +79,7 @@ async function fillTable(form = null) {
                     <button id="deletebtn" onclick="Deletecliente(${row.id_cliente})" class="btn btn-secondary btns">
                     <i class='bx bxs-trash'></i>
                     </button>
+                    
                     </td>
                 </tr>
             `;
@@ -144,3 +145,18 @@ async function Deletecliente(id_cliente) {
         }
     }
 }
+
+
+//#region reporte  de dato personal
+/*
+ *   Función para abrir el reporte de productos por categoría.
+ *   Parámetros: ninguno.
+ *   Retorno: ninguno.
+ */
+function openReport() {
+	// Se declara una constante tipo objeto con la ruta específica del reporte en el servidor.
+	const PATH = new URL(`${SERVER_URL}reports/private/dato_persona_reporte.php`);
+	// Se abre el reporte en una nueva pestaña del navegador web.
+	window.open(PATH.href);
+}
+//#endregion
