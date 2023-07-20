@@ -13,7 +13,8 @@ class ProductoQueries
         INNER JOIN estado_producto USING(idestado_producto)
         INNER JOIN usuario USING(id_usuario)
         INNER JOIN talla USING(id_talla)
-        INNER JOIN imagen USING(id_imagen)';
+        INNER JOIN imagen USING(id_imagen)
+        ORDER BY id_producto';
         return Database::getRows($sql);
     }
 
