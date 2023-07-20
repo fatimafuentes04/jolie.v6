@@ -210,3 +210,17 @@ fillSelect(PRODUCTO_API, 'readEstado', 'estado');
 fillSelect(PRODUCTO_API, 'readTalla', 'talla');
 fillSelect(PRODUCTO_API, 'readUsuario', 'usuario');
 fillSelect(PRODUCTO_API, 'readImagen', 'moreimg');
+
+//#region reporte  de dato personal
+/*
+ *   Función para abrir el reporte de productos por categoría.
+ *   Parámetros: ninguno.
+ *   Retorno: ninguno.
+ */
+function openReport() {
+	// Se declara una constante tipo objeto con la ruta específica del reporte en el servidor.
+	const PATH = new URL(`${SERVER_URL}reports/private/reporte_producto.php`);
+	// Se abre el reporte en una nueva pestaña del navegador web.
+	window.open(PATH.href);
+}
+//#endregion

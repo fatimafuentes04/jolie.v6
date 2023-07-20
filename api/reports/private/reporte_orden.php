@@ -40,10 +40,11 @@ if ($dataPedido = $Pedido->readAll()) {
         $pdf->cell(53.4, 10, $rowPedido['nombre_cliente'], 1, 0, 'C');
         $pdf->cell(53.4, 10, $rowPedido['fecha_pedido'], 1, 0, 'C');
         $pdf->cell(53.4, 10, $rowPedido['direccion_pedido'], 1, 0, 'C');
-        ($rowPedido['estado_pedido'])? $estado = 'Activo': $estado = 'Inactivo';
+        $pdf->cell(53.4, 10, $rowPedido['estado_pedido'], 1, 1, 'C');
+        // ($rowPedido['estado_pedido'])? $estado = 'Activo': $estado = 'Inactivo';
         //indicar el 1,1 al final para que sea una sola fila cada dato 
         // $pdf->cell(33.375, 1,$pdf->Image($pdf->encodeString('../../img/people/'.$rowUsuario['foto']),null,null,20.5,20), 0, 1, 'C');
-        $pdf->cell(53.4, 10, $estado, 1, 1, 'C');
+        // $pdf->cell(53.4, 10, $estado, 1, 1, 'C');
         // Se instancia el módelo Producto para procesar los datos.
     }
 } else {
