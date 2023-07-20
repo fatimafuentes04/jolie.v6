@@ -8,9 +8,9 @@ class UsuarioQueries
      /*funcion para lectura de  datos*/
     public function readAll()
     {
-        $sql = 'SELECT id_usuario, nombre_usuario, apellido_usuario, usuario, clave_usuario, estado_usuario, tipo_usuario
-        FROM usuario
-        INNER JOIN tipo_usuario USING(idtipo_usuario)';
+        $sql = 'SELECT id_usuario, nombre_usuario, apellido_usuario, usuario, clave_usuario, estado_usuario, idtipo_usuario
+        FROM public.usuario ORDER BY id_usuario; ';
+        // INNER JOIN tipo_usuario USING(idtipo_usuario)
         return Database::getRows($sql);
     }
 

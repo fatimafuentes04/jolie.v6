@@ -155,7 +155,7 @@ async function Deletecliente(id_cliente) {
  */
 function openReport() {
 	// Se declara una constante tipo objeto con la ruta específica del reporte en el servidor.
-	const PATH = new URL(`${SERVER_URL}reports/private/dato_persona_reporte.php`);
+	const PATH = new URL(`${SERVER_URL}reports/private/reporte_cliente.php`);
 	// Se abre el reporte en una nueva pestaña del navegador web.
 	window.open(PATH.href);
 }
