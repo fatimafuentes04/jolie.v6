@@ -8,7 +8,8 @@ class DetalleQueries
     /*funcion para lectura de datos*/
     public function readAll()
     {
-        $sql = 'SELECT * FROM detalle_pedido ORDER BY id_detalle';
+        $sql = 'SELECT SELECT id_detalle, id_pedido, id_producto, cantidad, precio_producto
+        FROM detalle_pedido ORDER BY id_detalle';
         return Database::getRows($sql);
     }
 

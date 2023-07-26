@@ -1,6 +1,5 @@
 // Constante para completar la ruta de la API.
 const PEDIDO_API = 'business/dashboard/pedido.php';
-
 const CLIENTE_API = 'business/dashboard/cliente.php';
 const ESTADOP_API = 'business/dashboard/estadopedido.php';
 //Constante para cambiarle el titulo a el modal
@@ -203,6 +202,21 @@ async function fillTableDetallePedido(id) {
 function openReport() {
 	// Se declara una constante tipo objeto con la ruta específica del reporte en el servidor.
 	const PATH = new URL(`${SERVER_URL}reports/private/reporte_orden.php`);
+	// Se abre el reporte en una nueva pestaña del navegador web.
+	window.open(PATH.href);
+}
+//#endregion
+
+
+//#region reporte  de dato personal
+/*
+ *   Función para abrir el reporte de productos por categoría.
+ *   Parámetros: ninguno.
+ *   Retorno: ninguno.
+ */
+function openReportD() {
+	// Se declara una constante tipo objeto con la ruta específica del reporte en el servidor.
+	const PATH = new URL(`${SERVER_URL}reports/private/reporte_detalle.php`);
 	// Se abre el reporte en una nueva pestaña del navegador web.
 	window.open(PATH.href);
 }

@@ -18,9 +18,32 @@
 
 <body>
     <!--BARRA DE NAVEGACION-->
-    <div class="col-2">
-        <nav></nav>
-    </div>
+     <!--BARRA DE NAVEGACION-->
+     <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="../../views/private/home.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page"
+                            href="../../views/private/orden.html">Cliente</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true"><img
+                                src="../../images/private/home.png" alt=""></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
     
 
     <!--PANTALLA PRINCIPAL-->
@@ -62,6 +85,12 @@
             <button type="button" id="" data-bs-toggle="" data-bs-target=""
                 onclick="openReport()" class="btn btn-secondary btns">
                 Descargar reporte
+            </button>
+        </div>
+        <div class="rounded float-end">
+            <button type="button" id="" data-bs-toggle="" data-bs-target=""
+                onclick="openReportD()" class="btn btn-secondary btns">
+                Descargar reporte de Detalles
             </button>
         </div>
         <div class="container">
@@ -133,6 +162,7 @@
         <div class="modal fade" id="detallepedido" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
+                    
                     <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLabel">Detalle pedido</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -171,6 +201,7 @@
     <script src="../../controllers/private/plantilla.js"></script>
     <script src="../../controllers/components.js"></script>
     <script src="../../controllers/private/pedido.js"></script>
+
 </body>
 
 </html>
