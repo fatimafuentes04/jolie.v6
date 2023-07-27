@@ -234,55 +234,41 @@ if (isset($_GET['action'])) {
                 }
                 break;
 
-                /*
-            case 'readCategoria':
-                if ($result['dataset'] = $Producto_p->readCategorias()) {
-                    $result['status'] = 1;
-                    $result['message'] = 'Existen registros';
-                } elseif (Database::getException()) {
-                    $result['exception'] = Database::getException();
-                } else {
-                    $result['exception'] = 'No hay datos registrados';
-                }
+                case 'cantidadProductosCategoria':
+                    if ($result['dataset'] = $Producto_p->cantidadProductosCategoria()) {
+                        $result['status'] = 1;
+                    } else {
+                        $result['exception'] = 'No hay datos disponibles';
+                    }
+                    break;
+                case 'porcentajeProductosCategoria':
+                    if ($result['dataset'] = $Producto_p->porcentajeProductosCategoria()) {
+                        $result['status'] = 1;
+                    } else {
+                        $result['exception'] = 'No hay datos disponibles';
+                    }
+                    break;
+                case 'Productos_mas_baratos':
+                    if ($result['dataset'] = $Producto_p->Productos_mas_baratos()) {
+                        $result['status'] = 1;
+                    } else {
+                        $result['exception'] = 'No hay datos disponibles';
+                    }
+                    break;
+                case 'Productos_mas_caros':
+                    if ($result['dataset'] = $Producto_p->Productos_mas_caros()) {
+                        $result['status'] = 1;
+                    } else {
+                        $result['exception'] = 'No hay datos disponibles';
+                    }
+                    break;
+                case 'Suma_de_productos':
+                    if ($result['dataset'] = $Producto_p->Suma_de_productos()) {
+                        $result['status'] = 1;
+                    } else {
+                        $result['exception'] = 'No hay datos disponibles';
+                    }
                 break;
-            case 'readEditorial':
-                if ($result['dataset'] = $Producto_p->readEditoriales()) {
-                    $result['status'] = 1;
-                    $result['message'] = 'Existen registros';
-                } elseif (Database::getException()) {
-                    $result['exception'] = Database::getException();
-                } else {
-                    $result['exception'] = 'No hay datos registrados';
-                }
-                break;
-            case 'readUsuarios':
-                if ($result['dataset'] = $Producto_p->readUsuarios()) {
-                    $result['status'] = 1;
-                    $result['message'] = 'Existen registros';
-                } elseif (Database::getException()) {
-                    $result['exception'] = Database::getException();
-                } else {
-                    $result['exception'] = 'No hay datos registrados';
-                }
-                break;
-            case 'readAutor':
-                if ($result['dataset'] = $Producto_p->readAutores()) {
-                    $result['status'] = 1;
-                    $result['message'] = 'Existen registros';
-                } elseif (Database::getException()) {
-                    $result['exception'] = Database::getException();
-                } else {
-                    $result['exception'] = 'No hay datos registrados';
-                }
-                break;
-            case 'porcentajeProductosCategoria':
-                if ($result['dataset'] = $producto->porcentajeProductosCategoria()) {
-                    $result['status'] = 1;
-                } else {
-                    $result['exception'] = 'No hay datos disponibles';
-                }
-                break;
-                */
             default:
                 $result['exception'] = 'Acción no disponible dentro de la sesión';
         }
