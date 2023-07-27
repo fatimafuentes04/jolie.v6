@@ -16,8 +16,8 @@ if ($datacliente = $cliente->readAll()) {
     //se aliniar horizontalmente con el comentado landscape -> $pdf->AddPage("landscape");
     $pdf->AddPage("landscape");
     // Se establece un color de relleno para los encabezados.
-    $pdf->setFillColor(175);
-    // Se establece la fuente para los encabezados.
+    $pdf->setFillColor(76, 115, 131);
+        // Se establece la fuente para los encabezados.
     $pdf->setFont('Times', 'B', 9);
     // Se imprimen las celdas con los encabezados. 126 ancho en vertical y 267 ancho en horizontal se divide en los 33.375 y se hace el calculo
     $pdf->cell(33.375, 10, 'ID', 1, 0, 'C', 1); //(Ancho, Alto, Titulo, borde 1 - 0, salto de linea L-C-R, color de fondo 1-0)
@@ -29,7 +29,6 @@ if ($datacliente = $cliente->readAll()) {
     $pdf->cell(34.375, 10, 'F. NACIMIENTO', 1, 0, 'C', 1);
     $pdf->cell(30.375, 10, 'ESTADO', 1, 1, 'C', 1);
     // Se establece un color de relleno para mostrar el nombre de la categoría.
-    $pdf->setFillColor(225);
     // Se establece la fuente para los datos de los productos.
     $pdf->setFont('Times', '', 9);
    
