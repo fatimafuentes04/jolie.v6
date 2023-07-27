@@ -91,4 +91,49 @@ class ProductoQueries
         $sql = 'SELECT id_imagen, imagen FROM imagen';
         return Database::getRows($sql);
     }   
+    //GRAFICAS
+    public function cantidadProductosCategoria()
+    {
+        $sql = 'SELECT categoria, COUNT(id_producto) cantidad
+                FROM producto
+                INNER JOIN categoria USING(id_categoria)
+                GROUP BY categoria ORDER BY cantidad DESC';
+        return Database::getRows($sql);
+    }
+
+    public function porcentajeProductosCategoria()
+    {
+        $sql = 'SELECT talla, COUNT(id_producto) cantidad
+        FROM producto
+        INNER JOIN talla USING(id_talla)
+        GROUP BY talla ORDER BY cantidad DESC';
+        return Database::getRows($sql);
+    }
+
+    public function Productos_mas_baratos()
+    {
+        $sql = 'SELECT usuario, COUNT(idtipo_usuario) cantidad
+        FROM usuario
+        INNER JOIN tipo_usuario USING(idtipo_usuario)
+        GROUP BY usuario ORDER BY cantidad DESC LIMIT 4';
+        return Database::getRows($sql);
+    }
+
+    public function Productos_mas_caros()
+    {
+        $sql = 'SELECT producto, COUNT(id_imagen) cantidad
+        FROM producto
+        INNER JOIN imagen USING(id_imagen)
+        GROUP BY producto ORDER BY cantidad DESC LIMIT 6';
+        return Database::getRows($sql);
+    }
+
+    public function Suma_de_productos()
+    {
+        $sql = 'SELECT producto.nombre_producto, SUM(detalle_pedido.cantidad) as cantidad
+        FROM detalle_pedido JOIN producto USING(id_producto)
+        GROUP BY nombre_producto
+        ORDER BY SUM(detalle_pedido.cantidad)DESC LIMIT 5';
+        return Database::getRows($sql);
+    }
 }
