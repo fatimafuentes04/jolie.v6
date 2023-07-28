@@ -316,7 +316,7 @@ function barGraphLineal(canvas, legends, values, title) {
                   loop: true
                 }
               },
-              aspectRatio: 1,
+              //aspectRatio: 1,
             plugins: {
                 title: {
                     display: true,

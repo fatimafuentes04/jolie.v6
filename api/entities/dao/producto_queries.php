@@ -121,10 +121,10 @@ class ProductoQueries
 
     public function Productos_mas_caros()
     {
-        $sql = 'SELECT producto, COUNT(id_imagen) cantidad
+        $sql = 'SELECT nombre_producto, COUNT(id_imagen) cantidad
         FROM producto
         INNER JOIN imagen USING(id_imagen)
-        GROUP BY producto ORDER BY cantidad DESC LIMIT 6';
+        GROUP BY nombre_producto ORDER BY cantidad DESC LIMIT 6';
         return Database::getRows($sql);
     }
 

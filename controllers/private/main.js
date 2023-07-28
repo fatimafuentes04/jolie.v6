@@ -124,11 +124,11 @@ async function Productos_mas_caros() {
         // Se recorre el conjunto de registros fila por fila a través del objeto row.
         JSON.dataset.forEach(row => {
             // Se agregan los datos a los arreglos.
-            producto.push(row.producto);
+            producto.push(row.nombre_producto);
             precio.push(row.cantidad);
         });
         // Llamada a la función que genera y muestra un gráfico de pastel. Se encuentra en el archivo components.js
-        barGraphpolarArea('chart4', producto, precio, 'Cantidad de imagenes por su tipo');
+        barGraphpolarArea('chart4', producto, precio, 'Cantidad de imagenes por producto');
     } else {
         document.getElementById('chart4').remove();
         console.log(JSON.exception);
